@@ -1,0 +1,89 @@
+<div class="modal-left-section">
+    <a href="#" class="modal-logo">
+        <i class="fas fa-palette"></i> ART<br>SPACE
+    </a>
+    <div class="illustration-container">
+        <img src="img/15.jpg" alt="" class="modal-illustration">
+    </div>
+</div>
+
+<div class="modal-right-section">
+    <div class="modal-tabs">
+        <button class="modal-tab-btn active" id="loginTab">Log in</button>
+        <button class="modal-tab-btn" id="signinTab">Sign in</button>
+    </div>
+
+    <div class="form-wrapper">
+        <div class="form-section active" id="loginForm">
+            <div class="form-group">
+                <label for="username">Username :</label>
+                <div class="input-icon-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" name="username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password :</label>
+                <div class="input-icon-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password">
+                </div>
+            </div>
+            <button type="submit" class="modal-btn yellow-btn">Log in</button>
+        </div>
+
+        <div class="form-section" id="signinForm">
+            <div class="form-group">
+                <label for="signinUsername">Username :</label>
+                <div class="input-icon-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="signinUsername" name="signinUsername">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="signinPassword">Password :</label>
+                <div class="input-icon-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="signinPassword" name="signinPassword">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="signinEmail">Email :</label>
+                <div class="input-icon-wrapper">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="signinEmail" name="signinEmail">
+                </div>
+            </div>
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="dob">วันเกิด :</label>
+                    <input type="date" id="dob" name="dob" placeholder="วว/ดด/ปป">
+                </div>
+                <div class="form-group">
+                    <label for="gender">เพศ :</label>
+                    <select id="gender" name="gender">
+                        <option value="">ระบุเพศ</option>
+                        <option value="male">ชาย</option>
+                        <option value="female">หญิง</option>
+                        <option value="other">อื่นๆ</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group upload-profile">
+                <label for="profile-picture">
+                    <i class="fas fa-upload"></i> อัปโหลดรูปโปรไฟล์
+                </label>
+                <input type="file" id="profile-picture" name="profile-picture" accept="image/*">>
+            </div>
+            
+            <div class="button-group">
+                <button type="submit" class="modal-btn yellow-btn">Creates Account</button>
+                <button type="button" class="modal-btn cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <button class="modal-back-btn" id="closeModalBtn">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+</div>

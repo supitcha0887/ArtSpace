@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ART SPACE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fas fa-palette"></i> ART<br>SPACE
+                </a>
+                <div class="nav-right-group">
+                    <ul class="nav-menu"  id="navMenu">
+                        <li><a href="#activities">Activities</a></li>
+                        <li><a href="#community">Community</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                <div class="auth-buttons">
+  <div id="userInfo" class="user-info" style="display:none;">
+    <img id="userAvatar" class="user-avatar" src="" alt="user avatar">
+    <span id="userName"></span>
+  </div>
+  <a href="#" class="login-btn">Log in / Sign in</a>
+  <button class="notification-btn">
+    <i class="fas fa-bell"></i>
+  </button>
+ 
+</div>
+            </div>
+            <button class="hamburger-btn" id="hamburgerBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </div>
+</header>
+
+    <main>
+        <section class="hero content-section">
+            <div class="color-sentinel" data-color="dark"></div>
+            <div class="container">
+                <h1 style="color:#ffd700">ชวนเพื่อน มาสร้างงานศิลปะไปด้วยกัน</h1>
+                <p>“ร่วมกิจกรรม วาดภาพ ถ่ายรูป เขียนหนังสือ และเล่นดนตรี กับเพื่อนที่รักศิลปะเหมือนคุณ”</p>
+                <a href="#" class="start-btn">Start Now</a>
+
+            </div>
+        </section>
+
+        <section class="action-cards content-section">
+            <div class="color-sentinel" data-color="white"></div>
+            <div class="container">
+                <div class="action-cards-container">
+                    <div class="action-card">
+                        <div class="card-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 id="a">ค้นหากิจกรรมศิลปะ<br>และเข้าร่วมกับเพื่อนใหม่</h3>
+                        <a href="#" class="card-btn">Join Activity</a>
+                    </div>
+                    <div class="action-card">
+                        <div class="card-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3 id="b">เริ่มต้นกิจกรรมของคุณ<br>แล้วเชิญเพื่อนมาร่วมสร้างสรรค์</h3>
+                        <a href="#" class="card-btn">Create Activity</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="activities-section content-section" id="activities">
+            <div class="color-sentinel" data-color="white"></div>
+            <div class="color-sentinel" data-color="white"></div>
+            <div class="container">
+                <div class="activities-header">
+                    <h2 id="lastact" style="color: white;" >Lasted Activities</h2>
+                </div>
+                <div class="activities-carousel">
+                    <button class="arrow left"><i class="fas fa-chevron-left"></i></button>
+                <div class="activity-cards-wrapper">
+                    <div class="activity-card">
+                        <div class="activity-header">
+                            <span class="activity-category visual-arts"><i class="fas fa-palette"></i>Visual Arts</span>
+                        </div>
+                        <div class="activity-title" style="background: #8b5cf6;">วาดภาพและเพนต์สีน้ำในสวนเบญจกิติ</div>
+                        <img src="https://media.canva.com/v2/files/uri:ifs%3A%2F%2FM%2FUlkUF2VjRUmkGQu2rzbd2z2OF8yfTxx6HsC1MrVBA1w.jpg?csig=AAAAAAAAAAAAAAAAAAAAAOowqSGZFDTxMxMADKtRx9eVMHuh77TnI7T96c9NhJAN&exp=1758371692&signer=media-rpc&token=AAIAAU0AL1Vsa1VGMlZqUlVta0dRdTJyemJkMnoyT0Y4eWZUeHg2SHNDMU1yVkJBMXcuanBnAAAAAAGZZx694OQUNCd5vOLEautxWGAs6GG1r81H2F8rXRkOnd8VV1oM" alt="Visual Arts" class="activity-image">
+                        <div class="activity-details">
+                            <div class="activity-info">
+                                <span><i class="fas fa-map-marker-alt"></i> สวนเบญจกิติ</span>
+                                <span><i class="fas fa-calendar"></i> 20 กันยายน 2568</span>
+                                <span><i class="fas fa-clock"></i> 10:00 - 16:00</span>
+                            </div>
+                            <div class="participants">
+                                <span class="participant-count available"> <i class="fas fa-user-friends"></i>5/20</span>
+                            </div>
+                            <!-- instructor section -->
+                    <div class="instructor">
+                    <img src="https://media.canva.com/v2/image-resize/format:JPG/height:800/quality:92/uri:ifs%3A%2F%2FM%2Fda98a80d-c0e0-441e-810a-ca37fd8f2a5e/watermark:F/width:600?csig=AAAAAAAAAAAAAAAAAAAAAJePub4E6w80BYq5CN8mkFS9YwLJ-VPjaIvxi8s1e8Ng&exp=1758369314&osig=AAAAAAAAAAAAAAAAAAAAAJJ2_F0WsUBNKnlW6Nipc-A4S6VwPzcq6uocUM0-tIik&signer=media-rpc&x-canva-quality=screen" alt="instructor" class="instructor-avatar">
+                    <div>
+                        <div>ไอ้ไข่น่ารักที่สุดเลย</div>
+                        <div class="rating">5.0 ★★★★★</div>
+                    </div>
+                </div>
+                            <button class="more-detail-btn">More Detail</button>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <div class="activity-header">
+                            <span class="activity-category music"><i class="fas fa-music"></i> Music</span>
+                        </div>
+                        <div class="activity-title" style="background: #ec4899;">แจมดนตรีวันหยุด</div>
+                            <img src="https://fs.lnwfile.com/_/fs/_raw/bs/ev/uf.jpg" alt="Visual Arts" class="activity-image">       
+                        
+                        <div class="activity-details">
+                            <div class="activity-info">
+                                <span><i class="fas fa-map-marker-alt"></i> สตูดิโอศิลป์เจริญกรุง</span>
+                                <span><i class="fas fa-calendar"></i> 28-30 กันยายน 2568</span>
+                                <span><i class="fas fa-clock"></i> 09:00 - 17:00</span>
+                            </div>
+                            <div class="participants">
+                                <span class="participant-count available"><i class="fas fa-user-friends"></i>19/20</span>
+                            </div>
+                <div class="instructor">
+                    <img src="https://media.canva.com/v2/image-resize/format:JPG/height:800/quality:92/uri:ifs%3A%2F%2FM%2Fd4b7d9ec-1765-447f-a5fe-cffaed22afc0/watermark:F/width:600?csig=AAAAAAAAAAAAAAAAAAAAADqj5IxB50UttB4d9k6P76HHVl29t3iqPge4Ckyzvu7L&exp=1758368548&osig=AAAAAAAAAAAAAAAAAAAAAMsW3fxcQkVsKEO8P4xHOsXqxgUkz1V3LyFi91szEHSF&signer=media-rpc&x-canva-quality=screen" alt="instructor" class="instructor-avatar">
+                    <div>
+                        <div>ไอ้ไข่ไม่อ้วนแค่ขนฟู</div>
+                        <div class="rating">4.5 ★★★★</div>
+                    </div>
+                </div>
+                            <button class="more-detail-btn">More Detail</button>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <div class="activity-header">
+                            <span class="activity-category photography"><i class="fas fa-camera"></i>Photography</span>
+                        </div>
+                        <div class="activity-title" style="background: #8b5cf6;">ถ่ายภาพกลางคืนที่ย่านเก่า</div>
+                        <img src="https://assets.brandinside.asia/uploads/2020/06/shutterstock_1478679368.jpg" alt="Visual Arts" class="activity-image">       
+                        <div class="activity-details">
+                            <div class="activity-info">
+                                <span><i class="fas fa-map-marker-alt"></i> เยาวราช</span>
+                                <span><i class="fas fa-calendar"></i> 23 กันยายน 2568</span>
+                                <span><i class="fas fa-clock"></i> 18:00 - 22:00</span>
+                            </div>
+                            <div class="participants">
+                                <span class="participant-count full"><i class="fas fa-user-friends"></i>15/10</span>
+                            </div>
+                            <div class="instructor">
+                    <img src="https://media.canva.com/v2/image-resize/format:JPG/height:800/quality:92/uri:ifs%3A%2F%2FM%2Fd4b7d9ec-1765-447f-a5fe-cffaed22afc0/watermark:F/width:600?csig=AAAAAAAAAAAAAAAAAAAAADqj5IxB50UttB4d9k6P76HHVl29t3iqPge4Ckyzvu7L&exp=1758368548&osig=AAAAAAAAAAAAAAAAAAAAAMsW3fxcQkVsKEO8P4xHOsXqxgUkz1V3LyFi91szEHSF&signer=media-rpc&x-canva-quality=screen" alt="instructor" class="instructor-avatar">
+                    <div>
+                        <div>ไอ้ไข่มาแล้วจ้าาาา</div>
+                        <div class="rating">2.2 ★★</div>
+                    </div>
+                </div>
+                            <button class="more-detail-btn">More Detail</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="arrow right"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div style="text-align: center;">
+                    <a href="#" class="view-all-btn">View all</a>
+                </div>
+                
+                <div class="category-icons-container">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <img src="img/below.png" alt="Visual Arts">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tips-section content-section">
+            <div class="color-sentinel" data-color="white"></div>
+            <div class="color-sentinel" data-color="white"></div>
+            <div class="container">
+                <div class="tips-header">
+                    <h2 style="color: black;">ค้นพบคำตอบ แบ่งปันแรงบันดาลใจ</h2>
+                </div>
+                <div class="tips-cards-container">
+                    <div class="tips-card">
+                        <!-- ด้านซ้าย -->
+            <div class="left">
+            <i class="fas fa-lightbulb"></i>
+            <h3>Tips & Tricks</h3>
+            </div>
+
+            <!-- ด้านขวา -->
+        <div class="right">
+            <ul>
+            <li><i class="fas fa-paint-brush"></i> เทคนิคเลือกพู่กันสำหรับสีน้ำ</li>
+            <li><i class="fas fa-camera"></i> วิธีถ่ายภาพกลางคืนให้สว่างคมชัด</li>
+            <li><i class="fas fa-edit"></i> เคล็ดลับสร้างแรงบันดาลใจในการเขียน</li>
+            </ul>
+            <a href="#" class="view-all-btn">View all</a>
+        </div>
+        </div>
+                    
+<div class="tips-card">
+    <!-- ด้านซ้าย -->
+    <div class="left">
+        <i class="fas fa-question-circle"></i>
+        <h3>Q & A</h3>
+    </div>
+
+    <!-- ด้านขวา -->
+    <div class="right">
+        <ul>
+            <li><i class="fas fa-question-circle"></i> ไม่ทราบว่าควรใช้กระดานแบบไหนสำหรับสีน้ำ?</li>
+            <li><i class="fas fa-camera"></i> กล้อง DSLR กับ Mirrorless ต่างกันยังไงละ?</li>
+            <li><i class="fas fa-tools"></i> ขอวิธีแก้เสียงแตกเมื่ออัดเพลงเองครับ</li>
+        </ul>
+        <div style="text-align:center;">
+            <a href="#" class="view-all-btn">View all</a>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="community-section content-section white-section" id="community">
+            <div class="color-sentinel" data-color="white"></div>
+            <div class="container">
+                <div class="community-header">
+                    <h2>แชร์ผลงาน แลกเปลี่ยนไอเดีย ค้นหาแรง<br>บันดาลใจใหม่ ๆ ได้ที่นี่</h2>
+                </div>
+                <a href="#" class="community-btn">Community</a>
+            </div>
+        </section>
+
+        <div class="modal-container" id="authModal">
+    <div class="modal-content-new" id="modalContent">
+        </div>
+    </div>
+</div>
+<section class="about-section content-section white-section" id="about">
+  <div class="container">
+    <!-- เรื่องราว -->
+    <div class="about-header">
+      <h2>เกี่ยวกับ ARTSPACE</h2>
+      <p>
+        ARTSPACE ถูกสร้างขึ้นจากความเชื่อว่า <b>ศิลปะคือภาษาสากล</b>  
+        ที่สามารถเชื่อมโยงผู้คนต่างที่มาและวัฒนธรรมเข้าด้วยกัน  
+        ที่นี่คือพื้นที่สำหรับทุกคนที่อยากเรียนรู้ ทดลอง และแบ่งปันความคิดสร้างสรรค์  
+        ไม่ว่าคุณจะเป็นมือใหม่หรือศิลปินมืออาชีพ
+      </p>
+    </div>
+
+    <!-- Mission & Vision -->
+    <div class="mv-section">
+      <div class="mv-card">
+        <i class="fas fa-bullseye"></i>
+        <h3>พันธกิจ (Mission)</h3>
+        <p>สร้างสรรค์พื้นที่ที่ทุกคนสามารถเรียนรู้และเติบโตไปด้วยกัน</p>
+      </div>
+      <div class="mv-card">
+        <i class="fas fa-eye"></i>
+        <h3>วิสัยทัศน์ (Vision)</h3>
+        <p>เป็นศูนย์กลางศิลปะและแรงบันดาลใจที่เปิดกว้างที่สุดในเอเชีย</p>
+      </div>
+    </div>
+
+    <!-- Core Values -->
+    <h3 class="values-title">คุณค่าหลักของเรา</h3>
+    <div class="feature-cards">
+      <div class="feature-card">
+        <i class="fas fa-users"></i>
+        <h3>Community</h3>
+        <p>เชื่อมโยงผู้คนที่มีใจรักศิลปะให้มาพบกัน</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-lightbulb"></i>
+        <h3>Creativity</h3>
+        <p>กระตุ้นความคิดสร้างสรรค์ในทุกกิจกรรม</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-hands-helping"></i>
+        <h3>Collaboration</h3>
+        <p>สนับสนุนการทำงานร่วมกันเพื่อสร้างผลงานที่ยิ่งใหญ่</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-globe"></i>
+        <h3>Diversity</h3>
+        <p>เปิดกว้างให้ทุกเพศ ทุกวัย และทุกวัฒนธรรม</p>
+      </div>
+    </div>
+
+    <!-- Team -->
+    <h3 class="values-title">ทีมงานของเรา</h3>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="https://media.canva.com/v2/image-resize/format:JPG/height:200/quality:75/uri:ifs%3A%2F%2FM%2Fd4b7d9ec-1765-447f-a5fe-cffaed22afc0/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAP0EDeQXpkBAmrgqiNi9Jm5OtV9noeIjherBmn6Ymjqj&exp=1758397348&osig=AAAAAAAAAAAAAAAAAAAAAEBdhl_PIm1jpARkHXq3TwucEYyBGWPX2JmYKZPpVquF&signer=media-rpc&x-canva-quality=thumbnail" alt="Founder">
+        <h3>คุณไข่</h3>
+        <p>ผู้ก่อตั้ง - ศิลปะคือความสุขที่แบ่งปันได้</p>
+      </div>
+      <div class="team-card">
+        <img src="https://media.canva.com/v2/image-resize/format:JPG/height:200/quality:75/uri:ifs%3A%2F%2FM%2Fd4b7d9ec-1765-447f-a5fe-cffaed22afc0/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAP0EDeQXpkBAmrgqiNi9Jm5OtV9noeIjherBmn6Ymjqj&exp=1758397348&osig=AAAAAAAAAAAAAAAAAAAAAEBdhl_PIm1jpARkHXq3TwucEYyBGWPX2JmYKZPpVquF&signer=media-rpc&x-canva-quality=thumbnail" alt="Co-Founder">
+        <h3>คุณไข่</h3>
+        <p>ผู้ร่วมก่อตั้ง - พื้นที่ที่เปิดกว้างสำหรับทุกคน</p>
+      </div>
+      <div class="team-card">
+        <img src="https://media.canva.com/v2/image-resize/format:JPG/height:200/quality:75/uri:ifs%3A%2F%2FM%2Fd4b7d9ec-1765-447f-a5fe-cffaed22afc0/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAP0EDeQXpkBAmrgqiNi9Jm5OtV9noeIjherBmn6Ymjqj&exp=1758397348&osig=AAAAAAAAAAAAAAAAAAAAAEBdhl_PIm1jpARkHXq3TwucEYyBGWPX2JmYKZPpVquF&signer=media-rpc&x-canva-quality=thumbnail" alt="Creative Designer">
+        <h3>คุณไข่</h3>
+        <p>Creative Designer - เติมเต็มความคิดสร้างสรรค์</p>
+      </div>
+    </div>
+
+</section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ART SPACE. All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

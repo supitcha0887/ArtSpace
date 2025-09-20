@@ -1,0 +1,1627 @@
+@import url('https://fonts.googleapis.com/css2?family=Athiti:wght@200;300;400;500;600;700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    background: transparent;
+    transition:  0.3s ease-in-out;      
+}   
+
+header .nav-menu a,
+header .logo,
+header .login-btn {
+    color: white;
+}
+
+header.on-white {
+    background: white;
+}
+header.on-white .nav-menu a,
+header.on-white .logo,
+header.on-white .login-btn {
+    color: #000000;
+}
+
+header.sticky {
+  background: white !important;
+}
+
+header.sticky .nav-menu a,
+header.sticky .logo,
+header.sticky .login-btn {
+  color: #000 !important;
+}
+.color-sentinel {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    pointer-events: none;
+}
+
+body {
+    font-family: "Prompt", sans-serif;
+    color: white;
+    overflow-x: hidden;
+    background-color: #ffffff;
+    position: relative;
+}
+            
+.section-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    }
+
+.section-background.active {
+    opacity: 1;
+}
+
+#bg1 { background-image: url('img/1.jpg'); }
+#bg2 { background-image: url('img/2.jpg'); }
+#bg3 { background-image: url('img/3.jpg'); }
+#bg4 { background-image: url('img/4.jpg'); }
+#bg6 { background-image: url('img/6.jpg'); }
+    
+
+.content-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    padding: 60px 0;
+}
+
+.hero {
+    text-align: center;
+    background-image: url('img/1.jpg');
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;  /* ชิดบน */
+    padding-top: 150px;         /* ระยะห่างจากขอบบน */
+    min-height: 100vh;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.start-btn {
+    background: #ffd700;
+    color: #333;
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: inline-block;
+}
+
+.start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+}
+
+
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    padding: 20px 0;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+}
+nav {
+    display: flex; /* กำหนดให้ nav เป็น Flexbox */
+    justify-content: space-between; /* แยกซ้าย-ขวาออกจากกัน */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-right-group {
+    display: flex; /* กำหนดให้กลุ่มเมนูและปุ่มเป็น Flexbox */
+    align-items: center;
+    gap: 40px; /* เพิ่มระยะห่างระหว่างเมนูกับปุ่ม */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.logo i {
+    margin-right: 10px;
+    background: white;
+    color: #4a1a8c;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.nav-menu a:hover {
+    opacity: 0.8;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.login-btn {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.notification-btn {
+    background: #ff6b9d;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.notification-panel {
+  display: none; /* ซ่อนตอนแรก */
+  position: fixed;
+  top: 60px; /* อยู่ใต้ปุ่ม */
+  right: 20px;
+  width: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  padding: 16px;
+  font-family: 'Kanit', sans-serif;
+  z-index: 999;
+}
+
+.notification-panel h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 6px;
+}
+
+.notification-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.notification-item i {
+  font-size: 18px;
+}
+
+.notification-item p {
+  font-size: 13px;
+  margin: 2px 0 0;
+}
+
+/* สีพื้นหลังตามประเภท */
+.notification-item.purple { background: #e6d6f8; }
+.notification-item.green { background: #c8f7d2; }
+.notification-item.red   { background: #f7c8c8; }
+.notification-item.blue  { background: #c8f1f7; }
+.notification-item.yellow{ background: #fdf3c8; }
+
+/* hover effect */
+.notification-item:hover {
+  opacity: 0.9;
+}
+
+.action-cards-container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-size: cover;
+    background-position: center;
+}
+
+.action-cards.content-section {
+    padding-top: 10px;   /* ลดระยะห่างด้านบน */
+}
+
+.action-cards,
+.activities-section {
+    margin: 0; /* ลบช่องว่างออก */
+    background-image: url('img/2.jpg');
+    background-size: cover;
+    background-position: center;
+
+}
+
+.action-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    min-width: 300px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s, background 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-image: url('img/5.jpg');
+}
+
+.card-icon {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    font-size: 30px;
+    color: #4a1a8c;
+}
+
+.action-card h3 {
+    font-size: 20px;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+.card-btn {
+    background: #ffd700;
+    color: #333;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s;
+    display: inline-block;
+}
+
+.card-btn:hover {
+    transform: scale(1.05);
+}
+.activities-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.activity-cards-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.activity-card {
+  flex: 0 0 auto;
+  margin: 0 10px;
+  width: 300px; /* ปรับขนาดตามที่ต้องการ */
+}
+
+.arrow {
+  background: #ffd700;
+  border: none;
+  border-radius: 50%;
+  padding: 20px;           /* ขยายปุ่มให้ใหญ่ขึ้น */
+  font-size: 32px;         /* ขยายขนาดไอคอนลูกศร */
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow.left { left: -60px; }
+.arrow.right { right: -60px; }
+
+
+.activities-section {
+    background-image: url('img/3.jpg');
+    background-size: cover;
+    background-position: center;
+    padding-top: 50px; 
+    padding-bottom: 120px;
+}
+
+.activities-header {
+    text-align: center;
+    margin-top: 50px;   /* ขยับลงมา */
+    margin-bottom: 40px;
+       
+    
+}
+
+.activities-header h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.activity-cards-wrapper {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+}
+
+.activity-cards-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.activity-cards-wrapper::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.activity-cards-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.activity-card {
+    background: white;
+    border-radius: 20px;
+    min-width: 300px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    color: #333;
+}
+
+.activity-card:hover {
+    transform: translateY(-5px);
+}
+
+.activity-header {
+    padding: 15px 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.activity-category {
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;   
+}
+
+.activity-category i,
+.participant-count i {
+    margin-right: 6px;
+}
+
+.visual-arts { background: #8b5cf6; }
+.music { background: #ec4899; }
+.photography { background: #8b5cf6; }
+
+.activity-title {
+    background: #8b5cf6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin: 10px 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.activity-image {
+    width: 100%;
+    height: 150px;
+    margin: 0 20px;
+    width: calc(100% - 40px);
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.activity-details {
+    padding: 20px;
+    color: #333;
+}
+
+.activity-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 15px 0;
+    font-size: 14px;
+    width: 100%;
+}
+
+.activity-info span {
+    background: #f3f4f6;  
+    padding: 12px;
+    border-radius: 8px;       /* มุมโค้ง */
+    text-align: center;       /* จัดฟอนต์กึ่งกลาง */
+    font-size: 14px;
+    color: #333;
+    display: block;   /* ให้ span เป็น block */       
+    width: 100%;       /* กว้างเต็มที่ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+}
+
+.activity-info i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    width: 20px;
+    color: #666;
+}
+
+.participants {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.participant-count {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+.available { background: #10b981; }
+.full { background: #ef4444; }
+
+.instructor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+    background: #f3f4f6;
+    padding: 8px 12px;
+    border-radius: 12px;
+}
+
+.instructor-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+}
+
+.rating {
+    color: #ffd700;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.more-detail-btn {
+    width: 100%;
+    background: #f3f4f6;
+    color: #333;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.more-detail-btn:hover {
+    background: #e5e7eb;
+}
+
+.view-all-btn {
+    background: #ffd700;
+    color: #333;
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.category-icons-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 60px 0;
+    flex-wrap: wrap;
+    margin: 120px 0 60px 0; /* ขยับลงมาอีก */
+}
+
+.category-item {
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.category-item:hover {
+    transform: translateY(-5px);
+}
+
+.category-icon {
+    width: 120px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.category-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+        
+.tips-section,
+.community-section {
+    min-height: auto;
+    padding: 40px 0;   /* ลดลงจาก 100px */
+}
+
+.tips-section {
+    padding-top: 300px;   /* ขยับลงจากด้านบน */
+    margin: 0;
+    background-image: url('img/4.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.tips-header {
+    text-align: center;
+    margin-bottom: 60px;
+        }
+
+.tips-header h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+        }
+
+.tips-cards-container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+        }
+
+.tips-card {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 800px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    color: #333;
+    display: flex;
+    overflow: hidden;
+    align-items: stretch;
+    text-align: left;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;   /* กรอบ */
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    margin: 20px auto;
+    min-height: 220px;   
+}
+
+        /* ฝั่งซ้าย */
+.tips-card .left {
+    background: #38115e;         /* พื้นหลังม่วง */
+    color: #fff;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 220px;                /* ความกว้างคงที่ */
+    text-align: center;
+    flex: 0 0 220px;
+    height: auto;
+}
+
+.tips-card .left i {
+    font-size: 60px;
+    margin-bottom: 15px;
+    color: #ffd700;              /* สีเหลืองของหลอดไฟ */
+}
+
+.tips-card .left h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ฝั่งขวา */
+.tips-card .right {
+    flex: 1;
+    padding: 25px 30px;
+    background: #fff;
+    text-align: center;
+}
+
+.tips-card .right ul {
+    list-style: none;
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+.tips-card .right li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+.tips-card .right li i {
+    background: #6c23b5;
+    color: #fff;
+    padding: 8px;
+    border-radius: 50%;
+    font-size: 14px;
+}
+
+/* ปุ่ม */
+.tips-card .right .view-all-btn {
+    background: #ffd700;
+    color: #333;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.tips-card:first-child { margin-bottom: 20px; }
+
+.tips-icon {
+    background: rgba(74, 26, 140, 0.9);
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+    font-size: 40px;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.tips-icon i {
+    color: #4a1a8c;
+}
+
+.tips-icon.qa i {
+     color: #ffd700;
+}
+
+.tips-content {
+    flex-grow: 1;
+}
+
+.tips-content h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.tips-list {
+    list-style: none;
+    margin-bottom: 30px;
+    text-align: left;
+    width: 100%;
+}
+
+.tips-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 15px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.tips-list i {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: white;
+}
+
+.tips-list .fa-lightbulb { background: #4a1a8c; }
+.tips-list .fa-camera { background: #4a1a8c; }
+.tips-list .fa-edit { background: #4a1a8c; }
+.tips-list .fa-question-circle { background: #4a1a8c; }
+.tips-list .fa-tools { background: #4a1a8c; }
+.tips-list .fa-paint-brush { background: #4a1a8c; }
+
+.community-section {
+    text-align: center;
+    background-image: url('img/6.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0 600px 0;  /* บน 100px, ล่าง 150px */
+}
+
+.community-header h2 {
+    font-size: 36px;
+    margin-bottom: 60px;
+    color: #333;
+}
+
+.community-btn {
+    background: #ffd700;
+    color: #333;
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+    margin-bottom: 60px;
+}
+
+.community-illustration {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+.about-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+.about-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+.about-section p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    line-height: 1.8;
+}
+.feature-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.feature-card {
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 30px 20px;
+    flex: 1 1 250px;
+    max-width: 300px;
+    transition: transform .3s, box-shadow .3s;
+}
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.feature-card i {
+    font-size: 2.5rem;
+    color: #8b5cf6;
+    margin-bottom: 15px;
+}
+.feature-card h3 {
+    margin-bottom: 10px;
+    color: #222;
+}
+.about-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.about-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+.about-header p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Mission & Vision */
+.mv-section {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.mv-card {
+    flex: 1;
+    background: #fafafa;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 350px;
+    transition: transform .3s, box-shadow .3s;
+}
+.mv-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.mv-card i {
+    font-size: 2rem;
+    color: #8b5cf6;
+    margin-bottom: 10px;
+}
+
+.values-title {
+    text-align: center;
+    margin: 50px 0 30px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+/* Team */
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+.team-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 220px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform .3s, box-shadow .3s;
+}
+.team-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+.team-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+.team-card h3 {
+    margin-bottom: 5px;
+    color: #222;
+}
+.team-card p {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+/* CTA */
+.cta-about {
+    text-align: center;
+    margin-top: 60px;
+}
+.cta-about h3 {
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+}
+
+.modal-container.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content-new {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    max-width: 900px;
+    width: 90%;
+    min-height: 600px;
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    
+}
+
+.modal-container.show .modal-content-new {
+    transform: scale(1);
+}
+
+.modal-content-new .modal-left-section {
+    background-image: url('img/log.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    width: 40%;
+    min-width: 300px;
+}
+
+.modal-content-new .modal-right-section {
+    padding: 40px;
+    width: 60%;
+    background: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.modal-content-new .modal-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    position: relative;
+    top: 20px;
+    left: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-decoration: none;
+    
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+.modal-content-new .modal-logo i {
+    margin-right: 10px;
+    background: white;
+    color: #4a1a8c;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.modal-content-new .illustration-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.modal-content-new .modal-illustration {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    object-fit: contain;
+    position: relative;
+    z-index: 0;
+}
+    
+.modal-content-new .modal-tabs {
+    display: flex;
+    margin-bottom: 30px;
+    background: #e0e0e0;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 30px;
+}
+
+.modal-content-new .modal-tab-btn {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    text-decoration: none;
+    color: #666;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.modal-content-new .modal-tab-btn.active {
+    background: #6c23b5;
+    color: white;
+    border-radius: 15px;
+}
+
+.modal-content-new .form-wrapper {
+    height: auto;
+    min-height: 450px;
+    flex: 1;
+    display: flex;
+    overflow: visible;
+    position: relative;
+    overflow-y: auto;
+}
+
+.modal-content-new .form-section {
+    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 20px; 
+
+}
+
+.modal-content-new .form-section.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content-new .form-group {
+    margin-bottom: 20px;
+}
+
+.modal-content-new .form-group label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.modal-content-new .form-group input,
+.modal-content-new .form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.modal-content-new .input-icon-wrapper {
+    position: relative;
+}
+
+.modal-content-new .input-icon-wrapper i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.modal-content-new .input-icon-wrapper input {
+    padding-left: 45px;
+}
+
+.modal-content-new .form-group-inline {
+    display: flex;
+    gap: 20px;
+}
+
+.modal-content-new .form-group-inline .form-group {
+    flex: 1;
+}
+
+.modal-content-new .upload-profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #4a1a8c;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 15px;           /* เพิ่มบรรทัดนี้ */
+    border: 2px dashed #ddd; /* เพิ่มบรรทัดนี้ */
+    border-radius: 10px;     /* เพิ่มบรรทัดนี้ */
+    transition: border-color 0.3s; /* เพิ่มบรรทัดนี้ */
+}
+
+.modal-content-new .upload-profile:hover {
+    border-color: #4a1a8c;
+}
+
+.modal-content-new .upload-profile input[type="file"] {
+    display: none;
+}
+
+.modal-content-new .modal-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.modal-content-new .yellow-btn {
+    background: #ffd700;
+    color: #333;
+}
+
+.modal-content-new .yellow-btn:hover {
+    background: #e6c200;
+}
+
+.modal-content-new .cancel-btn {
+    background: #f0f0f0;
+    color: #666;
+    margin-top: 10px;
+}
+
+.modal-content-new .cancel-btn:hover {
+    background: #e0e0e0;
+}
+
+.modal-content-new .modal-back-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: #6c23b5;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    text-decoration: none;
+    transition: transform 0.3s;
+    cursor: pointer;
+    z-index: 2010;
+    border: none;
+}
+
+.modal-content-new .modal-back-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Common form styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.input-icon-wrapper {
+    position: relative;
+}
+
+.input-icon-wrapper i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.input-icon-wrapper input {
+    padding-left: 45px;
+}
+
+.form-group-inline {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group-inline .form-group {
+    flex: 1;
+}
+
+.modal-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.yellow-btn {
+    background: #ffd700;
+    color: #333;
+}
+
+.yellow-btn:hover {
+    background: #e6c200;
+}
+
+.cancel-btn {
+    background: #f0f0f0;
+    color: #666;
+    margin-top: 10px;
+}
+
+.cancel-btn:hover {
+    background: #e0e0e0;
+}
+
+/* Back button for the modal (optional) */
+.modal-back-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: #4a1a8c;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    text-decoration: none;
+    transition: transform 0.3s;
+    cursor: pointer;
+    z-index: 2010;
+}
+
+.button-group {
+    display: flex;                 /* เรียงปุ่มแนวนอน */
+    justify-content: space-between;/* เว้นระยะเท่ากัน */
+    align-items: center;
+    gap: 15px;                     /* ระยะห่างระหว่างปุ่ม */
+    margin-top: 20px;
+    flex-direction: row-reverse;
+}
+
+.button-group .cancel-btn {
+    flex: 0 0 120px;        /* กำหนดความกว้างคงที่ (เล็กกว่า) */
+    background: #f0f0f0;
+    color: #666;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.button-group .cancel-btn:hover {
+    background: #e0e0e0;
+}
+
+.button-group .yellow-btn {
+    flex: 1;                /* ให้ปุ่ม Create Account กว้างกว่า */
+    background: #ffd700;
+    color: #333;
+    font-size: 18px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.button-group .yellow-btn:hover {
+    background: #e6c200;
+}
+
+.modal-back-btn:hover {
+    transform: scale(1.1);
+}
+.hamburger-btn {
+    display: none; /* เริ่มต้นให้ซ่อนไว้ */
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001; /* ให้อยู่ด้านบนสุด */
+}
+.user-info {
+  display: inline-flex;            /* ให้กรอบยืดตามขนาดเนื้อหา */
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px 4px 6px;       /* padding ซ้าย/ขวาให้ดูบาลานซ์ */
+  border-radius: 999px;            /* ทำให้เป็น capsule */
+  background: linear-gradient(90deg, #7b2ff7, #f107a3); /* ไล่สีม่วงไปชมพู */
+  color: white;
+  font-weight: 600;
+  font-family: 'Kanit', sans-serif;
+  white-space: nowrap;             /* กันชื่อพับบรรทัด */
+}
+
+.user-info img.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;         /* เส้นขอบรูป */
+}
+
+.user-info span {
+  font-size: 14px;
+  line-height: 1;
+}
+
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+/* สไตล์สำหรับเมนูบนมือถือ */
+.nav-menu.mobile-active {
+    display: flex; /* แสดงเมนู */
+    flex-direction: column; /* จัดเมนูเป็นแนวตั้ง */
+    position: fixed; /* วางเมนูให้อยู่ทับเนื้อหาอื่น */
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: rgba(74, 26, 140, 0.9); /* สีพื้นหลังโปร่งแสง */
+    padding: 80px 20px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+
+}
+
+.nav-menu.mobile-active li {
+    margin-bottom: 20px;
+}
+
+.nav-menu.mobile-active a {
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-menu.mobile-active a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+    @media (max-width: 768px) {
+            .modal-content-new .modal-left-section {
+        display: none;
+    }
+    .nav-right-group {
+        display: none; /* ซ่อนเมนูนำทางปกติ */
+    }
+
+    .hamburger-btn {
+        display: block; /* แสดงปุ่มแฮมเบอร์เกอร์ */
+    }
+
+    .auth-buttons {
+        display: flex;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        color: #d4ff00;
+    }
+    .modal-content-new .modal-right-section {
+        width: 100%;
+        padding: 30px;
+    }
+    .modal-content-new .modal-tabs {
+        max-width: 90%;
+        margin: 0 auto 20px;
+    }
+    .modal-content-new .modal-back-btn {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 250px;
+        background: #4b0082; /* สีพื้นหลังเมนู */
+        flex-direction: column;
+        padding: 60px 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+            }
+
+            .nav-menu.mobile-active {
+            display: flex;
+            transform: translateX(0); /* เลื่อนออกมา */
+            }
+
+            
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .action-cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .activity-cards-wrapper {
+                flex-direction: column;
+            }
+
+            .activity-card {
+                min-width: auto;
+            }
+
+            .category-icons-container {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+
+            .tips-cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tips-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .tips-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+        }
+        /* Desktop > 768px */
+@media (min-width: 769px) {
+    .nav-menu {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        transform: none !important;
+        background: none;
+        height: auto;
+        width: auto;
+        padding: 0;
+    }
+
+    .hamburger-btn {
+        display: none !important;
+    }
+
+    .auth-buttons {
+        display: flex;
+    }
+}
+
+        @media (orientation: landscape) and (max-height: 600px) {
+            .hero {
+                padding: 40px 0;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .action-cards-container,
+            .activities-section,
+            .tips-section,
+            .community-section {
+                margin: 60px 0;
+            }
+        }
