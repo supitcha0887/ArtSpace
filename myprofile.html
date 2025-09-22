@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Space - Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./myprofile_styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/img/logo.webp" alt="ART SPACE Logo" style="height: 140px">
+        </div>
+        <div class="nav-links">
+            <a href="#">Activities</a>
+            <a href="#">Community</a>
+            <a href="#">About</a>
+        </div>
+        <div class="user-section">
+            <div class="user-avatar">👤</div>
+            <span>KhaiTama</span>
+            <img src="/img/icon_noti.png" alt="Notification" style="width: 40px; height: 40px; border-radius: 50%;">
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="profile-card">
+            <div class="card-header">
+                <button class="edit-btn" id="edit-profile-btn">Edit Profile</button>
+            </div>
+            
+            <div class="profile-header">
+                <div>
+                    <div class="profile-image"></div>
+                    <div class="rating" style="margin-top: 20px;">
+                        <span>5.0</span>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <h1 class="profile-title">ไข่ที่ใหญ่ขนาดนี้เป็นของคุณนะ</h1>
+                    <div class="profile-divider"></div>
+                    <p class="profile-description">
+                        "เรียกเราว่าไข่ทามะก็ได้ 🐥 ชอบแชร์ไอเดียเล็ก ๆ น้อย ๆ เกี่ยวกับงานศิลป์เผื่อจะได้เป็นแรงบันดาลใจให้ใครสักคน"
+                    </p>
+
+                    <ul class="profile-details">
+                        <li>🏠 ชื่อผู้ใช้ : KhaiTama</li>
+                        <li>🎂 ชื่อ-นามสกุล : Khai Tama</li>
+                        <li>📧 อีเมล : Biggkhattama@gmail.com</li>
+                        <li>📅 วันเกิด : 14 กุมภาพันธ์ 2568</li>
+                    </ul>
+                </div>
+            </div>
+            
+            
+            
+            <div class="decorative-element"></div>
+        </div>
+
+        <div class="profile-actions">
+            <button class="btn btn-secondary" id="change-password-btn">Change your password</button>
+            <button class="btn btn-danger">Log out</button>
+        </div>
+
+
+
+        <!-- Edit Profile Modal -->
+        <div class="modal-overlay" id="edit-modal">
+            <div class="edit-modal">
+                <h2 class="modal-title">Edit Profile</h2>
+                
+                <div class="modal-avatar" id="avatar-preview"></div>
+                <div class="avatar-upload-text">อัปโหลดรูปโปรไฟล์</div>
+                
+                <form id="edit-profile-form">
+                    
+                    <div class="form-group">
+                        <label class="form-label">นามปากกา :</label>
+                        <input type="text" class="form-input" id="display-name" value="ไข่ที่ใหญ่ขนาดนี้เป็นของคุณนะ">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">หน้า Bio :</label>
+                        <textarea class="form-input form-textarea" id="bio">"เรียกเราว่าไข่ทามะก็ได้ 🥚 ชอบแชร์ไอเดียเล็กๆ น้อยๆ เกี่ยวกับงานศิลป์เผื่อจะได้เป็นแรงบันดาลใจให้ใครสักคน"</textarea>
+                    </div>
+                </form>
+                
+                <div class="modal-buttons">
+                    <button class="modal-btn modal-btn-cancel" id="cancel-btn">Cancel</button>
+                    <button class="modal-btn modal-btn-save" id="save-btn">Save</button>
+                </div>
+            </div>
+        </div>
+        <!-- Change Password Modal -->
+        <div class="modal-overlay" id="password-modal">
+            <div class="edit-modal">
+                <h2 class="modal-title">Change your password</h2>
+                
+                <div class="error-message" id="password-error" style="display: none;">
+                    รหัสผ่านเดิมที่กรอกของป่อยไม่ถูกต้อง หรือไม่ถูกต้อง กรุณาลองใหม่
+                </div>
+                
+                <form id="change-password-form">
+                    <div class="form-group">
+                        <label class="form-label">รหัสผ่านเดิม :</label>
+                        <input type="password" class="form-input" id="current-password" placeholder="กรอกรหัสผ่านเดิม">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">รหัสผ่านใหม่ :</label>
+                        <input type="password" class="form-input" id="new-password" placeholder="กรอกรหัสผ่านใหม่">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">ยืนยันรหัสผ่านใหม่อีกครั้ง</label>
+                        <input type="password" class="form-input" id="confirm-password" placeholder="กรอกรหัสผ่านใหม่อีกครั้ง">
+                    </div>
+                </form>
+                
+                <div class="modal-buttons">
+                    <button class="modal-btn modal-btn-cancel" id="password-cancel-btn">Cancel</button>
+                    <button class="modal-btn modal-btn-save" id="password-save-btn">Save</button>
+                </div>
+            </div>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Joined</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Created</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Posted</div>
+            </div>
+        </div>
+
+        <div class="gallery-section-container">
+            <div class="section-header">
+                <div class="header-title">
+                    <img src="/img/icon_gallery.png" alt="Gallery icon" class="header-icon"> Gallery
+                </div>
+                <button class="edit-section-btn">Edit</button>
+            </div>
+            <div class="gallery-wrapper">
+                <button class="nav-arrow left-arrow" data-target="gallery">◀️</button>
+                <div class="gallery-carousel" id="gallery-carousel">
+                    <div class="gallery-card">
+                        <img src="/img/photo1.jpg" alt="Description of image 1" style="width: 200px; height: 200px;"> 
+                    </div>
+                    <div class="gallery-card">
+                        <img src="/img/photo2.webp" alt="Description of image 2" style="width: 200px; height: 200px;"> 
+                    </div>
+                    <div class="gallery-card">
+                        <img src="/img/photo3.webp" alt="Description of image 3" style="width: 200px; height: 200px;"> 
+                    </div>
+                    <div class="gallery-card">
+                        <img src="/img/photo4.webp" alt="Description of image 4" style="width: 200px; height: 200px;"> 
+                    </div>
+                    <div class="gallery-card">
+                        <img src="/img/photo5.jpg" alt="Description of image 5" style="width: 200px; height: 200px;"> 
+                    </div>
+                    
+                </div>
+                <button class="nav-arrow right-arrow" data-target="gallery">▶️</button>
+            </div>
+        </div>
+
+        <div class="joined-section-container">
+            <div class="section-header">
+                <div class="header-title">
+                    <img src="/img/icon_joined.png" alt="Joined icon" class="header-icon"> Joined
+                </div>
+            </div>
+            <div class="joined-wrapper">
+                <button class="nav-arrow left-arrow" data-target="joined">◀️</button>
+                <div class="joined-carousel" id="joined-carousel">
+                    <div class="joined-card">
+                        <div class="card-status" style="background: #FF8C00;">Upcoming</div>
+                        <img src="/img/ev_photo1.jpg" alt="Event image">
+                        <div class="card-title">วางภาพและรองคลื่นใน ส่วนหญิงคนใด</div>
+                        <div class="card-date">20 กันยายน 2568</div>
+                    </div>
+                    <div class="joined-card">
+                        <div class="card-status" style="background: #8A2BE2;">Done</div>
+                        <img src="/img/ev_photo2.jpg" alt="Event image">
+                        <div class="card-title">วางภาพและรองคลื่นใน ส่วนหญิงคนใด</div>
+                        <div class="card-date">4 กันยายน 2568</div>
+                    </div>
+                    <div class="joined-card">
+                        <div class="card-status" style="background: #DC143C;">Canceled</div>
+                        <img src="/img/ev_photo3.jpg" alt="Event image">
+                        <div class="card-title">เสียงนะรีบนวรกถิก</div>
+                        <div class="card-date">15 สิงหาคม 2568</div>
+                    </div>
+                </div>
+                <button class="nav-arrow right-arrow" data-target="joined">▶️</button>
+            </div>
+        </div>
+        <!-- Created Section -->
+        <div class="created-section-container">
+            <div class="section-header">
+                <div class="header-title">
+                    <img src="/img/icon_create.png" alt="Create icon" class="header-icon"> Create
+                </div>
+            </div>
+            <div class="created-content">
+                <div class="empty-state">
+                    <div class="empty-icon">❌</div>
+                    <div class="empty-text">ยังไม่มีกิจกรรมที่สร้าง</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Posted Section -->
+        <div class="posted-section-container">
+            <div class="section-header">
+                <div class="header-title">
+                    <img src="/img/icon_posted.png" alt="Posted icon" class="header-icon"> Posted
+                </div>
+            </div>
+            <div class="posted-content">
+                <div class="posted-list">
+                    <div class="posted-item">
+                        <div class="posted-icon purple"></div>
+                        <div class="posted-text">เทคนิคเลือกพู่กันสำหรับสีน้ำ</div>
+                    </div>
+                    <div class="posted-item">
+                        <div class="posted-icon purple"></div>
+                        <div class="posted-text">วิธีถ่ายภาพกลางคืนให้สว่างคมชัด</div>
+                    </div>
+                    <div class="posted-item">
+                        <div class="posted-icon pink"></div>
+                        <div class="posted-text">เคล็ดลับสร้างแรงบันดาลใจในการเขียน</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="myprofile_script.js"></script>
+</body>
+</html>
