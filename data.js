@@ -1,0 +1,28 @@
+// Demo data
+window.MOCK = [
+  { id:1, title:"วาดภาพและเพนท์สีน้ำในสวนเบญจกิติ", host:"สตูดิโอศิลป์", orgAvatar:"/img/img1.png",
+    category:"Visual Arts", rating:5.0, capacity:20, joined:5,
+    dateStart:"2025-09-20", dateEnd:"2025-09-20", time:"10:00 - 16:00",
+    place:"สวนเบญจกิติ", img:"https://picsum.photos/seed/va1/800/500" },
+  { id:2, title:"ถ่ายภาพกลางคืนย่านเก่า", host:"ชมรมถ่ายภาพ", orgAvatar:"/img/img1.png",
+    category:"Photography", rating:4.2, capacity:10, joined:15,
+    dateStart:"2025-09-23", dateEnd:"2025-09-23", time:"18:00 - 22:00",
+    place:"เยาวราช", img:"https://picsum.photos/seed/ph1/800/500" },
+  { id:3, title:"เวิร์กช็อปเขียนเรื่องสั้น", host:"Writer Hub", orgAvatar:"/img/img1.png",
+    category:"Writing", rating:4.7, capacity:25, joined:19,
+    dateStart:"2025-09-30", dateEnd:"2025-09-30", time:"09:00 - 17:00",
+    place:"เจริญกรุง", img:"https://picsum.photos/seed/wr1/800/500" },
+    { id:1, title:"วาดภาพและเพนท์สีน้ำในสวนเบญจกิติ", host:"สตูดิโอศิลป์", orgAvatar:"/img/img1.png",
+    category:"Visual Arts", rating:5.0, capacity:20, joined:5,
+    dateStart:"2025-09-20", dateEnd:"2025-09-20", time:"10:00 - 16:00",
+    place:"สวนเบญจกิติ", img:"https://picsum.photos/seed/va1/800/500" },
+  { id:2, title:"ถ่ายภาพกลางคืนย่านเก่า", host:"ชมรมถ่ายภาพ", orgAvatar:"/img/img1.png",
+    category:"Photography", rating:4.2, capacity:10, joined:15,
+    dateStart:"2025-09-23", dateEnd:"2025-09-23", time:"18:00 - 22:00",
+    place:"เยาวราช", img:"https://picsum.photos/seed/ph1/800/500" },
+  { id:3, title:"เวิร์กช็อปเขียนเรื่องสั้น", host:"Writer Hub", orgAvatar:"/img/img1.png",
+    category:"Writing", rating:4.7, capacity:25, joined:19,
+    dateStart:"2025-09-30", dateEnd:"2025-09-30", time:"09:00 - 17:00",
+    place:"เจริญกรุง", img:"https://picsum.photos/seed/wr1/800/500" },
+    
+];

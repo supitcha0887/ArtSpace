@@ -1,0 +1,992 @@
+:root {
+    --purple: #6A1B9A;
+    --purple-200: #EBD7F6;
+    --yellow: #FFD44D;
+    --yellow-600: #FFC400;
+    --ink: #0f0f11;
+    --gray-200: #e5e5e5;
+    --gray-300: #d7d7d7;
+    --chip: #F6F3FB;
+    --chip-bd: #D9C3F1;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+}
+
+html {
+    height: 90%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--ink);
+    background: #ffffff url("/img/backgroup1.png") top center / cover no-repeat;
+    background-attachment: scroll;
+    /* ให้พื้นหลังเลื่อนตามเนื้อหา */
+    font-family: "Chakra Petch", system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    display: flex;
+    flex-direction: column;
+}
+
+main.wrap {
+    flex: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 18px;
+    width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+/* NAVBAR */
+.nav {
+    position: static;
+    width: 100%;
+    height: 70px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: #6070ff00;
+    border-bottom: 2px solid #eee;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 0
+}
+
+
+.brand {
+    display: flex;
+    align-items: top;
+    gap: 10px
+}
+
+.brand-logo {
+    width: auto;
+    height: 100px
+}
+
+.nav-links {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    padding-right: 50px;
+    gap: 50px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.nav-links a {
+    padding: 8px 14px;
+    border-radius: 999px
+}
+
+.nav-links a.is-active {
+    background: #6b6bf9;
+    color: #ffffff
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+    padding-right: 50px;
+}
+
+.nav-right {
+    position: absolute;
+    display: flex;
+    right: 5px;
+}
+
+.bell {
+    width: 40px;
+    height: 40spx
+}
+
+/* ปุ่มโปรไฟล์ปรับสัดส่วนตามจอ */
+.account-pill {
+    /* สูง/ขนาดอวาตาร์: ขั้นต่ำ 28px, ปกติ ~5vw, สูงสุด 42px */
+    --h: clamp(28px, 5vw, 42px);
+    --gap: clamp(6px, 1vw, 10px);
+    --padX: clamp(10px, 1.6vw, 16px);
+    --font: clamp(12px, 1.6vw, 16px);
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: calc(var(--h) + 2px);
+    padding: 0 var(--padX) 0 calc(var(--h) + var(--gap));
+    border-radius: 9999px;
+    background: linear-gradient(100deg, #6a59ea, #ff6db6);
+    color: #fff;
+    font-weight: 700;
+    font-size: var(--font);
+    text-decoration: none;
+}
+
+.account-pill__avatar {
+    position: absolute;
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--h);
+    height: var(--h);
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 4px #6a59ea, 0 0 0 4px #6a59ea;
+}
+
+/* ปรับละเอียดเพิ่มที่จอเล็กมาก/ใหญ่พิเศษ */
+@media (max-width:360px) {
+    .account-pill {
+        --h: 26px;
+        --gap: 6px;
+        --padX: 8px;
+        --font: 12px;
+    }
+}
+
+@media (min-width:1400px) {
+    .account-pill {
+        --h: 48px;
+        --gap: 12px;
+        --padX: 18px;
+        --font: 18px;
+    }
+}
+
+
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding-top: 15px;
+    align-items: center;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 2px;
+    border: 1;
+    background: #111
+}
+
+@media (max-width:900px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        padding: 10px;
+    }
+
+    .nav-links.show {
+        display: flex;
+        flex-direction: column
+    }
+
+    .hamburger {
+        display: flex
+    }
+}
+
+/* HERO plain */
+.hero.plain {
+    padding-top: 2%;
+    min-height: 70vh;
+    /* เพิ่มจาก 60vh เป็น 70vh */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* เปลี่ยนจาก center เป็น space-between */
+}
+
+.hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 18px 30px;
+    /* ลดจาก 50px เป็น 30px */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-title {
+    text-align: center;
+
+    font-size: 24px;
+    margin: 12px 0 18px;
+    color: #ffffff;
+}
+
+.hero-cta.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px
+}
+
+.cta {
+    display: flex;
+    flex-direction: column;
+    /* เพิ่มบรรทัดนี้ */
+    align-items: center;
+    /* เพิ่มบรรทัดนี้ */
+    gap: 8px;
+    /* เพิ่มบรรทัดนี้ */
+    padding: 16px 24px;
+    /* เพิ่มบรรทัดนี้ */
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform .05s, filter .15s, box-shadow .15s;
+}
+
+.btn-ico {
+    padding-top: 20px;
+    width: 300px;
+    height: auto;
+}
+
+.btn-find-crate {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 20px 10px 20px;
+    align-items: center;
+    color: #000000;
+    background-color: #ffde59;
+    border-radius: 50px;
+    border: 0;
+    font-size: 24px;
+    font-weight: 700;
+    gap: 5px;
+}
+
+.icon-search {
+    width: 30px;
+    height: auto;
+}
+
+.icon-create {
+    width: 30px;
+    height: auto;
+}
+
+.or {
+    font-weight: 700;
+    font-size: 30px;
+    color: #ffffff
+}
+
+.search-wrap {
+    max-width: 2000px;
+    margin: 50px 250px;
+    padding: 0 18px;
+}
+
+.search-bar {
+    background: #fff;
+    border: 3px solid var(--purple);
+    border-radius: 999px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.lens {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: #fff
+}
+
+.lens img {
+    width: 35px;
+    height: 35px;
+}
+
+.q {
+    flex: 1;
+    height: 40px;
+    padding: 0 10px;
+    border: 0;
+    outline: 0;
+    font-size: 16px
+}
+
+.chips {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap
+}
+
+.bar-right {
+    margin-left: auto;
+    display: flex;
+    gap: 8px
+}
+
+.btn {
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    height: 40px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    transition: transform .05s, filter .15s, box-shadow .15s;
+    background-color: #e9e9ee;
+}
+
+.btn:active {
+    transform: translateY(1px)
+}
+
+.btn-primary {
+    background: #f6d51f;
+    color: #000000;
+    border: 0
+}
+
+.btn-primary:hover {
+    filter: brightness(.95)
+}
+
+.btn-ghost {
+    background: #e6e6e6;
+    border: 0;
+    color: #000000
+}
+
+.btn-light {
+    background: #fff;
+    border: 2px solid #e6e6e6;
+    color: #3b0b64
+}
+
+.btn-surface {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #e9e9ee;
+    border: 2px solid #e9e9ee;
+    color: #222
+}
+
+.btn-surface:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .08)
+}
+
+.caret {
+    width: 20px;
+    height: auto;
+    padding-right: 5px;
+}
+
+/* Dropdowns */
+.dropdown {
+    position: relative
+}
+
+.menu {
+    position: absolute;
+    z-index: 30;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 260px;
+    padding: 12px;
+    border-radius: 12px;
+    background: #fff;
+    border: 2px solid var(--purple);
+    display: none
+}
+
+.menu.show {
+    display: block
+}
+
+.shadow-soft {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, .12)
+}
+
+.group {
+    display: grid;
+    gap: 8px
+}
+
+.opt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid var(--purple);
+    background: #fff;
+    color: #6A1B9A;
+    font-weight: 700;
+    padding: 8px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.opt:hover {
+    background: var(--purple);
+    color: #fff;
+}
+
+::picker(select) {
+    border: none;
+}
+
+option:first-of-type {
+    border-radius: 8px 8px 0px 0px;
+}
+
+option:last-of-type {
+    border-radius: 8px 8px 0px 0px;
+}
+
+option:not(option:last-of-type) {
+    border-bottom: none;
+}
+
+.opt input {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--purple);
+    transition: background 0.2s ease;
+}
+
+.opt input:checked {
+    background: #6A1B9A;
+}
+
+/* When option is selected (parent has checked input), style like sort-btn.is-selected */
+.opt:has(input:checked) {
+    background: #6A1B9A;
+    color: #fff;
+}
+
+.sw {
+    width: 24px;
+    height: 24px;
+    border-radius: 20px
+}
+
+.sw.va {
+    background: #7C4DFF
+}
+
+.sw.ph {
+    background: #6EC1FF
+}
+
+.sw.wr {
+    background: #FF7EB6
+}
+
+.sw.mu {
+    background: #FF89B5
+}
+
+.sort-grid.two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px
+}
+
+.sort-btn {
+    border: 2px solid var(--purple);
+    background: #fff;
+    color: #6A1B9A;
+    font-weight: 700;
+    padding: 8px 10px;
+    border-radius: 999px;
+    cursor: pointer
+}
+
+.sort-btn.is-selected {
+    background: #6A1B9A;
+    color: #fff
+}
+
+/* RESULTS: card ตามแบบ */
+/* หรือแก้ไขที่ container หลัก */
+/* .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 18px;
+    min-height: 50vh; 
+}*/
+.results {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px
+}
+
+.card {
+    border: 2px solid #e7e7e7;
+    border-radius: 22px;
+    background: #fff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .1s, box-shadow .2s
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .12)
+}
+
+.upload_default{
+    display: none;
+}
+
+.card-body {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+}
+
+.pill-head {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #6A1B9A;
+    color: #fff;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-weight: 700;
+    font-size: 13px;
+    width: max-content;
+    text-align: center;
+
+}
+
+.title-head {
+    background: #6A1B9A;
+    color: #fff;
+    border-radius: 12px;
+    padding: 10px 12px;
+    text-align: center;
+    font-weight: 700
+}
+
+.cover {
+    width: 100%;
+    height: 130px;
+    border-radius: 12px;
+    object-fit: cover
+}
+
+.info-stack {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    width: 100%;
+    background: #e9e9ee;
+    border-radius: 999px;
+}
+
+.info-chip {
+    flex: 2;
+    padding: 6px 6px
+}
+
+.info-row-image {
+    padding-left: 10px;
+}
+
+.count-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #22c16b;
+    color: #fff;
+    border-radius: 999px;
+    padding: 8px 14px;
+    width: max-content;
+    font-weight: 700
+}
+
+.image-count-badge {
+    background-color: white;
+    border-radius: 50%;
+}
+
+.org {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px
+}
+
+.org img {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 2px solid #eee;
+    object-fit: cover
+}
+
+.stars {
+    display: inline-flex;
+    gap: 2px
+}
+
+.star {
+    width: 16px;
+    height: 16px;
+    background: url('assets/star-off.svg') center/contain no-repeat;
+    display: inline-block
+}
+
+.star.on {
+    background-image: url('assets/star-on.svg')
+}
+
+img.rating {
+    width: auto;
+    height: 15px;
+    border: 0px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px
+}
+
+.btn-small {
+    border-radius: 30px
+}
+
+.btn-dark {
+    background: #f6d51f;
+    color: #000000;
+}
+
+.btn-dark:hover {
+    filter: brightness(1.1)
+}
+
+.moredetail {
+    background: #f6d51f;
+    color: #000000;
+    border: 0;
+    border-radius: 30px;
+}
+
+.joinnow {
+    background: #a9a9a9;
+    color: #000000;
+    border: 0;
+    border-radius: 30px;
+}
+
+/* Empty */
+.empty {
+    margin: 40px 0;
+    padding: 80px 28px;
+    /* เพิ่มจาก 60px */
+    border: 2px dashed var(--gray-300);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.95);
+    display: grid;
+    place-items: center;
+    text-align: center;
+    color: #666;
+    min-height: 400px;
+    /* เพิ่มจาก 300px */
+    backdrop-filter: blur(2px);
+}
+
+.empty-ill {
+    width: 120px;
+    opacity: .7;
+    margin-bottom: 8px
+}
+
+/* ==== Create Activity modal: full-page feel ==== */
+.modal.hidden {
+    display: none
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 60
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .4)
+}
+
+.modal-box {
+    position: relative;
+    z-index: 61;
+    background: #fff;
+    border-radius: 18px;
+    border: 2px solid var(--purple);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, .25)
+}
+
+.modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 2px solid var(--purple);
+    background: #fff;
+    cursor: pointer
+}
+
+.modal-box.create-box {
+    width: min(1100px, 96vw);
+    max-height: 92vh;
+    margin: 4vh auto;
+    padding: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+}
+
+.create-side {
+    position: relative;
+    background: #6A1B9A;
+    min-height: 100%;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.create-illu {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0
+}
+
+.side-logo {
+    position: absolute;
+    top: 40px;
+    left: 70px;
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.side-logo img {
+    width: 200px;
+    /* height: 200px */
+}
+
+.create-form {
+    padding: 20px 22px;
+    overflow: auto
+}
+
+.create-form .modal-head {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 1;
+    padding-top: 14px;
+    margin-top: -14px
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px
+}
+
+.field {
+    display: grid;
+    gap: 6px;
+    margin-top: 10px
+}
+
+.field input,
+.field textarea {
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    height: 42px;
+    padding: 0 10px;
+    font-family: inherit
+}
+
+.field textarea {
+    height: auto;
+    padding: 8px 10px
+}
+
+.field input:focus,
+.field textarea:focus {
+    outline: 3px solid var(--purple-200)
+}
+
+.chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: #ede7f6;
+    font-weight: 700;
+    border: 2px solid var(--chip-bd)
+}
+
+.chip.va {
+    background: #7C4DFF;
+    color: #fff;
+    border-color: #7C4DFF
+}
+
+.chip.ph {
+    background: #6EC1FF;
+    color: #05304a;
+    border-color: #6EC1FF
+}
+
+.chip.wr {
+    background: #FF7EB6;
+    color: #fff;
+    border-color: #FF7EB6
+}
+
+.chip.mu {
+    background: #FF89B5;
+    color: #fff;
+    border-color: #FF89B5
+}
+
+.chip-check input {
+    display: none
+}
+
+.chip-check input:checked+.chip {
+    box-shadow: 0 0 0 3px rgba(106, 27, 154, .25)
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 14px
+}
+
+/* lock page behind modal */
+body.modal-open { overflow: hidden; }
+
+/* do NOT let the overlay or modal container scroll */
+.modal { overflow: hidden; }                 /* remove any .modal { overflow:auto } you added */
+.modal-box.create-box { max-height: 92vh; overflow: hidden; }
+
+/* single scroll area inside the modal */
+.create-form {
+  overflow: auto;
+  /* optional hard cap if needed on some browsers */
+  max-height: calc(92vh - 0px);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+
+@media (max-width:900px) {
+    .modal-box.create-box {
+        width: 96vw;
+        max-height: 96vh;
+        grid-template-columns: 1fr
+    }
+
+    .create-side {
+        height: 180px
+    }
+
+    .create-form {
+        padding: 16px
+    }
+
+    /* lock page behind modal */
+    body.modal-open {
+        overflow: hidden;
+    }
+
+    /* do NOT let the overlay or modal container scroll */
+    .modal {
+        overflow: hidden;
+    }
+
+    /* remove any .modal { overflow:auto } you added */
+    .modal-box.create-box {
+        max-height: 92vh;
+        overflow: hidden;
+    }
+
+    /* single scroll area inside the modal */
+    .create-form {
+        overflow: auto;
+        /* optional hard cap if needed on some browsers */
+        max-height: calc(92vh - 0px);
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+
+}
