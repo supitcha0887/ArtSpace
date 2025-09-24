@@ -321,7 +321,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     rightBtn.addEventListener("click", () => {
-      wrapper.scrollBy({ left: 300, behavior: "smooth" });
+      wrapper.scrollBy({ left: 300, behavior: "smooth" }); 
     });
   }
+  
 });
