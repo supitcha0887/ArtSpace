@@ -5,8 +5,13 @@ const users = [
   {
     username: "admin",
     password: "admin",
-    avatar:
-      "https://media.canva.com/v2/image-resize/format:JPG/height:200/quality:75/uri:ifs%3A%2F%2FM%2Fd4b7d9ec-1765-447f-a5fe-cffaed22afc0/watermark:F/width:150?csig=AAAAAAAAAAAAAAAAAAAAAFGQ61tci8LPSMvMpRM93Tk99vLRpADv-Feq4rXccTYs&exp=1758379348&osig=AAAAAAAAAAAAAAAAAAAAALlrCDbmZiFzKKeQgop9l0WMJ4BJNwMUV5UlqG0hiGqw&signer=media-rpc&x-canva-quality=thumbnail",
+    firstName: "System",
+    lastName: "Admin",
+    nickname: "Boss",
+    email: "admin@example.com",
+    dateOfBirth: "2000-01-01",
+    gender: "other",
+    profileImage: "img/default-avatar.png",
   },
 ];
 
@@ -88,15 +93,18 @@ function setupAuthModal() {
 
               if (user) {
                 currentUser = user;
+                localStorage.setItem("loggedInUser", JSON.stringify(user));
 
                 const userInfo = document.getElementById("userInfo");
                 const userAvatar = document.getElementById("userAvatar");
                 const userName = document.getElementById("userName");
-                const loginBtn = document.querySelector(".login-btn");
 
                 if (userInfo && userAvatar && userName && loginBtn) {
-                  userAvatar.src = user.avatar || "img/default-avatar.png";
-                  userName.textContent = user.username;
+                  userAvatar.src = user.profileImage || "img/default-avatar.png";
+                  userName.textContent =
+                    user.nickname ||
+                    `${user.firstName || ""} ${user.lastName || ""}`.trim() ||
+                    user.username;
                   userInfo.style.display = "inline-flex";
                   loginBtn.style.display = "none";
                 }
@@ -113,21 +121,42 @@ function setupAuthModal() {
           // จัดการฟอร์ม Signin (สมัครสมาชิกใหม่)
           // -----------------------------
           const signinBtnSubmit = signinForm.querySelector(".yellow-btn");
+          
+          // ✅ Preview profile image หลังเลือก
+          const profileImageInput = document.getElementById("profileImage");
+          const profilePreview = document.getElementById("profilePreview");
+          
+          if (profileImageInput) {
+            profileImageInput.addEventListener("change", () => {
+              if (profileImageInput.files && profileImageInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                  profilePreview.src = event.target.result;
+                  profilePreview.style.display = "block"; // show preview
+                };
+                reader.readAsDataURL(profileImageInput.files[0]);
+            } else {
+                profilePreview.style.display = "none"; // hide if no file
+              }
+            });   
+          }
+          
           if (signinBtnSubmit) {
             signinBtnSubmit.addEventListener("click", (e) => {
               e.preventDefault();
 
-              const username = document
-                .getElementById("signinUsername")
-                .value.trim();
-              const password = document
-                .getElementById("signinPassword")
-                .value.trim();
-              const profilePicInput =
-                document.getElementById("profile-picture");
+              const firstName = document.getElementById("firstName").value.trim();
+              const lastName = document.getElementById("lastName").value.trim();
+              const username = document.getElementById("signinUsername").value.trim();
+              const password = document.getElementById("signinPassword").value.trim();
+              const nickname = document.getElementById("nickname").value.trim();
+              const email = document.getElementById("signinEmail").value.trim();
+              const dateOfBirth = document.getElementById("dateOfBirth").value.trim();
+              const gender = document.getElementById("gender").value;
+              const profileImageInput = document.getElementById("profileImage");
 
-              if (!username || !password) {
-                alert("❌ กรุณากรอก Username และ Password");
+              if (!username || !password || !email) {
+                alert("❌ กรุณากรอก Username, Password และ Email");
                 return;
               }
 
@@ -141,17 +170,38 @@ function setupAuthModal() {
                 return;
               }
 
-              let avatar = "img/default-avatar.png";
-              if (profilePicInput.files && profilePicInput.files[0]) {
-                avatar = URL.createObjectURL(profilePicInput.files[0]);
+              let profileImage =  profilePreview.src||"img/default-avatar.png";
+              if (profileImageInput.files && profileImageInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                  profileImage = event.target.result;
+                  saveUser();
+                };
+                reader.readAsDataURL(profileImageInput.files[0]);
+              } else {
+                saveUser();
               }
 
-              allUsers.push({ username, password, avatar });
-              localStorage.setItem("users", JSON.stringify(allUsers));
+              function saveUser() {
+                const newUser = {
+                  firstName,
+                  lastName,
+                  username,
+                  password,
+                  nickname,
+                  email,
+                  dateOfBirth,
+                  gender,
+                  profileImage,
+                };
 
-              alert("🎉 สมัครสมาชิกสำเร็จ! ลองล็อกอินได้เลย");
-              authModal.classList.remove("show");
-              modalContent.innerHTML = "";
+                allUsers.push(newUser);
+                localStorage.setItem("users", JSON.stringify(allUsers));
+
+                alert("🎉 สมัครสมาชิกสำเร็จ! ลองล็อกอินได้เลย");
+                authModal.classList.remove("show");
+                modalContent.innerHTML = "";
+              }
             });
           }
         });
@@ -179,11 +229,9 @@ function setupMobileMenu() {
     hamburgerBtn.addEventListener("click", (e) => {
       e.preventDefault();
       navMenu.classList.toggle("mobile-active");
-      if (navMenu.classList.contains("mobile-active")) {
-        navMenu.style.transform = "translateX(0)";
-      } else {
-        navMenu.style.transform = "translateX(100%)";
-      }
+      navMenu.style.transform = navMenu.classList.contains("mobile-active")
+        ? "translateX(0)"
+        : "translateX(100%)";
     });
 
     document.addEventListener("click", (e) => {
@@ -209,7 +257,6 @@ function setupMobileMenu() {
 document.addEventListener("DOMContentLoaded", () => {
   setupAuthModal();
   setupMobileMenu();
-  //setupLogout();
 
   const header = document.querySelector("header");
   const hero = document.querySelector(".hero");
@@ -232,11 +279,10 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
 
       // ✅ ตรวจสอบว่ามีผู้ใช้ล็อกอินก่อน
-    if (!currentUser) {
-      alert("⚠️ กรุณาเข้าสู่ระบบก่อนดูการแจ้งเตือน");
-      return;
-    }
-
+      if (!currentUser) {
+        alert("⚠️ กรุณาเข้าสู่ระบบก่อนดูการแจ้งเตือน");
+        return;
+      }
 
       let panel = document.getElementById("notificationPanel");
 
@@ -261,6 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
   // -----------------------------
   // Activities Carousel (ลูกศรซ้ายขวา)
   // -----------------------------
@@ -274,7 +321,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     rightBtn.addEventListener("click", () => {
-      wrapper.scrollBy({ left: 300, behavior: "smooth" });
+      wrapper.scrollBy({ left: 300, behavior: "smooth" }); 
     });
   }
+  
 });
