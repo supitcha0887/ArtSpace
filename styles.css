@@ -25,6 +25,7 @@ header.on-white .login-btn {
 
 header.sticky {
   background: white !important;
+  padding: 20px 0;
 }
 
 header.sticky .nav-menu a,
@@ -819,12 +820,19 @@ nav {
 .tips-list .fa-paint-brush { background: #4a1a8c; }
 
 .community-section {
-    text-align: center;
-    background-image: url('img/6.jpg');
-    background-size: cover;
-    background-position: center;
-    padding: 100px 0 600px 0;  /* บน 100px, ล่าง 150px */
+  text-align: center;
+  background-image: url('img/6.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;     /* ✅ ให้กินเต็มหน้าจอ */
+  display: flex;         /* ✅ จัดข้อความกึ่งกลาง */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 20px;   /* ✅ กัน navbar ทับ */
 }
+
 
 .community-header h2 {
     font-size: 36px;
@@ -1461,6 +1469,18 @@ nav {
   border-radius: 50%;
   object-fit: cover;
 }
+
+.preview-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.preview-container img {
+  border: 2px solid #ddd;
+  padding: 2px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
 /* สไตล์สำหรับเมนูบนมือถือ */
 .nav-menu.mobile-active {
     display: flex; /* แสดงเมนู */
@@ -1624,3 +1644,256 @@ nav {
                 margin: 60px 0;
             }
         }
+.hero-about {
+      background: linear-gradient(to right, rgba(139,92,246,0.8), rgba(236,72,153,0.8)),
+                  url("img/6.jpg") center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    .hero-about h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #ffd700;
+    }
+    .about-section {
+      padding: 60px 20px;
+      background: #fff;
+      text-align: center;
+    }
+    .about-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .about-section p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+    }
+    .feature-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .feature-card {
+      background: #fafafa;
+      border-radius: 12px;
+      padding: 30px 20px;
+      flex: 1 1 250px;
+      max-width: 300px;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .feature-card i {
+      font-size: 2.5rem;
+      color: #8b5cf6;
+      margin-bottom: 15px;
+    }
+    .team-section {
+      padding: 60px 20px;
+      background: #f9f9f9;
+      text-align: center;
+    }
+    .team-section h2 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #333;
+    }
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .team-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 250px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .team-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    .team-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: #222;
+    }
+    .team-card p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+    footer {
+      background: #111;
+      color: #ccc;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    footer p {
+      margin: 0;
+    }
+    footer .social-icons a {
+      color: #ccc;
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: color .3s;
+    }
+    footer .social-icons a:hover {
+      color: #ffd700;
+    }
+
+/* ✅ Community page navbar fix */
+.community-page header nav {
+  background-color: #fff !important;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 20px;
+}
+
+.community-page header nav a {
+  color: #000 !important;
+  font-weight: 500;
+}
+
+.community-page header nav a:hover {
+  color: #007bff !important;
+}
+
+    /* Toolbar */
+.community-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+.search-box .search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.category-select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.filter-options {
+  display: flex;
+  gap: 10px;
+}
+
+.new-post-btn {
+  background-color: #6b8e6b;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Post List */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.post-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  transition: 0.25s;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  border: 1px solid #e0e0e0;
+  color: #222;       /* ✅ ฟอนต์ดำ */
+  display: flex;
+  align-items: center;
+}
+
+.post-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.post-desc {
+  font-size: 16px;
+  line-height: 1.7;   /* ✅ ทำให้บรรทัดอ่านง่าย */
+  color: #444;
+  margin-bottom: 12px;
+}
+
+.post-author {
+  font-size: 14px;
+  color: #666;
+  display: block;
+  margin-top: 5px;
+}
+
+.post-item::before {
+  content: "📝";
+  margin-right: 12px;
+  font-size: 20px;
+}
+
+.post-item:hover {
+  border-color: #2196f3;
+  background: #f0f8ff;
+  color: #000;
+  transform: translateY(-3px);
+}
+
+mark {
+  background: #ffeb3b;
+  color: #000;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+

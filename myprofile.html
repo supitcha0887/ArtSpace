@@ -9,15 +9,21 @@
     <link rel="stylesheet" href="./myprofile_styles.css">
 </head>
 <body>
-    <div id="navbar-placeholder"></div>
-        <script>
-        fetch("navbar.html")
-            .then(res => res.text())
-            .then(html => {
-            document.getElementById("navbar-placeholder").innerHTML = html;
-            });
-        </script>
-
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/img/logo.webp" alt="ART SPACE Logo" style="height: 140px">
+        </div>
+        <div class="nav-links">
+            <a href="#">Activities</a>
+            <a href="#">Community</a>
+            <a href="#">About</a>
+        </div>
+        <div class="user-section">
+            <div class="user-avatar">👤</div>
+            <span>KhaiTama</span>
+            <img src="/img/icon_noti.png" alt="Notification" style="width: 40px; height: 40px; border-radius: 50%;">
+        </div>
+    </nav>
 
     <div class="main-container">
         <div class="profile-card">

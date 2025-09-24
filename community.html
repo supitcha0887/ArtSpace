@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community - ART SPACE</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="community-page">
+  <!-- header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="home.html" class="logo">
+          <i class="fas fa-palette"></i> ART<br>SPACE
+        </a>
+        <div class="nav-right-group">
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="home.html#activities">Activities</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="home.html#about">About</a></li>
+          </ul>
+          <div class="auth-buttons">
+            <div id="userInfo" class="user-info" style="display:none;">
+              <img id="userAvatar" class="user-avatar" src="" alt="user avatar">
+              <span id="userName"></span>
+            </div>
+            <a href="#" class="login-btn">Log in / Sign in</a>
+            <button class="notification-btn"><i class="fas fa-bell"></i></button>
+          </div>
+        </div>
+        <button class="hamburger-btn" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="community-section" id="community">
+  <div class="container">
+    <!-- แถบค้นหา -->
+    <div class="community-toolbar">
+      <div class="search-box">
+        <label for="searchInput">Search</label>
+        <input type="text" id="searchInput" placeholder="ค้นหา...">
+        <button class="search-btn"><i class="fas fa-search"></i></button>
+      </div>
+
+      <!-- Category Dropdown -->
+      <select id="categorySelect" class="category-select">
+        <option value="all">ทั้งหมด</option>
+        <option value="painting">Painting</option>
+        <option value="photo">Photography</option>
+        <option value="music">Music</option>
+      </select>
+
+      <!-- Filter -->
+      <div class="filter-options">
+        <!-- ❌ ตัด Q&A ออก -->
+        <label><input type="checkbox" value="trick"> TRICK</label>
+      </div>
+
+      <!-- ปุ่มโพสต์ใหม่ -->
+      <button class="new-post-btn">New Post</button>
+    </div>
+
+<div class="post-list" id="postList">
+  <div class="post-item" data-category="photo">
+    <h3 class="post-title">📸 แจกทริคการถ่ายรูปยังไงให้ขายาวขึ้น</h3>
+    <p class="post-desc">
+      หลายคนอยากถ่ายรูปให้ดูขายาวขึ้น แต่ไม่รู้ว่าต้องทำอย่างไร
+      ทริคง่าย ๆ คือให้ถือกล้องในมุมต่ำ และจัดองค์ประกอบโดยให้เส้นขอบฟ้า
+      อยู่สูงกว่าตัวแบบเล็กน้อย การเลือกเลนส์ก็สำคัญ
+      เลนส์มุมกว้าง (wide) จะช่วยให้สัดส่วนดูยืดออก
+      นอกจากนี้การเลือกเสื้อผ้าที่เป็นโทนสีเข้มและมีลายเส้นตั้ง
+      ก็ช่วยเสริมให้ภาพดูเพรียวขึ้นด้วย
+    </p>
+    <span class="post-author">โพสต์โดย: <strong>Anna</strong></span>
+  </div>
+
+  <div class="post-item" data-category="painting">
+    <h3 class="post-title">🎨 ขั้นตอนฝึกวาดอนาโตมี่ สำหรับผู้ฝึกวาดภาพ</h3>
+    <p class="post-desc">
+      สำหรับการวาดอนาโตมี่ จุดเริ่มต้นคือการทำความเข้าใจสัดส่วนของร่างกาย
+      เช่น สัดส่วนหัวต่อความสูง ลำตัวกับแขนขา
+      จากนั้นฝึกสเก็ตช์โครงร่างแบบ stick figure
+      เพื่อกำหนดท่าทางก่อนจะลงรายละเอียดกล้ามเนื้อและเส้นโค้ง
+      การฝึกวาดจากแบบจริง เช่น คนในชีวิตประจำวัน
+      จะช่วยให้เข้าใจโครงสร้างและการเคลื่อนไหวได้ดียิ่งขึ้น
+    </p>
+    <span class="post-author">โพสต์โดย: <strong>Khai</strong></span>
+  </div>
+
+  <div class="post-item" data-category="music">
+    <h3 class="post-title">🎵 รวมวิธีเพิ่มความน่าสนใจให้นิยาย</h3>
+    <p class="post-desc">
+      นิยายที่น่าสนใจต้องประกอบด้วยโครงเรื่องที่แข็งแรง
+      ตัวละครที่มีมิติ และบทสนทนาที่สมจริง
+      เทคนิคที่นักเขียนหลายคนใช้คือการใส่จุดหักมุม
+      เพื่อสร้างความตื่นเต้นให้กับผู้อ่าน
+      การใช้เพลงประกอบหรือบรรยายบรรยากาศให้ชัดเจน
+      ก็ทำให้ผู้อ่านอินกับเนื้อเรื่องมากขึ้น
+    </p>
+    <span class="post-author">โพสต์โดย: <strong>Mina</strong></span>
+  </div>
+</div>
+
+</section>
+
+
+  <script src="app.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const categorySelect = document.getElementById("categorySelect");
+  const posts = document.querySelectorAll(".post-item");
+  const searchInput = document.getElementById("searchInput");
+
+  function highlight(text, keyword) {
+    if (!keyword) return text;
+    const regex = new RegExp(`(${keyword})`, "gi");
+    return text.replace(regex, `<mark>$1</mark>`);
+  }
+
+  function filterPosts() {
+    const selected = categorySelect.value;
+    const keyword = searchInput.value.trim().toLowerCase();
+
+    posts.forEach(post => {
+      const category = post.getAttribute("data-category");
+      const titleEl = post.querySelector(".post-title");
+      const descEl = post.querySelector(".post-desc");
+      const authorEl = post.querySelector(".post-author");
+
+      const text = (
+        titleEl.textContent +
+        descEl.textContent +
+        authorEl.textContent
+      ).toLowerCase();
+
+      // ✅ กรองตาม category + keyword
+      const matchesCategory = (selected === "all" || category === selected);
+      const matchesKeyword = (!keyword || text.includes(keyword));
+
+      if (matchesCategory && matchesKeyword) {
+        post.style.display = "block";
+
+        // ✅ ทำ highlight ถ้ามี keyword
+        if (keyword) {
+          titleEl.innerHTML = highlight(titleEl.textContent, keyword);
+          descEl.innerHTML = highlight(descEl.textContent, keyword);
+          authorEl.innerHTML = highlight(authorEl.textContent, keyword);
+        } else {
+          // ล้าง highlight ถ้าไม่ได้ค้นหา
+          titleEl.innerHTML = titleEl.textContent;
+          descEl.innerHTML = descEl.textContent;
+          authorEl.innerHTML = authorEl.textContent;
+        }
+      } else {
+        post.style.display = "none";
+      }
+    });
+  }
+
+  categorySelect.addEventListener("change", filterPosts);
+  searchInput.addEventListener("input", filterPosts);
+});
+
+
+
+
+
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community - ART SPACE</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="community-page">
+  <!-- header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="home.html" class="logo">
+          <i class="fas fa-palette"></i> ART<br>SPACE
+        </a>
+        <div class="nav-right-group">
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="home.html#activities">Activities</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="home.html#about">About</a></li>
+          </ul>
+          <div class="auth-buttons">
+            <div id="userInfo" class="user-info" style="display:none;">
+              <img id="userAvatar" class="user-avatar" src="" alt="user avatar">
+              <span id="userName"></span>
+            </div>
+            <a href="#" class="login-btn">Log in / Sign in</a>
+            <button class="notification-btn"><i class="fas fa-bell"></i></button>
+          </div>
+        </div>
+        <button class="hamburger-btn" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="community-section" id="community">
+  <div class="container">
+    <!-- แถบค้นหา -->
+    <div class="community-toolbar">
+      <div class="search-box">
+        <label for="searchInput">Search</label>
+        <input type="text" id="searchInput" placeholder="ค้นหา...">
+        <button class="search-btn"><i class="fas fa-search"></i></button>
+      </div>
+
+      <!-- Category Dropdown -->
+      <select id="categorySelect" class="category-select">
+        <option value="all">ทั้งหมด</option>
+        <option value="painting">Painting</option>
+        <option value="photo">Photography</option>
+        <option value="music">Music</option>
+      </select>
+
+      <!-- Filter -->
+      <div class="filter-options">
+        <!-- ❌ ตัด Q&A ออก -->
+        <label><input type="checkbox" value="trick"> TRICK</label>
+      </div>
+
+      <!-- ปุ่มโพสต์ใหม่ -->
+      <button class="new-post-btn">New Post</button>
+    </div>
+
+<div class="post-list" id="postList">
+  <div class="post-item" data-category="photo">
+    <h3 class="post-title">📸 แจกทริคการถ่ายรูปยังไงให้ขายาวขึ้น</h3>
+    <p class="post-desc">
+      หลายคนอยากถ่ายรูปให้ดูขายาวขึ้น แต่ไม่รู้ว่าต้องทำอย่างไร
+      ทริคง่าย ๆ คือให้ถือกล้องในมุมต่ำ และจัดองค์ประกอบโดยให้เส้นขอบฟ้า
+      อยู่สูงกว่าตัวแบบเล็กน้อย การเลือกเลนส์ก็สำคัญ
+      เลนส์มุมกว้าง (wide) จะช่วยให้สัดส่วนดูยืดออก
+      นอกจากนี้การเลือกเสื้อผ้าที่เป็นโทนสีเข้มและมีลายเส้นตั้ง
+      ก็ช่วยเสริมให้ภาพดูเพรียวขึ้นด้วย
+    </p>
+    <span class="post-author">โพสต์โดย: <strong>Anna</strong></span>
+  </div>
+
+  <div class="post-item" data-category="painting">
+    <h3 class="post-title">🎨 ขั้นตอนฝึกวาดอนาโตมี่ สำหรับผู้ฝึกวาดภาพ</h3>
+    <p class="post-desc">
+      สำหรับการวาดอนาโตมี่ จุดเริ่มต้นคือการทำความเข้าใจสัดส่วนของร่างกาย
+      เช่น สัดส่วนหัวต่อความสูง ลำตัวกับแขนขา
+      จากนั้นฝึกสเก็ตช์โครงร่างแบบ stick figure
+      เพื่อกำหนดท่าทางก่อนจะลงรายละเอียดกล้ามเนื้อและเส้นโค้ง
+      การฝึกวาดจากแบบจริง เช่น คนในชีวิตประจำวัน
+      จะช่วยให้เข้าใจโครงสร้างและการเคลื่อนไหวได้ดียิ่งขึ้น
+    </p>
+    <span class="post-author">โพสต์โดย: <strong>Khai</strong></span>
+  </div>
+
+  <div class="post-item" data-category="music">
+    <h3 class="post-title">🎵 รวมวิธีเพิ่มความน่าสนใจให้นิยาย</h3>
+    <p class="post-desc">
+      นิยายที่น่าสนใจต้องประกอบด้วยโครงเรื่องที่แข็งแรง
+      ตัวละครที่มีมิติ และบทสนทนาที่สมจริง
+      เทคนิคที่นักเขียนหลายคนใช้คือการใส่จุดหักมุม
+      เพื่อสร้างความตื่นเต้นให้กับผู้อ่าน
+      การใช้เพลงประกอบหรือบรรยายบรรยากาศให้ชัดเจน
+      ก็ทำให้ผู้อ่านอินกับเนื้อเรื่องมากขึ้น
+    </p>
+    <span class="post-author">โพสต์โดย: <strong>Mina</strong></span>
+  </div>
+</div>
+
+</section>
+
+
+  <script src="app.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const categorySelect = document.getElementById("categorySelect");
+  const posts = document.querySelectorAll(".post-item");
+  const searchInput = document.getElementById("searchInput");
+
+  function highlight(text, keyword) {
+    if (!keyword) return text;
+    const regex = new RegExp(`(${keyword})`, "gi");
+    return text.replace(regex, `<mark>$1</mark>`);
+  }
+
+  function filterPosts() {
+    const selected = categorySelect.value;
+    const keyword = searchInput.value.trim().toLowerCase();
+
+    posts.forEach(post => {
+      const category = post.getAttribute("data-category");
+      const titleEl = post.querySelector(".post-title");
+      const descEl = post.querySelector(".post-desc");
+      const authorEl = post.querySelector(".post-author");
+
+      const text = (
+        titleEl.textContent +
+        descEl.textContent +
+        authorEl.textContent
+      ).toLowerCase();
+
+      // ✅ กรองตาม category + keyword
+      const matchesCategory = (selected === "all" || category === selected);
+      const matchesKeyword = (!keyword || text.includes(keyword));
+
+      if (matchesCategory && matchesKeyword) {
+        post.style.display = "block";
+
+        // ✅ ทำ highlight ถ้ามี keyword
+        if (keyword) {
+          titleEl.innerHTML = highlight(titleEl.textContent, keyword);
+          descEl.innerHTML = highlight(descEl.textContent, keyword);
+          authorEl.innerHTML = highlight(authorEl.textContent, keyword);
+        } else {
+          // ล้าง highlight ถ้าไม่ได้ค้นหา
+          titleEl.innerHTML = titleEl.textContent;
+          descEl.innerHTML = descEl.textContent;
+          authorEl.innerHTML = authorEl.textContent;
+        }
+      } else {
+        post.style.display = "none";
+      }
+    });
+  }
+
+  categorySelect.addEventListener("change", filterPosts);
+  searchInput.addEventListener("input", filterPosts);
+});
+
+
+
+
+
+  </script>
+</body>
+</html>
