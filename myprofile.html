@@ -5,24 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Space - Profile</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./myprofile_styles.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="/img/logo.webp" alt="ART SPACE Logo" style="height: 140px">
-        </div>
-        <div class="nav-links">
-            <a href="#">Activities</a>
-            <a href="#">Community</a>
-            <a href="#">About</a>
-        </div>
-        <div class="user-section">
-            <div class="user-avatar">👤</div>
-            <span>KhaiTama</span>
-            <img src="/img/icon_noti.png" alt="Notification" style="width: 40px; height: 40px; border-radius: 50%;">
-        </div>
-    </nav>
+    <div id="navbar-placeholder"></div>
+        <script>
+        fetch("navbar.html")
+            .then(res => res.text())
+            .then(html => {
+            document.getElementById("navbar-placeholder").innerHTML = html;
+            });
+        </script>
+
 
     <div class="main-container">
         <div class="profile-card">
@@ -46,10 +41,10 @@
                     </p>
 
                     <ul class="profile-details">
-                        <li>🏠 ชื่อผู้ใช้ : KhaiTama</li>
-                        <li>🎂 ชื่อ-นามสกุล : Khai Tama</li>
-                        <li>📧 อีเมล : Biggkhattama@gmail.com</li>
-                        <li>📅 วันเกิด : 14 กุมภาพันธ์ 2568</li>
+                        <li id="username">🏠 ชื่อผู้ใช้ : </li>
+                        <li id="fullname">🎂 ชื่อ-นามสกุล : </li>
+                        <li id="email">📧 อีเมล : </li>
+                        <li id="birthdate">📅 วันเกิด : </li>
                     </ul>
                 </div>
             </div>
@@ -243,5 +238,6 @@
         </div>
     </div>
     <script src="myprofile_script.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

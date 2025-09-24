@@ -179,4 +179,25 @@ document.querySelectorAll('.nav-arrow').forEach(arrow => {
 });
 
 
+//ดึงข้อมูล api
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("token");
+
+  try {
+    const res = await fetch("http://45.141.27.231:5000/api/user/me", {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const user = await res.json();
+
+    // เติมข้อมูลลง DOM
+    document.getElementById("username").textContent = `🏠 ชื่อผู้ใช้ : ${user.username}`;
+    document.getElementById("fullname").textContent = `🎂 ชื่อ-นามสกุล : ${user.fullname}`;
+    document.getElementById("email").textContent = `📧 อีเมล : ${user.email}`;
+    document.getElementById("birthdate").textContent = `📅 วันเกิด : ${user.birthdate}`;
+  } catch (err) {
+    console.error("โหลดข้อมูลไม่สำเร็จ", err);
+  }
+});
+
+
 });
