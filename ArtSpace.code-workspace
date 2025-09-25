@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "ArtSpace",
+			"path": "."
+		},
+		{
+			"name": "myprofile_image",
+			"path": "../../WebApp/Artapce/myprofile_image"
+		}
+	],
+	"settings": {}
+}
