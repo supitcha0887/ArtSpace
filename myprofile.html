@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./myprofile_styles.css">
+    <link rel="stylesheet" href="./navbar.css">
 </head>
 <body>
     <div id="navbar-placeholder"></div>
@@ -33,10 +34,10 @@
                     </div>
                 </div>
                 <div class="profile-info">
-                    <h1 class="profile-title">ไข่ที่ใหญ่ขนาดนี้เป็นของคุณนะ</h1>
+                    <h1 class="profile-title" id="profile-display-name">กำลังโหลด...</h1>
                     <div class="profile-divider"></div>
-                    <p class="profile-description">
-                        "เรียกเราว่าไข่ทามะก็ได้ 🐥 ชอบแชร์ไอเดียเล็ก ๆ น้อย ๆ เกี่ยวกับงานศิลป์เผื่อจะได้เป็นแรงบันดาลใจให้ใครสักคน"
+                    <p class="profile-description" id="profile-bio">
+                        "กำลังโหลดข้อมูล..."
                     </p>
 
                     <ul class="profile-details">
@@ -50,7 +51,7 @@
             
             
             
-            <div class="decorative-element"></div>
+        <div class="decorative-element"></div>
         </div>
 
         <div class="profile-actions">
@@ -121,7 +122,7 @@
         </div>
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-number">10</div>
+                <div class="stat-number" id="joined-count">0</div>
                 <div class="stat-label">Joined</div>
             </div>
             <div class="stat-card">
@@ -162,6 +163,35 @@
                     
                 </div>
                 <button class="nav-arrow right-arrow" data-target="gallery">▶️</button>
+            </div>
+        </div>
+        <!-- Gallery Edit Modal -->
+        <div class="modal-overlay" id="gallery-edit-modal">
+            <div class="edit-modal">
+                <h2 class="modal-title">Edit Gallery</h2>
+                
+                <div class="gallery-edit-content">
+                    <div class="current-images">
+                        <h3>รูปภาพปัจจุบัน</h3>
+                        <div class="image-grid" id="current-image-grid">
+                            <!-- รูปภาพจะถูกโหลดมาแสดงที่นี่ -->
+                        </div>
+                    </div>
+                    
+                    <div class="upload-section">
+                        <h3>เพิ่มรูปภาพใหม่</h3>
+                        <div class="upload-area" id="upload-area">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์</p>
+                            <input type="file" id="image-upload" multiple accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-buttons">
+                    <button class="modal-btn modal-btn-cancel" id="gallery-cancel-btn">Cancel</button>
+                    <button class="modal-btn modal-btn-save" id="gallery-save-btn">Save</button>
+                </div>
             </div>
         </div>
 

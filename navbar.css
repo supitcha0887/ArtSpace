@@ -1,0 +1,316 @@
+
+/* Navigation Styles */
+
+/* Header และ Nav พื้นฐาน */
+header {
+    background: transparent;
+    transition: 0.3s ease-in-out;
+    padding: 20px 0;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+}
+
+/* สีของ nav เมื่ออยู่บนพื้นหลังโปร่งใส */
+header .nav-menu a,
+header .logo,
+header .login-btn {
+    color: white;
+}
+
+/* สีของ nav เมื่ออยู่บนพื้นหลังสีขาว */
+header.on-white {
+    background: white;
+}
+
+header.on-white .nav-menu a,
+header.on-white .logo,
+header.on-white .login-btn {
+    color: #000000;
+}
+
+/* สีของ nav เมื่อเป็น sticky */
+header.sticky {
+    background: white !important;
+}
+
+header.sticky .nav-menu a,
+header.sticky .logo,
+header.sticky .login-btn {
+    color: #000 !important;
+}
+
+/* Container สำหรับ nav */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Nav Layout */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* กลุ่มเมนูและปุ่มด้านขวา */
+.nav-right-group {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.logo i {
+    margin-right: 10px;
+    background: white;
+    color: #4a1a8c;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* เมนูหลัก */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.nav-menu a:hover {
+    opacity: 0.8;
+}
+
+/* ปุ่ม Authentication */
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.login-btn {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+/* ปุ่มแจ้งเตือน */
+.notification-btn {
+    background: #ff6b9d;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* แผงแจ้งเตือน */
+.notification-panel {
+    display: none;
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    padding: 16px;
+    font-family: 'Kanit', sans-serif;
+    z-index: 999;
+}
+
+.notification-panel h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 6px;
+}
+
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.notification-item i {
+    font-size: 18px;
+}
+
+.notification-item p {
+    font-size: 13px;
+    margin: 2px 0 0;
+}
+
+/* สีพื้นหลังตามประเภท */
+.notification-item.purple { background: #e6d6f8; }
+.notification-item.green { background: #c8f7d2; }
+.notification-item.red   { background: #f7c8c8; }
+.notification-item.blue  { background: #c8f1f7; }
+.notification-item.yellow{ background: #fdf3c8; }
+
+/* hover effect */
+.notification-item:hover {
+    opacity: 0.9;
+}
+
+/* ข้อมูลผู้ใช้ */
+.user-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 14px 4px 6px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #7b2ff7, #f107a3);
+    color: white;
+    font-weight: 600;
+    font-family: 'Kanit', sans-serif;
+    white-space: nowrap;
+}
+
+.user-info img.user-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.user-info span {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* ปุ่มแฮมเบอร์เกอร์ (Mobile) */
+.hamburger-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Mobile Navigation */
+.nav-menu.mobile-active {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: rgba(74, 26, 140, 0.9);
+    padding: 80px 20px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-menu.mobile-active li {
+    margin-bottom: 20px;
+}
+
+.nav-menu.mobile-active a {
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-menu.mobile-active a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-right-group {
+        display: none;
+    }
+
+    .hamburger-btn {
+        display: block;
+    }
+
+    .auth-buttons {
+        display: flex;
+    }
+
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 250px;
+        background: #4b0082;
+        flex-direction: column;
+        padding: 60px 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    .nav-menu.mobile-active {
+        display: flex;
+        transform: translateX(0);
+    }
+}
+
+/* Desktop > 768px */
+@media (min-width: 769px) {
+    .nav-menu {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        transform: none !important;
+        background: none;
+        height: auto;
+        width: auto;
+        padding: 0;
+    }
+
+    .hamburger-btn {
+        display: none !important;
+    }
+
+    .auth-buttons {
+        display: flex;
+    }
+}
