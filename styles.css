@@ -819,6 +819,8 @@ nav {
 .tips-list .fa-tools { background: #4a1a8c; }
 .tips-list .fa-paint-brush { background: #4a1a8c; }
 
+
+
 .community-section {
   text-align: center;
   background-image: url('img/6.jpg');
@@ -1773,6 +1775,7 @@ nav {
 
 .community-page header nav a {
   color: #000 !important;
+<<<<<<< HEAD
   font-weight: 500;
 }
 
@@ -1787,6 +1790,20 @@ nav {
   gap: 15px;
   align-items: center;
   margin-bottom: 30px;
+=======
+  font-weight: 400;
+}
+
+
+
+ .community-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-between;
+>>>>>>> f48a9cb (save changes)
 }
 
 .search-box {
@@ -1798,9 +1815,15 @@ nav {
 }
 
 .search-box input {
+<<<<<<< HEAD
   border: none;
   outline: none;
   padding: 5px;
+=======
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 8px;
+>>>>>>> f48a9cb (save changes)
 }
 
 .search-box .search-btn {
@@ -1810,6 +1833,18 @@ nav {
   font-size: 14px;
 }
 
+<<<<<<< HEAD
+=======
+.search-btn {
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+>>>>>>> f48a9cb (save changes)
 .category-select {
   padding: 8px 12px;
   border: 1px solid #ccc;
@@ -1822,6 +1857,7 @@ nav {
 }
 
 .new-post-btn {
+<<<<<<< HEAD
   background-color: #6b8e6b;
   color: white;
   border: none;
@@ -1829,6 +1865,20 @@ nav {
   border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
+=======
+  background: #ff6584;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.new-post-btn:hover {
+  background: #ff3366;
+>>>>>>> f48a9cb (save changes)
 }
 
 /* Post List */
@@ -1841,6 +1891,7 @@ nav {
 .post-item {
   background: #fff;
   border-radius: 12px;
+<<<<<<< HEAD
   padding: 20px 24px;
   margin-bottom: 20px;
   transition: 0.25s;
@@ -1854,6 +1905,12 @@ nav {
   color: #222;       /* ✅ ฟอนต์ดำ */
   display: flex;
   align-items: center;
+=======
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+>>>>>>> f48a9cb (save changes)
 }
 
 .post-title {
@@ -1888,6 +1945,10 @@ nav {
   background: #f0f8ff;
   color: #000;
   transform: translateY(-3px);
+<<<<<<< HEAD
+=======
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+>>>>>>> f48a9cb (save changes)
 }
 
 mark {
