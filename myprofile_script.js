@@ -178,26 +178,157 @@ document.querySelectorAll('.nav-arrow').forEach(arrow => {
     });
 });
 
+// Gallery Edit Modal Elements
+const galleryEditBtn = document.querySelector('.gallery-section-container .edit-section-btn');
+const galleryEditModal = document.getElementById('gallery-edit-modal');
+const galleryCancelBtn = document.getElementById('gallery-cancel-btn');
+const gallerySaveBtn = document.getElementById('gallery-save-btn');
+const uploadArea = document.getElementById('upload-area');
+const imageUpload = document.getElementById('image-upload');
+const currentImageGrid = document.getElementById('current-image-grid');
 
-//ดึงข้อมูล api
+// Gallery Modal Functions
+function openGalleryModal() {
+    galleryEditModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    loadCurrentImages();
+}
+
+function closeGalleryModal() {
+    galleryEditModal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function loadCurrentImages() {
+    // โหลดรูปภาพปัจจุบันจาก Gallery
+    const galleryCards = document.querySelectorAll('.gallery-card img');
+    currentImageGrid.innerHTML = '';
+    
+    galleryCards.forEach((img, index) => {
+        const imageItem = document.createElement('div');
+        imageItem.className = 'image-item';
+        imageItem.innerHTML = `
+            <img src="${img.src}" alt="Gallery image ${index + 1}">
+            <button class="delete-image-btn" onclick="deleteImage(${index})">×</button>
+        `;
+        currentImageGrid.appendChild(imageItem);
+    });
+}
+
+function deleteImage(index) {
+    if (confirm('คุณต้องการลบรูปภาพนี้หรือไม่?')) {
+        // ลบรูปภาพจาก DOM
+        const imageItem = currentImageGrid.children[index];
+        imageItem.remove();
+        
+        // อัพเดท index ใหม่
+        Array.from(currentImageGrid.children).forEach((item, newIndex) => {
+            const deleteBtn = item.querySelector('.delete-image-btn');
+            deleteBtn.setAttribute('onclick', `deleteImage(${newIndex})`);
+        });
+    }
+}
+
+function saveGalleryChanges() {
+    // จำลองการบันทึกข้อมูล
+    alert('บันทึกการเปลี่ยนแปลง Gallery เรียบร้อยแล้ว!');
+    closeGalleryModal();
+}
+
+// Upload Area Event Listeners
+uploadArea.addEventListener('click', () => {
+    imageUpload.click();
+});
+
+uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.style.borderColor = '#8A2BE2';
+});
+
+uploadArea.addEventListener('dragleave', () => {
+    uploadArea.style.borderColor = '#ddd';
+});
+
+uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.style.borderColor = '#ddd';
+    handleFiles(e.dataTransfer.files);
+});
+
+imageUpload.addEventListener('change', (e) => {
+    handleFiles(e.target.files);
+});
+
+function handleFiles(files) {
+    Array.from(files).forEach(file => {
+        if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const imageItem = document.createElement('div');
+                imageItem.className = 'image-item';
+                const currentCount = currentImageGrid.children.length;
+                imageItem.innerHTML = `
+                    <img src="${e.target.result}" alt="New image">
+                    <button class="delete-image-btn" onclick="deleteImage(${currentCount})">×</button>
+                `;
+                currentImageGrid.appendChild(imageItem);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
+
+// Gallery Modal Event Listeners
+galleryEditBtn.addEventListener('click', openGalleryModal);
+galleryCancelBtn.addEventListener('click', closeGalleryModal);
+gallerySaveBtn.addEventListener('click', saveGalleryChanges);
+
+// Close modal when clicking outside
+galleryEditModal.addEventListener('click', function(e) {
+    if (e.target === galleryEditModal) {
+        closeGalleryModal();
+    }
+});
+
+// Close modal with ESC key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && galleryEditModal.classList.contains('active')) {
+        closeGalleryModal();
+    }
+});
+
+//เพิ่มในส่วนที่ดึงข้อมูล API
 document.addEventListener("DOMContentLoaded", async () => {
   const token = localStorage.getItem("token");
 
   try {
-    const res = await fetch("http://45.141.27.231:5000/api/user/me", {
+    // ดึงข้อมูล user
+    const resUser = await fetch("http://45.141.27.231:5000/api/user/me", {
       headers: { Authorization: `Bearer ${token}` }
     });
-    const user = await res.json();
+    const user = await resUser.json();
 
-    // เติมข้อมูลลง DOM
     document.getElementById("username").textContent = `🏠 ชื่อผู้ใช้ : ${user.username}`;
     document.getElementById("fullname").textContent = `🎂 ชื่อ-นามสกุล : ${user.fullname}`;
     document.getElementById("email").textContent = `📧 อีเมล : ${user.email}`;
     document.getElementById("birthdate").textContent = `📅 วันเกิด : ${user.birthdate}`;
+    document.getElementById("profile-display-name").textContent = user.displayName || user.username;
+    document.getElementById("profile-bio").textContent = `"${user.bio || 'ยังไม่มีข้อมูล Bio'}"`;
+
+    // ดึงข้อมูล Joined
+    const resJoined = await fetch("http://localhost:5000/api/activity/join", {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const joinedData = await resJoined.json();
+
+    // สมมติ API ส่ง { joined_count: 10 }
+    document.getElementById("joined-count").textContent = joinedData.joined_count || 0;
+
   } catch (err) {
     console.error("โหลดข้อมูลไม่สำเร็จ", err);
   }
 });
+
 
 
 });
