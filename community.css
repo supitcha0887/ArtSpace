@@ -1,143 +1,297 @@
-HEAD.community-page .logo {
-      font-weight: bold !important;
-      font-family: "Prompt", sans-serif;
-    }
-    /* ✅ สไตล์ Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-    }
-    .modal-content {
-      background: #fff;
-      margin: 5% auto;
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 600px;
-      position: relative;
-    }
-    .close-btn {
-      position: absolute;
-      top: 12px;
-      right: 16px;
-      font-size: 22px;
-      cursor: pointer;
-    }
-    .btn-post {
-      background: #88b388;
-      border: none;
-      padding: 8px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      color: white;
-      font-weight: bold;
-    }
-    .btn-cancel {
-      background: #aaa;
-      border: none;
-      padding: 8px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      color: white;
-    }
-    .image-upload {
-      border: 1px dashed #aaa;
-      text-align: center;
-      padding: 40px;
-      margin-bottom: 15px;
-      color: #666;
-      cursor: pointer;
-    }
-    .delete-btn {
-      background: #e74c3c;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 8px;
-    }
-    .post-author img {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      vertical-align: middle;
-      margin-right: 6px;
-  }
-.community-page .logo {
-      font-weight: bold !important;
-      font-family: "Prompt", sans-serif;
-    }
-    /* ✅ สไตล์ Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-    }
-    .modal-content {
-      background: #fff;
-      margin: 5% auto;
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 600px;
-      position: relative;
-    }
-    .close-btn {
-      position: absolute;
-      top: 12px;
-      right: 16px;
-      font-size: 22px;
-      cursor: pointer;
-    }
-    .btn-post {
-      background: #88b388;
-      border: none;
-      padding: 8px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      color: white;
-      font-weight: bold;
-    }
-    .btn-cancel {
-      background: #aaa;
-      border: none;
-      padding: 8px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      color: white;
-    }
-    .image-upload {
-      border: 1px dashed #aaa;
-      text-align: center;
-      padding: 40px;
-      margin-bottom: 15px;
-      color: #666;
-      cursor: pointer;
-    }
-    .delete-btn {
-      background: #e74c3c;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 8px;
-    }
-    .post-author img {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      vertical-align: middle;
-      margin-right: 6px;
 
+/* ===== Community Page Refresh (cards, toolbar, filters) ===== */
+.community-page {
+  background: linear-gradient(180deg,#f6f7fb 0%, #ffffff 100%);
+  color: #1f2937;
+  font-family: "Prompt", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans Thai", "Noto Sans", sans-serif;
 }
+
+/* Header tweaks */
+.community-page header {
+  background: #ffffffaa;
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #eef0f4;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.community-page .logo {
+  font-weight: 800 !important;
+  line-height: 1;
+  letter-spacing: .5px;
+}
+
+/* Container */
+.community-section .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+/* Toolbar */
+.community-toolbar {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 12px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.search-box {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+.search-box label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 6px;
+  grid-column: 1 / -1;
+}
+#searchInput {
+  height: 42px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0 12px;
+  outline: none;
+  transition: box-shadow .2s, border-color .2s;
+  background: #fff;
+}
+#searchInput:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 4px rgba(167,139,250,.15);
+}
+.search-btn {
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  cursor: pointer;
+  transition: transform .08s ease, box-shadow .2s;
+}
+.search-btn:active { transform: translateY(1px); }
+
+.category-select {
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition: box-shadow .2s, border-color .2s;
+}
+.category-select:focus {
+  border-color: #34d399;
+  box-shadow: 0 0 0 4px rgba(52,211,153,.15);
+}
+
+#clearSearchBtn {
+  height: 42px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: none;
+  background: #f3f4f6;
+  cursor: pointer;
+}
+
+.new-post-btn {
+  height: 42px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg,#7c3aed,#22c55e);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(124,58,237,.18);
+  cursor: pointer;
+  transition: transform .08s ease, filter .2s;
+}
+.new-post-btn:hover { filter: brightness(1.02); }
+.new-post-btn:active { transform: translateY(1px); }
+
+.result-meta {
+  margin: 4px 0 14px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Posts grid */
+.post-list {
+  display: grid;
+  grid-template-columns: 1fr;      /* มีแค่ 1 คอลัมน์เสมอ */
+  gap: 16px;
+}
+.post-item {
+  grid-column: 1 / -1 !important;  /* แทน span 6 / 4 เดิม */
+  display: flex;
+  flex-direction: column;          /* เรียงแนวตั้งภายในการ์ด */
+  gap: 6px;
+}
+.post-item .badge,
+.post-item .post-title,
+.post-item .post-desc,
+.post-item .post-author {
+  display: block;
+  margin: 0;
+}
+/* ผู้เขียนให้ขึ้นบรรทัดใหม่ชัด ๆ */
+.post-item .post-author {
+  display: block !important;       /* ทับ inline-flex เดิม */
+  font-size: 14px;
+}
+.post-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(17,24,39,0.10);
+}
+.post-title a {
+  text-decoration: none;
+  color: #111827;
+}
+.post-title a:hover { text-decoration: underline; }
+.post-desc {
+  color: #4b5563;
+  margin: 8px 0 10px;
+}
+.post-author {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+.post-author img {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+}
+
+/* Category badge */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #374151;
+  margin-right: 8px;
+}
+/* Search highlight */
+mark.search-hit {
+  background: #fde68a;
+  padding: 0 2px;
+  border-radius: 4px;
+}
+/* คอนเทนเนอร์ของแถบค้นหา/ตัวกรอง/ปุ่ม */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;           /* ให้ขึ้นบรรทัดใหม่แทนการบีบอัด */
+}
+
+/* ช่องค้นหาไม่ให้เล็กเกิน */
+.search-input {
+  flex: 1 1 640px;          /* ค่าเริ่มต้นกว้าง ~640px แต่ยืดได้ */
+  min-width: 480px;         /* ห้ามเล็กกว่า 480px */
+  height: 44px;             /* ความสูงคงที่สวย ๆ */
+}
+
+/* ปุ่มค้นหา (ไอคอนแว่น) */
+.search-button {
+  flex: 0 0 auto;           /* ไม่ให้ถูกยืด/บีบ */
+  height: 44px;
+}
+
+/* กล่องเลือกหมวดหมู่ */
+.category-select {
+  flex: 0 0 160px;          /* ความกว้างคงที่ */
+  min-width: 160px;
+  height: 44px;
+}
+
+/* ปุ่ม New Post */
+.new-post-btn {
+  flex: 0 0 140px;
+  min-width: 140px;         /* ห้ามเล็กกว่า 140px */
+  height: 44px;
+  white-space: nowrap;      /* กันตัวหนังสือขึ้นบรรทัดใหม่ในปุ่ม */
+}
+
+/* ปุ่ม Clear แถบด้านล่าง — กันไม่ให้บีบ */
+.clear-btn {
+  min-height: 44px;
+  white-space: nowrap;
+}
+/* Hidden util */
+.hidden { display: none !important; }
+
+/* Responsive */
+@media (min-width: 640px) {
+  .post-item { grid-column: span 6; }
+}
+@media (min-width: 1024px) {
+  .post-item { grid-column: span 4; }
+}
+
+/* ===== Existing Modal & Buttons (kept) ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+.modal-content {
+  background: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 600px;
+  position: relative;
+}
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 22px;
+  cursor: pointer;
+}
+.btn-post {
+  background: #88b388;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+.btn-cancel {
+  background: #aaa;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+}
+.image-upload {
+  border: 1px dashed #aaa;
+  text-align: center;
+  padding: 40px;
+  margin-bottom: 15px;
+  color: #666;
+  cursor: pointer;
+}
+.delete-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
