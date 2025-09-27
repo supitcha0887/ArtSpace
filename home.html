@@ -20,12 +20,23 @@
                         <li><a href="#activities">Activities</a></li>
                         <li><a href="#community">Community</a></li>
                         <li><a href="#about">About</a></li>
+                        <li class="mobile-user" id="mobileUserInfo" style="display:none;">
+                        <img id="mobileUserAvatar" alt="avatar">
+                <span id="mobileUserName"></span>
+                        </li>
+<li class="mobile-logout" style="display:none;">
+  <button class="logout-btn">Log out</button>
+</li>
+                        <li class="mobile-auth">
+                            <a href="#" class="login-btn">Log in / Sign in</a>
+                        </li>
                     </ul>
-                <div class="auth-buttons">
+<div class="auth-buttons">
   <div id="userInfo" class="user-info" style="display:none;">
     <img id="userAvatar" class="user-avatar" src="" alt="user avatar">
     <span id="userName"></span>
   </div>
+  <button id="desktopLogout" class="logout-btn" style="display:none;">Log out</button>
   <a href="#" class="login-btn">Log in / Sign in</a>
   <button class="notification-btn">
     <i class="fas fa-bell"></i>

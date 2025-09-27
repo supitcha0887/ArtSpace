@@ -3,10 +3,14 @@
     padding: 0;
     box-sizing: border-box;
 }
-header{
-    background: transparent;
-    transition:  0.3s ease-in-out;      
-}   
+header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  background: transparent;
+  transition: background .3s ease-in-out;
+}
 
 header .nav-menu a,
 header .logo,
@@ -33,6 +37,12 @@ header.sticky .logo,
 header.sticky .login-btn {
   color: #000 !important;
 }
+header .hamburger-btn { color: #fff; }
+header.sticky .hamburger-btn,
+header.on-white .hamburger-btn {
+  color: #000;
+}
+
 .color-sentinel {
     position: absolute;
     top: 0;
@@ -1061,6 +1071,15 @@ nav {
     min-width: 300px;
 }
 
+.modal-right-section{
+  overflow-y: hidden;
+}
+
+/* ให้เลื่อนเฉพาะตอน Sign in */
+.modal-right-section.scrollable{
+  overflow-y: auto;
+}
+
 .modal-content-new .modal-right-section {
     padding: 40px;
     width: 60%;
@@ -1151,7 +1170,11 @@ nav {
     display: flex;
     overflow: visible;
     position: relative;
-    overflow-y: auto;
+    overflow-y: hidden;
+}
+
+.modal-content-new .form-wrapper.scrollable{
+  overflow-y: auto;
 }
 
 .modal-content-new .form-section {
@@ -1488,51 +1511,97 @@ nav {
   padding: 2px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
-
-/* สไตล์สำหรับเมนูบนมือถือ */
-.nav-menu.mobile-active {
-    display: flex; /* แสดงเมนู */
-    flex-direction: column; /* จัดเมนูเป็นแนวตั้ง */
-    position: fixed; /* วางเมนูให้อยู่ทับเนื้อหาอื่น */
-    top: 0;
-    right: 0;
-    width: 250px;
-    height: 100%;
-    background-color: rgba(74, 26, 140, 0.9); /* สีพื้นหลังโปร่งแสง */
-    padding: 80px 20px;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
-
+.mobile-auth { display: none; }
+.logout-btn{
+  background:#f0f0f0; color:#333; border:0; border-radius:999px;
+  padding:8px 14px; font-weight:600; cursor:pointer;
+  display:inline-flex; align-items:center; gap:6px;
+}
+.logout-btn:hover{ background:#e7e7e7; }
+.mobile-user,
+.mobile-logout,
+.mobile-auth { 
+  display: none;
 }
 
-.nav-menu.mobile-active li {
-    margin-bottom: 20px;
-}
 
-.nav-menu.mobile-active a {
-    font-size: 18px;
-    display: block;
-    padding: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.nav-menu.mobile-active a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
     @media (max-width: 768px) {
-            .modal-content-new .modal-left-section {
+    .modal-content-new .modal-left-section {
         display: none;
     }
-    .nav-right-group {
-        display: none; /* ซ่อนเมนูนำทางปกติ */
+    .mobile-user { display:none; }
+    .mobile-logout { display:none; }
+    .mobile-auth { display:block; }
+     .mobile-user{
+        padding:12px 10px 8px;
+        border-bottom:1px solid rgba(255,255,255,.12); margin-bottom:10px;
+    }
+    .mobile-user img{
+        width:36px;height:36px;border-radius:50%;object-fit:cover;
+        border:2px solid rgba(255,255,255,.6); margin-right:10px; vertical-align:middle;
+    }
+    .mobile-user span{ color:#fff; font-weight:700; }
+
+    .mobile-logout{ display:none; margin-top:8px; }
+    .mobile-logout .logout-btn{
+        width:100%; text-align:center; background:rgba(255,255,255,.18);
+        color:#fff; border-radius:10px; padding:12px;
+    }
+    .mobile-logout .logout-btn:hover{ background:rgba(255,255,255,.26); }
+    .mobile-auth { 
+        display: block; 
+        margin-top: 10px;
+    }
+    .mobile-auth .login-btn {
+        display: block;
+        background: rgba(255,255,255,0.15);
+        padding: 12px 10px;
+        border-radius: 10px;
+        text-align: left;
+     }
+    .nav-menu { 
+        display: none;
+        position: fixed;
+        top: 0; right: 0;
+        height: 100%;
+        width: 260px;
+        flex-direction: column;
+        padding: 80px 20px 20px;
+        background: rgba(74, 26, 140, .95);
+        transform: translateX(100%);
+        transition: transform .25s ease;
+        z-index: 1050;
+    }
+    .hamburger-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: rgba(0,0,0,0.08);          /* วงกลมจาง ๆ บนพื้นขาวก็มองเห็น */
+        backdrop-filter: blur(2px);
+    }
+    header.sticky .hamburger-btn,
+    header.on-white .hamburger-btn {
+        background: rgba(0,0,0,0.06);
+    }
+    .nav-menu.mobile-active { 
+        display: flex;
+        transform: translateX(0);
     }
 
-    .hamburger-btn {
-        display: block; /* แสดงปุ่มแฮมเบอร์เกอร์ */
+    .nav-menu.mobile-active li { margin-bottom: 20px; }
+
+    .nav-menu.mobile-active a {
+        display: block;
+        font-size: 18px;
+        padding: 10px;
+        color: #fff;
+        border-bottom: 1px solid rgba(255,255,255,.12);
     }
 
     .auth-buttons {
-        display: flex;
+        display: none;
     }
 
     .hero h1 {
@@ -1553,67 +1622,39 @@ nav {
         bottom: 15px;
         right: 15px;
     }
-    
-    .nav-menu {
-        display: none;
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100%;
-        width: 250px;
-        background: #4b0082; /* สีพื้นหลังเมนู */
+    .action-cards-container {
         flex-direction: column;
-        padding: 60px 20px;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        z-index: 1000;
-            }
+        align-items: center;
+    }
 
-            .nav-menu.mobile-active {
-            display: flex;
-            transform: translateX(0); /* เลื่อนออกมา */
-            }
+    .activity-cards-wrapper {
+        flex-direction: column;
+    }
 
-            
+    .activity-card {
+        min-width: auto;
+    }
 
-            .hero h1 {
-                font-size: 32px;
-            }
+    .category-icons-container {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
 
-            .action-cards-container {
-                flex-direction: column;
-                align-items: center;
-            }
+    .tips-cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
 
-            .activity-cards-wrapper {
-                flex-direction: column;
-            }
+    .tips-card {
+        flex-direction: column;
+        text-align: center;
+    }
 
-            .activity-card {
-                min-width: auto;
-            }
-
-            .category-icons-container {
-                flex-wrap: wrap;
-                gap: 30px;
-            }
-
-            .tips-cards-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tips-card {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .tips-icon {
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-            
-        }
+    .tips-icon {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
         /* Desktop > 768px */
 @media (min-width: 769px) {
     .nav-menu {
@@ -1781,7 +1822,6 @@ nav {
 
 .community-page header nav a {
   color: #000 !important;
-<<<<<<< HEAD
   font-weight: 500;
 }
 
@@ -1796,7 +1836,6 @@ nav {
   gap: 15px;
   align-items: center;
   margin-bottom: 30px;
-=======
   font-weight: 400;
 }
 
@@ -1809,7 +1848,6 @@ nav {
   align-items: center;
   margin-bottom: 30px;
   justify-content: space-between;
->
 }
 
 .search-box {
@@ -1821,15 +1859,12 @@ nav {
 }
 
 .search-box input {
-<<<<<<< HEAD
   border: none;
   outline: none;
   padding: 5px;
-=======
   border: 1px solid #ccc;
   padding: 8px 12px;
   border-radius: 8px;
->>>>>>> f48a9cb (save changes)
 }
 
 .search-box .search-btn {
@@ -1839,8 +1874,7 @@ nav {
   font-size: 14px;
 }
 
-<<<<<<< HEAD
-=======
+
 .search-btn {
   background: #6c63ff;
   color: #fff;
@@ -1850,7 +1884,6 @@ nav {
   cursor: pointer;
 }
 
->>>>>>> f48a9cb (save changes)
 .category-select {
   padding: 8px 12px;
   border: 1px solid #ccc;
@@ -1863,7 +1896,6 @@ nav {
 }
 
 .new-post-btn {
-<<<<<<< HEAD
   background-color: #6b8e6b;
   color: white;
   border: none;
@@ -1871,7 +1903,6 @@ nav {
   border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
-=======
   background: #ff6584;
   color: #fff;
   border: none;
@@ -1884,7 +1915,6 @@ nav {
 
 .new-post-btn:hover {
   background: #ff3366;
->>>>>>> f48a9cb (save changes)
 }
 
 /* Post List */
@@ -1897,7 +1927,6 @@ nav {
 .post-item {
   background: #fff;
   border-radius: 12px;
-<<<<<<< HEAD
   padding: 20px 24px;
   margin-bottom: 20px;
   transition: 0.25s;
@@ -1911,12 +1940,10 @@ nav {
   color: #222;       /* ✅ ฟอนต์ดำ */
   display: flex;
   align-items: center;
-=======
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
->>>>>>> f48a9cb (save changes)
 }
 
 .post-title {
@@ -1960,4 +1987,3 @@ mark {
   padding: 0 2px;
   border-radius: 3px;
 }
-
