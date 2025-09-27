@@ -14,34 +14,34 @@ $('#goFind').addEventListener('click', () => {
 
 /* dropdowns - ส่วน Sort ยังเป็น dropdown */
 const sortBtn = $('#btnSort'), sortMenu = $('#menuSort'), sortLabel = $('#sortLabel');
-const toggleMenu = (btn, menu) => { 
-    const is = menu.classList.toggle('show'); 
-    if (is) { 
-        const r = btn.getBoundingClientRect(); 
-        menu.style.minWidth = Math.max(240, r.width) + 'px'; 
-    } 
+const toggleMenu = (btn, menu) => {
+    const is = menu.classList.toggle('show');
+    if (is) {
+        const r = btn.getBoundingClientRect();
+        menu.style.minWidth = Math.max(240, r.width) + 'px';
+    }
 };
 
 sortBtn.addEventListener('click', () => toggleMenu(sortBtn, sortMenu));
 document.addEventListener('click', e => {
     if (!sortMenu.contains(e.target) && !sortBtn.contains(e.target)) sortMenu.classList.remove('show');
 });
-document.addEventListener('keydown', e => { 
-    if (e.key === 'Escape') { 
-        sortMenu.classList.remove('show'); 
-    } 
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        sortMenu.classList.remove('show');
+    }
 });
 
 /* Category Select - ใช้ select แทน dropdown */
 const categorySelect = $('#category');
 
 /* init state from URL */
-const qInput = $('#q'); 
+const qInput = $('#q');
 qInput.value = params.get('q') || '';
 
 const catFromUrl = params.get('category') || '';
-if (catFromUrl && categorySelect) { 
-    categorySelect.value = catFromUrl; 
+if (catFromUrl && categorySelect) {
+    categorySelect.value = catFromUrl;
 }
 
 // เมื่อเลือก category ใน select
@@ -61,17 +61,17 @@ if (categorySelect) {
 /* sorting: 2 choices */
 const sortMap = { rating_desc: 'เรตติ้งผู้จัด', date_asc: 'วันที่' };
 let sortSel = params.get('sort') || '';
-function setSort(v) { 
-    sortSel = v; 
-    sortLabel.textContent = sortMap[v] || 'เรียงลำดับ'; 
-    $$('#menuSort .sort-btn').forEach(b => b.classList.toggle('is-selected', b.dataset.sort === v)); 
+function setSort(v) {
+    sortSel = v;
+    sortLabel.textContent = sortMap[v] || 'เรียงลำดับ';
+    $$('#menuSort .sort-btn').forEach(b => b.classList.toggle('is-selected', b.dataset.sort === v));
 }
 setSort(sortSel);
 $$('#menuSort .sort-btn').forEach(b => b.addEventListener('click', () => {
-    setSort(b.dataset.sort); 
+    setSort(b.dataset.sort);
     sortMenu.classList.remove('show');
-    params.set('sort', sortSel); 
-    history.replaceState(null, '', '?' + params.toString()); 
+    params.set('sort', sortSel);
+    history.replaceState(null, '', '?' + params.toString());
     render();
 }));
 
@@ -79,27 +79,27 @@ $$('#menuSort .sort-btn').forEach(b => b.addEventListener('click', () => {
 $('#searchForm').addEventListener('submit', e => {
     e.preventDefault();
     const next = new URLSearchParams();
-    const q = qInput.value.trim(); 
+    const q = qInput.value.trim();
     if (q) next.set('q', q);
-    
+
     const cat = categorySelect ? categorySelect.value : '';
     if (cat && cat !== 'clear') next.set('category', cat);
-    
+
     if (sortSel) next.set('sort', sortSel);
     location.assign((location.pathname) + '?' + next.toString());
 });
 
 /* regex builder */
 function buildRegex(input) {
-    const q = input.trim(); 
+    const q = input.trim();
     if (!q) return null;
-    if (q.startsWith('/') && q.lastIndexOf('/') > 0) { 
-        const last = q.lastIndexOf('/'); 
-        try { 
-            return new RegExp(q.slice(1, last), q.slice(last + 1)); 
-        } catch { 
-            return null; 
-        } 
+    if (q.startsWith('/') && q.lastIndexOf('/') > 0) {
+        const last = q.lastIndexOf('/');
+        try {
+            return new RegExp(q.slice(1, last), q.slice(last + 1));
+        } catch {
+            return null;
+        }
     }
     return new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
 }
@@ -107,23 +107,23 @@ function buildRegex(input) {
 /* filters */
 function applyFilters(rows) {
     let out = [...rows];
-    const q = params.get('q') || ''; 
+    const q = params.get('q') || '';
     const re = buildRegex(q);
-    if (q && re) { 
-        out = out.filter(it => re.test(it.title) || re.test(it.host)); 
+    if (q && re) {
+        out = out.filter(it => re.test(it.title) || re.test(it.host));
     }
 
     const cat = params.get('category') || '';
     if (cat) out = out.filter(it => it.category === cat);
 
     switch (sortSel) {
-        case 'rating_desc': 
-            out.sort((a, b) => b.rating - a.rating); 
+        case 'rating_desc':
+            out.sort((a, b) => b.rating - a.rating);
             break;
-        case 'date_asc': 
-            out.sort((a, b) => a.dateStart.localeCompare(b.dateStart)); 
+        case 'date_asc':
+            out.sort((a, b) => a.dateStart.localeCompare(b.dateStart));
             break;
-        default: 
+        default:
             out.sort((a, b) => b.dateStart.localeCompare(a.dateStart));
     }
     return out;
@@ -132,9 +132,9 @@ function applyFilters(rows) {
 /* card render */
 const resultsEl = $('#results'), emptyEl = $('#empty');
 
-function fmtDate(s) { 
-    const d = new Date(s + 'T00:00:00'); 
-    return d.toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: '2-digit' }); 
+function fmtDate(s) {
+    const d = new Date(s + 'T00:00:00');
+    return d.toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: '2-digit' });
 }
 
 function getCategoryIcon(category) {
@@ -148,7 +148,7 @@ function getCategoryIcon(category) {
 }
 
 function card(it) {
-    const el = document.createElement('article'); 
+    const el = document.createElement('article');
     el.className = 'card';
     el.innerHTML = `
     <div class="card-body">
@@ -177,9 +177,9 @@ function card(it) {
 function render() {
     const rows = applyFilters(window.MOCK || []);
     resultsEl.innerHTML = '';
-    if (!rows.length) { 
-        emptyEl.style.display = 'grid'; 
-        return; 
+    if (!rows.length) {
+        emptyEl.style.display = 'grid';
+        return;
     }
     emptyEl.style.display = 'none';
     rows.forEach(r => resultsEl.appendChild(card(r)));
@@ -191,64 +191,64 @@ render();
 /* JOIN modal + validate */
 const modalJoin = $('#joinModal'), joinId = $('#joinActivityId'), joinName = $('#joinName'), joinEmail = $('#joinEmail');
 const errName = $('#errName'), errEmail = $('#errEmail'), joinSubmit = $('#joinSubmit');
-const NAME_RE = /^[A-Za-zก-๙\s]{2,50}$/; 
+const NAME_RE = /^[A-Za-zก-๙\s]{2,50}$/;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function openJoinModal(id) { 
-    joinId.value = String(id); 
-    joinName.value = ''; 
-    joinEmail.value = ''; 
-    errName.classList.remove('show'); 
-    errEmail.classList.remove('show'); 
-    joinSubmit.disabled = true; 
-    modalJoin.classList.remove('hidden'); 
-    modalJoin.setAttribute('aria-hidden', 'false'); 
-    joinName.focus(); 
+function openJoinModal(id) {
+    joinId.value = String(id);
+    joinName.value = '';
+    joinEmail.value = '';
+    errName.classList.remove('show');
+    errEmail.classList.remove('show');
+    joinSubmit.disabled = true;
+    modalJoin.classList.remove('hidden');
+    modalJoin.setAttribute('aria-hidden', 'false');
+    joinName.focus();
 }
 
-function closeJoinModal() { 
-    modalJoin.classList.add('hidden'); 
-    modalJoin.setAttribute('aria-hidden', 'true'); 
+function closeJoinModal() {
+    modalJoin.classList.add('hidden');
+    modalJoin.setAttribute('aria-hidden', 'true');
 }
+// const modalJoin = $('#joinModal');
+// if (modalJoin) {
+//     $('#joinClose').addEventListener('click', closeJoinModal);
+//     $('#joinCancel').addEventListener('click', closeJoinModal);
+//     modalJoin.addEventListener('click', e => {
+//         if (e.target.classList.contains('modal-backdrop')) closeJoinModal();
+//     });
 
-$('#joinClose').addEventListener('click', closeJoinModal); 
-$('#joinCancel').addEventListener('click', closeJoinModal);
-modalJoin.addEventListener('click', e => { 
-    if (e.target.classList.contains('modal-backdrop')) closeJoinModal(); 
-});
+//     function validateJoin() {
+//         const okN = NAME_RE.test(joinName.value.trim());
+//         const okE = EMAIL_RE.test(joinEmail.value.trim());
+//         errName.classList.toggle('show', !okN && joinName.value.trim() !== '');
+//         errEmail.classList.toggle('show', !okE && joinEmail.value.trim() !== '');
+//         joinSubmit.disabled = !(okN && okE);
+//     }
 
-function validateJoin() { 
-    const okN = NAME_RE.test(joinName.value.trim()); 
-    const okE = EMAIL_RE.test(joinEmail.value.trim()); 
-    errName.classList.toggle('show', !okN && joinName.value.trim() !== ''); 
-    errEmail.classList.toggle('show', !okE && joinEmail.value.trim() !== ''); 
-    joinSubmit.disabled = !(okN && okE); 
-}
+//     ['input', 'blur'].forEach(ev => {
+//         joinName.addEventListener(ev, validateJoin);
+//         joinEmail.addEventListener(ev, validateJoin);
+//     });
 
-['input', 'blur'].forEach(ev => { 
-    joinName.addEventListener(ev, validateJoin); 
-    joinEmail.addEventListener(ev, validateJoin); 
-});
-
-$('#joinForm').addEventListener('submit', e => { 
-    e.preventDefault(); 
-    location.assign(`join.html?id=${encodeURIComponent(joinId.value)}&name=${encodeURIComponent(joinName.value)}&email=${encodeURIComponent(joinEmail.value)}`); 
-});
+//     $('#joinForm').addEventListener('submit', e => {
+//         e.preventDefault();
+//         location.assign(`join.html?id=${encodeURIComponent(joinId.value)}&name=${encodeURIComponent(joinName.value)}&email=${encodeURIComponent(joinEmail.value)}`);
+//     });
+// }
 
 /* CREATE modal — lock scroll while open */
 const modalCreate = $('#createModal');
-function openCreate(){
-  document.body.classList.add('modal-open');
-  modalCreate.classList.remove('hidden');
+function openCreate() {
+    document.body.classList.add('modal-open');
+    modalCreate.classList.remove('hidden');
 }
-function closeCreate(){
-  document.body.classList.remove('modal-open');
-  modalCreate.classList.add('hidden');
+function closeCreate() {
+    document.body.classList.remove('modal-open');
+    modalCreate.classList.add('hidden');
 }
 
 $('#openCreate2').addEventListener('click', openCreate);
-$('#createClose').addEventListener('click', closeCreate);
-$('#createCancel').addEventListener('click', closeCreate);
-modalCreate.addEventListener('click', e => { 
-    if (e.target.classList.contains('modal-backdrop')) closeCreate(); 
+modalCreate.addEventListener('click', e => {
+    if (e.target.classList.contains('modal-backdrop')) closeCreate();
 });
