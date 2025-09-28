@@ -13,6 +13,10 @@
 
     <link rel="stylesheet" href="ActCSS.css">
     <link rel="stylesheet" href="navbar.css">
+
+
+
+
 </head>
 
 <body>
@@ -25,7 +29,7 @@
             document.getElementById("navbar-placeholder").innerHTML = html;
             });
         </script>-->
-    
+
     <header class="nav">
         <a class="brand" href="home.html">
             <img src="/img/logo.png" alt="" class="brand-logo">
@@ -41,9 +45,9 @@
                     <img class="account-pill__avatar" src="/img/img1.png" alt="">
                     <span>User account</span>
                 </a>
-                 <a class="Notification" href="notify.html"> 
-                <img class="bell" src="/img/notic.png">
-                 </a> 
+                <a class="Notification" href="notify.html">
+                    <img class="bell" src="/img/notic.png">
+                </a>
             </div>
 
             <button class="hamburger" id="hamburger" aria-label="เมนู">
@@ -92,7 +96,7 @@
                 <div class="lens"><img src="/img/search1.png" alt=""></div>
 
                 <label for="q" class="sr-only"></label>
-                <input id="q" name="q" class="q" placeholder="ค้นหาตามชื่อกิจกรรม/ชื่อผู้จัดกิจกรรม" />
+                <input id="q" name="q" class="q" placeholder="ค้นหากิจกรรม" />
 
                 <div class="chips" id="chips"></div>
 
@@ -208,9 +212,36 @@
         <div class="modal-backdrop"></div>
     </div> -->
 
+
+    <script type="module" src="data.js"></script>
+    <script type="module" src="Activity.js"></script>
+    <script defer src="MoredetailActivity-popup.js"></script>
     <script defer src="CreateActivity-popup.js"></script>
-    <script defer src="data.js"></script>
-    <script defer src="Activity.js"></script>
+
+
+
+
+    <script>
+        // เพิ่ม event listener สำหรับการปิด popup
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Page loaded, popup functions available:', typeof openActivityPopup);
+
+            // ตรวจสอบว่า popup elements มีอยู่จริง
+            const overlay = document.getElementById('popupOverlay');
+            if (overlay) {
+                console.log('Popup overlay found');
+
+                // ปิด popup เมื่อคลิกนอกพื้นที่
+                overlay.addEventListener('click', function (e) {
+                    if (e.target === this) {
+                        closeActivityPopup();
+                    }
+                });
+            } else {
+                console.error('Popup overlay not found');
+            }
+        });
+    </script>
 </body>
 
 </html>

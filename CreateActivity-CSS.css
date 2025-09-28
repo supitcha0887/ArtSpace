@@ -1,4 +1,99 @@
 
+/* --- ปรับให้ popup มี responsive layout และลบพื้นหลังแดง --- */
+
+/* ลบสีแดงออกจากพื้นหลัง popup */
+.popup-wrapper {
+  background-color: rgba(0, 0, 0, 0); /* โปร่งใส */ /* แบบโปร่งแทนแดง */
+}
+
+/* กล่อง popup */
+.popup-box {
+  background: white;
+  border-radius: 1rem;
+  max-width: 1000px;
+  width: 100%;
+  max-height: 95vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* ด้านซ้าย: รูปภาพหรือกราฟิก */
+.popup-left {
+  flex: 1 1 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+}
+
+.popup-left img {
+  max-width: 100%;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+/* ด้านขวา: ฟอร์ม */
+.popup-right {
+  flex: 2 1 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.popup-right label {
+  font-weight: 600;
+  color: #333;
+}
+
+.popup-right input,
+.popup-right textarea,
+.popup-right select {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* ปุ่มล่าง */
+.popup-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.popup-footer button {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: none;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.popup-footer button.post {
+  background-color: #ffd600;
+  color: black;
+}
+
+@media screen and (max-width: 768px) {
+  .popup-box {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .popup-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 .create-header {
     background: #360048;
     width: 100%;
@@ -114,3 +209,54 @@
     overflow: hidden;
     max-height: 92vh;
 }
+@media screen and (max-width: 768px) {
+  .popup-box {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .popup-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+.expiry-date {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 768px) {
+  .expiry-date {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 768px){
+.modal-box.create-box{
+grid-template-columns: 1fr;
+grid-template-rows: auto 1fr;
+max-height: none;
+height: auto;
+}
+
+
+.create-header{
+height: 200px;
+}
+
+
+.create-body{
+padding: 1.5rem;
+}
+
+
+.side-logo{
+width: 64px;
+top: 0.75rem;
+left: 0.75rem;
+}
+}
+
+
+
