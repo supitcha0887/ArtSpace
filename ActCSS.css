@@ -27,7 +27,6 @@ body {
     color: var(--ink);
     background: #ffffff url("/img/backgroup1.png") top center / cover no-repeat;
     background-attachment: scroll;
-    /* ให้พื้นหลังเลื่อนตามเนื้อหา */
     font-family: "Chakra Petch", system-ui, -apple-system, Segoe UI, Roboto, Arial;
     display: flex;
     flex-direction: column;
@@ -35,7 +34,7 @@ body {
 
 main.wrap {
     flex: 1;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 24px 18px;
     width: 100%;
@@ -65,7 +64,6 @@ body.modal-open {
     border: 0
 }
 
-
 .brand {
     display: flex;
     align-items: top;
@@ -74,7 +72,8 @@ body.modal-open {
 
 .brand-logo {
     width: auto;
-    height: 100px
+    height: 60px;
+    max-width: 180px;
 }
 
 .nav-links {
@@ -89,7 +88,8 @@ body.modal-open {
 
 .nav-links a {
     padding: 8px 14px;
-    border-radius: 999px
+    border-radius: 999px;
+    white-space: nowrap;
 }
 
 .nav-links a.is-active {
@@ -113,12 +113,11 @@ body.modal-open {
 
 .bell {
     width: 40px;
-    height: 40spx
+    height: 40px;
+    object-fit: contain;
 }
 
-/* ปุ่มโปรไฟล์ปรับสัดส่วนตามจอ */
 .account-pill {
-    /* สูง/ขนาดอวาตาร์: ขั้นต่ำ 28px, ปกติ ~5vw, สูงสุด 42px */
     --h: clamp(28px, 5vw, 42px);
     --gap: clamp(6px, 1vw, 10px);
     --padX: clamp(10px, 1.6vw, 16px);
@@ -149,27 +148,6 @@ body.modal-open {
     box-shadow: 0 0 0 4px #6a59ea, 0 0 0 4px #6a59ea;
 }
 
-/* ปรับละเอียดเพิ่มที่จอเล็กมาก/ใหญ่พิเศษ */
-@media (max-width:360px) {
-    .account-pill {
-        --h: 26px;
-        --gap: 6px;
-        --padX: 8px;
-        --font: 12px;
-    }
-}
-
-@media (min-width:1400px) {
-    .account-pill {
-        --h: 48px;
-        --gap: 12px;
-        --padX: 18px;
-        --font: 18px;
-    }
-}
-
-
-
 .hamburger {
     display: none;
     flex-direction: column;
@@ -188,7 +166,19 @@ body.modal-open {
     background: #111
 }
 
-@media (max-width:900px) {
+/* Responsive Navigation */
+@media (max-width: 1024px) {
+    .nav-links {
+        gap: 30px;
+        padding-right: 20px;
+    }
+    
+    .nav-actions {
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 900px) {
     .nav-links {
         display: none;
         position: absolute;
@@ -198,15 +188,47 @@ body.modal-open {
         border: 1px solid #eee;
         border-radius: 12px;
         padding: 10px;
+        flex-direction: column;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .nav-links.show {
         display: flex;
-        flex-direction: column
+    }
+
+    .nav-links a {
+        color: #333;
+        width: 100%;
+        text-align: center;
     }
 
     .hamburger {
         display: flex
+    }
+    
+    .nav-actions {
+        padding-right: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav {
+        padding: 10px 15px;
+    }
+    
+    .brand-logo {
+        height: 50px;
+        max-width: 150px;
+    }
+    
+    .nav-actions {
+        gap: 8px;
+        padding-right: 5px;
+    }
+    
+    .bell {
+        width: 35px;
+        height: 35px;
     }
 }
 
@@ -214,18 +236,15 @@ body.modal-open {
 .hero.plain {
     padding-top: 2%;
     min-height: 70vh;
-    /* เพิ่มจาก 60vh เป็น 70vh */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* เปลี่ยนจาก center เป็น space-between */
 }
 
 .hero-inner {
     max-width: 1100px;
     margin: 0 auto;
     padding: 12px 18px 30px;
-    /* ลดจาก 50px เป็น 30px */
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -234,29 +253,27 @@ body.modal-open {
 
 .hero-title {
     text-align: center;
-
-    font-size: 24px;
+    font-size: clamp(18px, 4vw, 28px);
     margin: 12px 0 18px;
     color: #ffffff;
+    line-height: 1.4;
 }
 
 .hero-cta.row {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 18px
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 .cta {
     display: flex;
     flex-direction: column;
-    /* เพิ่มบรรทัดนี้ */
     align-items: center;
-    /* เพิ่มบรรทัดนี้ */
     gap: 8px;
-    /* เพิ่มบรรทัดนี้ */
     padding: 16px 24px;
-    /* เพิ่มบรรทัดนี้ */
     border: 0;
     outline: 0;
     cursor: pointer;
@@ -264,47 +281,131 @@ body.modal-open {
     font-weight: 700;
     text-decoration: none;
     transition: transform .05s, filter .15s, box-shadow .15s;
+    min-width: 200px;
 }
 
 .btn-ico {
     padding-top: 20px;
-    width: 300px;
+    width: clamp(200px, 25vw, 300px);
     height: auto;
 }
 
 .btn-find-crate {
     display: flex;
     flex-direction: row;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 20px;
     align-items: center;
     color: #000000;
     background-color: #ffde59;
     border-radius: 50px;
     border: 0;
-    font-size: 24px;
+    font-size: clamp(16px, 3vw, 24px);
     font-weight: 700;
-    gap: 5px;
+    gap: 8px;
+    white-space: nowrap;
 }
 
-.icon-search {
-    width: 30px;
-    height: auto;
-}
-
-.icon-create {
-    width: 30px;
+.icon-search, .icon-create {
+    width: clamp(20px, 3vw, 30px);
     height: auto;
 }
 
 .or {
     font-weight: 700;
-    font-size: 30px;
-    color: #ffffff
+    font-size: clamp(20px, 4vw, 30px);
+    color: #ffffff;
+    margin: 0 10px;
 }
 
+/* Responsive Hero */
+@media (max-width: 768px) {
+    .search-wrap {
+        padding: 0 10px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+        border-radius: 20px;
+        gap: 16px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .lens {
+        justify-content: center;
+        margin-bottom: 8px;
+    }
+
+    .q {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid #ccc;
+    }
+
+    .bar-right {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .bar-right .btn, .bar-right .dropdown, .bar-right select {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    .btn-primary {
+        background-color: #f6d51f;
+        color: black;
+        font-weight: 700;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero.plain {
+        min-height: 60vh;
+        padding-top: 5%;
+    }
+    
+    .hero-cta.row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .cta {
+        min-width: 250px;
+        max-width: 90vw;
+    }
+    
+    .or {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 680px) {
+    .hero-inner {
+        padding: 12px 15px 20px;
+    }
+    
+    .btn-find-crate {
+        padding: 8px 16px;
+        gap: 6px;
+    }
+    
+    .cta {
+        min-width: 200px;
+        padding: 12px 20px;
+    }
+}
+
+/* SEARCH BAR */
 .search-wrap {
-    max-width: 2000px;
-    margin: 50px 250px;
+    max-width: 1000px;
+    margin: 50px auto;
     padding: 0 18px;
 }
 
@@ -315,7 +416,8 @@ body.modal-open {
     padding: 10px 12px;
     display: flex;
     align-items: center;
-    gap: 10px
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .lens {
@@ -329,17 +431,19 @@ body.modal-open {
 }
 
 .lens img {
-    width: 35px;
-    height: 35px;
+    width: 28px;
+    height: 28px;
 }
 
 .q {
     flex: 1;
+    min-width: 200px;
     height: 40px;
     padding: 0 10px;
     border: 0;
     outline: 0;
-    font-size: 16px
+    font-size: 16px;
+    border-radius: 100px;
 }
 
 .chips {
@@ -352,7 +456,8 @@ body.modal-open {
 .bar-right {
     margin-left: auto;
     display: flex;
-    gap: 8px
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .btn {
@@ -365,6 +470,7 @@ body.modal-open {
     font-weight: 700;
     transition: transform .05s, filter .15s, box-shadow .15s;
     background-color: #e9e9ee;
+    white-space: nowrap;
 }
 
 .btn:active {
@@ -407,9 +513,67 @@ body.modal-open {
 }
 
 .caret {
-    width: 20px;
-    height: auto;
-    padding-right: 5px;
+    width: 16px;
+    height: 16px;
+}
+
+/* Responsive Search */
+@media (max-width: 768px) {
+    .search-wrap {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+    
+    .search-bar {
+        padding: 8px 10px;
+        gap: 8px;
+    }
+    
+    .q {
+        min-width: 150px;
+        font-size: 14px;
+    }
+    
+    .bar-right {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+        margin-left: 0;
+    }
+    
+    .btn {
+        font-size: 14px;
+        padding: 0 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-bar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+        border-radius: 20px;
+    }
+    
+    .search-bar > div:first-child {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .q {
+        min-width: unset;
+    }
+    
+    .bar-right {
+        margin-top: 15px;
+        gap: 6px;
+    }
+    
+    .btn {
+        flex: 1;
+        text-align: center;
+    }
 }
 
 /* Dropdowns */
@@ -462,22 +626,6 @@ body.modal-open {
     color: #fff;
 }
 
-::picker(select) {
-    border: none;
-}
-
-option:first-of-type {
-    border-radius: 8px 8px 0px 0px;
-}
-
-option:last-of-type {
-    border-radius: 8px 8px 0px 0px;
-}
-
-option:not(option:last-of-type) {
-    border-bottom: none;
-}
-
 .opt input {
     appearance: none;
     width: 18px;
@@ -491,7 +639,6 @@ option:not(option:last-of-type) {
     background: #6A1B9A;
 }
 
-/* When option is selected (parent has checked input), style like sort-btn.is-selected */
 .opt:has(input:checked) {
     background: #6A1B9A;
     color: #fff;
@@ -540,19 +687,12 @@ option:not(option:last-of-type) {
     color: #fff
 }
 
-/* RESULTS: card ตามแบบ */
-/* หรือแก้ไขที่ container หลัก */
-/* .wrap {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 24px 18px;
-    min-height: 50vh; 
-}*/
+/* RESULTS */
 .results {
-    margin-top: 10px;
+    margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 18px
+    gap: 20px
 }
 
 .card {
@@ -575,10 +715,10 @@ option:not(option:last-of-type) {
 }
 
 .card-body {
-    padding: 14px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     text-align: center;
     align-items: center;
 }
@@ -595,7 +735,11 @@ option:not(option:last-of-type) {
     font-size: 13px;
     width: max-content;
     text-align: center;
+}
 
+.pill-head img {
+    width: 16px;
+    height: 16px;
 }
 
 .title-head {
@@ -604,7 +748,9 @@ option:not(option:last-of-type) {
     border-radius: 12px;
     padding: 10px 12px;
     text-align: center;
-    font-weight: 700
+    font-weight: 700;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 .cover {
@@ -623,19 +769,25 @@ option:not(option:last-of-type) {
 .info-row {
     display: flex;
     align-items: center;
-    gap: 0px;
+    gap: 8px;
     width: 100%;
     background: #e9e9ee;
     border-radius: 999px;
+    padding: 6px;
 }
 
 .info-chip {
-    flex: 2;
-    padding: 6px 6px
+    flex: 1;
+    padding: 2px 8px;
+    font-size: 13px;
+    text-align: left;
 }
 
 .info-row-image {
-    padding-left: 10px;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin-left: 4px;
 }
 
 .count-badge {
@@ -653,13 +805,15 @@ option:not(option:last-of-type) {
 .image-count-badge {
     background-color: white;
     border-radius: 50%;
+    padding: 2px;
 }
 
 .org {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 4px
+    margin-top: 4px;
+    width: 100%;
 }
 
 .org img {
@@ -670,20 +824,11 @@ option:not(option:last-of-type) {
     object-fit: cover
 }
 
-.stars {
-    display: inline-flex;
-    gap: 2px
-}
-
-.star {
-    width: 16px;
-    height: 16px;
-    background: url('assets/star-off.svg') center/contain no-repeat;
-    display: inline-block
-}
-
-.star.on {
-    background-image: url('assets/star-on.svg')
+.org div {
+    flex: 1;
+    text-align: left;
+    font-size: 12px;
+    line-height: 1.3;
 }
 
 img.rating {
@@ -695,11 +840,14 @@ img.rating {
 .actions {
     display: flex;
     gap: 10px;
-    margin-top: 8px
+    margin-top: 8px;
+    width: 100%;
 }
 
 .btn-small {
-    border-radius: 30px
+    border-radius: 30px;
+    flex: 1;
+    font-size: 14px;
 }
 
 .btn-dark {
@@ -725,11 +873,56 @@ img.rating {
     border-radius: 30px;
 }
 
+/* Responsive Cards */
+@media (max-width: 1200px) {
+    .results {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    
+    .results {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+    }
+    
+    .card-body {
+        padding: 14px;
+    }
+    
+    .title-head {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .results {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .card-body {
+        padding: 12px;
+    }
+    
+    .actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .btn-small {
+        flex: none;
+    }
+}
+
 /* Empty */
 .empty {
     margin: 40px 0;
-    padding: 80px 28px;
-    /* เพิ่มจาก 60px */
+    padding: 60px 28px;
     border: 2px dashed var(--gray-300);
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.95);
@@ -737,18 +930,29 @@ img.rating {
     place-items: center;
     text-align: center;
     color: #666;
-    min-height: 400px;
-    /* เพิ่มจาก 300px */
+    min-height: 300px;
     backdrop-filter: blur(2px);
 }
 
 .empty-ill {
-    width: 120px;
+    width: 80px;
     opacity: .7;
     margin-bottom: 8px
 }
 
-/* ==== Create Activity modal: full-page feel ==== */
+@media (max-width: 768px) {
+    .empty {
+        padding: 40px 20px;
+        margin: 20px 0;
+        min-height: 250px;
+    }
+    
+    .empty-ill {
+        width: 60px;
+    }
+}
+
+/* CREATE MODAL */
 .modal.hidden {
     display: none
 }
@@ -785,15 +989,27 @@ img.rating {
     grid-template-columns: 360px 1fr;
 }
 
+@media (max-width: 1024px) {
+    .modal-box.create-box {
+        grid-template-columns: 300px 1fr;
+        width: 95vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-box.create-box {
+        grid-template-columns: 1fr;
+        width: 96vw;
+        max-height: 90vh;
+        margin: 5vh auto;
+    }
+}
+
 .create-side {
     position: relative;
     background: #6A1B9A;
     min-height: 100%;
-    /* align-items: center;
-    justify-content: center; */
 }
-
-
 
 .side-logo {
     position: absolute;
@@ -805,19 +1021,45 @@ img.rating {
 }
 
 .side-logo img {
-    width: 200px;
-    /* height: 200px */
+    width: 150px;
 }
+
+@media (max-width: 1024px) {
+    .side-logo {
+        left: 30px;
+        top: 30px;
+    }
+    
+    .side-logo img {
+        width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .create-side {
+        display: none;
+    }
+}
+
 .grid2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px
 }
+
+@media (max-width: 600px) {
+    .grid2 {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
+
 .chip-row {
     display: flex;
     flex-wrap: wrap;
     gap: 8px
 }
+
 .chip {
     display: inline-flex;
     align-items: center;
@@ -826,7 +1068,8 @@ img.rating {
     border-radius: 999px;
     background: #ede7f6;
     font-weight: 700;
-    border: 2px solid var(--chip-bd)
+    border: 2px solid var(--chip-bd);
+    font-size: 13px;
 }
 
 .chip.va {
@@ -861,20 +1104,43 @@ img.rating {
     box-shadow: 0 0 0 3px rgba(106, 27, 154, .25)
 }
 
-/* lock page behind modal */
 body.modal-open {
     overflow: hidden;
 }
 
-/* do NOT let the overlay or modal container scroll */
 .modal {
     overflow: hidden;
 }
 
-/* remove any .modal { overflow:auto } you added */
 .modal-box.create-box {
     max-height: 92vh;
     overflow: hidden;
 }
 
-/* single scroll area inside the modal */
+/* Responsive Main Container */
+@media (max-width: 1200px) {
+    main.wrap {
+        max-width: 1000px;
+        padding: 20px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    main.wrap {
+        padding: 15px 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        background: #ffffff url("/img/backgroup1.png") top center / cover no-repeat;
+        background-attachment: scroll;
+        font-family: "Chakra Petch", system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        display: flex;
+        flex-direction: column;
+
+    }
+}

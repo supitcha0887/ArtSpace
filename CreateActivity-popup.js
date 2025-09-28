@@ -17,10 +17,14 @@ class PopupManager {
             position: fixed;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             z-index: 9998;
             opacity: 0;
-            transition: opacity 0.3s ease;
         `;
 
         // สร้าง popup container
@@ -39,8 +43,6 @@ class PopupManager {
             max-height: 90%;
             overflow: auto;
             opacity: 0;
-            transition: all 0.3s ease;
-            background-color : red; 
         `;
 
         // เพิ่ม elements เข้า body
@@ -103,7 +105,7 @@ class PopupManager {
                 <div style="padding: 20px; text-align: center;">
                     <h3 style="color: #e74c3c;">เกิดข้อผิดพลาด</h3>
                     <p>ไม่สามารถโหลดเนื้อหาได้</p>
-                    <button onclick="popupManager.close()" style="margin-top: 10px; padding: 8px 16px; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer;">ปิด</button>
+                    <button onclick="popupManager.close()" style="margin-top: 10px; padding: 8px 16px; color: white; border: none; border-radius: 4px; cursor: pointer;">ปิด</button>
                 </div>
             `;
             this.show();
