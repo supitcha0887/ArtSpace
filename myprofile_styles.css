@@ -17,7 +17,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 60px;
-    background: url('/img/backgroup2_edit.png') top/ cover;
+    background: url('img/backgroup2_edit.png') top/ cover;
     background-size: 100% auto;
 }
 
@@ -72,7 +72,7 @@ body {
 }
 
 .profile-card {
-    background: url('/img/bg_card.webp') top/cover no-repeat, rgba(139, 69, 19, 0.2);
+    background: url('img/bg_card.webp') top/cover no-repeat, rgba(139, 69, 19, 0.2);
     border-radius: 20px;
     padding: 40px 48px;
     backdrop-filter: blur(10px);
@@ -117,7 +117,7 @@ body {
     width: 180px;
     height: 180px;
     border-radius: 15px;
-    background: url('/img/kai01.webp') center/cover;
+    background: url('img/kai01.webp') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -167,7 +167,7 @@ body {
     border-radius: 50%;
     margin-right: 15px;
     vertical-align: middle;
-    background-image: url('/img/icon_profile.png');
+    background-image: url('img/icon_profile.png');
     background-size: 25px 25px; /* ขยาย icon */
     background-repeat: no-repeat;
     background-position: center;
@@ -307,21 +307,21 @@ body {
 /* Styling for the main sections */
 .joined-section-container,
 .created-section-container{
-    background: url('/img/bg_card.webp') center/cover;
+    background: url('img/bg_card.webp') center/cover;
     background-position: 70% 20%;
     border-radius: 20px;
     padding: 40px 60px;
     margin-bottom: 30px;
 }
 .gallery-section-container{
-    background: url('/img/backgroup2.png') center/cover;
+    background: url('img/backgroup2.png') center/cover;
     background-position: 70% 20%;
     border-radius: 20px;
     padding: 40px 60px;
     margin-bottom: 30px;
 }
 .posted-section-container {
-    background: url('/img/bg_card.webp') bottom/cover no-repeat, rgba(139, 69, 19, 0.2);
+    background: url('img/bg_card.webp') bottom/cover no-repeat, rgba(139, 69, 19, 0.2);
     border-radius: 20px;
     padding: 70px 60px;
     margin-bottom: 30px;
@@ -437,7 +437,7 @@ body {
     height: 100px;
     border-radius: 50%;
     margin: 0 auto 20px;
-    background: url('/img/kai01.webp') center/cover;
+    background: url('img/kai01.webp') center/cover;
     display: block;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -875,5 +875,151 @@ body {
     font-size: 16px;
 }
 
+/* ใส่รูป profile */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
+.image-item {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
 
+.image-item:hover {
+    transform: scale(1.05);
+}
+
+.image-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    display: block;
+}
+
+.delete-image-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.delete-image-btn:hover {
+    background: rgba(255, 0, 0, 1);
+}
+
+.upload-area.dragover {
+    border-color: #8A2BE2 !important;
+    background-color: #f8f5ff !important;
+}
+
+#current-image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+/* ปรับ z-index ของปุ่มลูกศรให้อยู่ด้านบน */
+.nav-arrow {
+    z-index: 10 !important;
+    position: relative;
+}
+
+/* ป้องกันรูปภาพทับปุ่ม */
+.gallery-wrapper {
+    position: relative;
+}
+
+.gallery-wrapper .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 15;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-wrapper .nav-arrow:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.gallery-wrapper .nav-arrow.left-arrow {
+    left: 10px;
+}
+
+.gallery-wrapper .nav-arrow.right-arrow {
+    right: 10px;
+}
+
+/* Profile Image Styles */
+#avatar-preview {
+    position: relative;
+    transition: all 0.3s ease;
+    border: 2px dashed #ddd;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#avatar-preview:hover {
+    border-color: #8A2BE2;
+    transform: scale(1.02);
+}
+
+#avatar-preview.has-image {
+    border: 2px solid #8A2BE2;
+}
+
+.profile-image {
+    transition: all 0.3s ease;
+}
+
+/* File input styling */
+.file-upload-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(138, 43, 226, 0.1);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#avatar-preview:hover .file-upload-overlay {
+    display: flex;
+}
