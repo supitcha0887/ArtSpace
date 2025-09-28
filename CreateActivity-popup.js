@@ -40,9 +40,10 @@ class PopupManager {
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             z-index: 9999;
             max-width: 100%;
-            max-height: 90%;
+            max-height: 100%;
             overflow: auto;
             opacity: 0;
+            border-radius:30px;
         `;
 
         // เพิ่ม elements เข้า body
@@ -238,8 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
         createBtn.addEventListener("click", () => {
             openPopup("CreateActivity.html", {
                 className: "popup-create",
-                width: "96vw",
-                maxWidth: "1200px",
                 onLoad: (container) => {
                     console.log("Popup Loaded");
                     // bind event here if needed

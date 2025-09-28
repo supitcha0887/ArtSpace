@@ -143,83 +143,10 @@
     </main>
 
 
-    <!-- CREATE MODAL: full-page feel -->
-
-    <!--<div id="createModal" class="modal hidden" aria-hidden="true">
-        <div class="modal-box create-box">
-            <aside class="create-side">
-                <img src="/img/create_act.png" alt="" class="create-illu">
-                <div class="side-logo"><img src="/img/logo.png" alt=""><span></span></div>
-            </aside>
-            <div class="create-form">
-                <div class="modal-head">
-                    <div class="title big">Create Activity</div>
-                    <button id="createClose" class="icon-btn" aria-label="ปิด">×</button>
-                </div>
-                <form id="createForm" action="/api/activities" method="POST">
-                    <label class="field"><span>ชื่อกิจกรรม :</span><input name="title" required></label>
-                    <label class="field"><span>รายละเอียด :</span><textarea name="desc" rows="3"
-                            required></textarea></label>
-
-                    <div class="grid2">
-                        <label class="field"><span>วันที่เริ่มจัดกิจกรรม :</span><input type="date" name="start_date"
-                                required></label>
-                        <label class="field"><span>เวลาเริ่ม :</span><input type="time" name="start_time"
-                                required></label>
-                    </div>
-                    <div class="grid2">
-                        <label class="field"><span>วันที่สิ้นสุดกิจกรรม :</span><input type="date" name="end_date"
-                                required></label>
-                        <label class="field"><span>เวลาสิ้นสุด :</span><input type="time" name="end_time"
-                                required></label>
-                    </div>
-
-                    <label class="field"><span>สถานที่ :</span><input name="place" required></label>
-                    <div class="grid2">
-                        <label class="field"><span>จำนวนที่รับ :</span><input type="number" min="1" name="capacity"
-                                required></label>
-                        <label class="field"><span>วันหมดอายุของประกาศ :</span><input type="date" name="expire"
-                                required></label>
-                    </div>
-
-                    <div class="field">
-                        <span>กรุณาเลือกหมวด :</span>
-                        <div class="chip-row">
-                            <label class="chip-check"><input type="radio" name="category" value="Visual Arts"><span
-                                    class="chip va">Visual Arts</span></label>
-                            <label class="chip-check"><input type="radio" name="category" value="Photography"><span
-                                    class="chip ph">Photography</span></label>
-                            <label class="chip-check"><input type="radio" name="category" value="Writing"><span
-                                    class="chip wr">Writing</span></label>
-                            <label class="chip-check"><input type="radio" name="category" value="Music"><span
-                                    class="chip mu">Music</span></label>
-                        </div>
-                    </div>
-
-                    <label class="field upload">
-                        <span>อัปโหลดรูปโปรไฟล์ :</span>
-                        <input type="file" name="thumb" accept="image/*" class="upload_default">
-                        <span class="btn btn-light">อัปโหลดรูปโปรไฟล์</span>
-                    </label>
-
-                    <div class="modal-actions">
-                        <button type="button" class="btn btn-ghost" id="createCancel">Cancel</button>
-                        <button type="submit" class="btn btn-yellow">Post</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="modal-backdrop"></div>
-    </div> -->
-
-
     <script type="module" src="data.js"></script>
     <script type="module" src="Activity.js"></script>
     <script defer src="MoredetailActivity-popup.js"></script>
     <script defer src="CreateActivity-popup.js"></script>
-
-
-
 
     <script>
         // เพิ่ม event listener สำหรับการปิด popup
