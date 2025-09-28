@@ -1,56 +1,23 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ART SPACE</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">
-                    <i class="fas fa-palette"></i> ART<br>SPACE
-                </a>
-                <div class="nav-right-group">
-                    <ul class="nav-menu"  id="navMenu">
-                        <li><a href="#activities">Activities</a></li>
-                        <li><a href="#community">Community</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li class="mobile-user" id="mobileUserInfo" style="display:none;">
-                        <img id="mobileUserAvatar" alt="avatar">
-                <span id="mobileUserName"></span>
-                        </li>
-<li class="mobile-logout" style="display:none;">
-  <button class="logout-btn">Log out</button>
-</li>
-                        <li class="mobile-auth">
-                            <a href="#" class="login-btn">Log in / Sign in</a>
-                        </li>
-                    </ul>
-<div class="auth-buttons">
-  <div id="userInfo" class="user-info" style="display:none;">
-    <img id="userAvatar" class="user-avatar" src="" alt="user avatar">
-    <span id="userName"></span>
-  </div>
-  <button id="desktopLogout" class="logout-btn" style="display:none;">Log out</button>
-  <a href="#" class="login-btn">Log in / Sign in</a>
-  <button class="notification-btn">
-    <i class="fas fa-bell"></i>
-  </button>
- 
-</div>
-            </div>
-            <button class="hamburger-btn" id="hamburgerBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-    </div>
-</header>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ART SPACE</title>
 
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <!-- สไตล์หลักหน้าโฮม -->
+  <link rel="stylesheet" href="styles.css"/>
+
+  <!-- สไตล์ navbar แบบ myprofile -->
+  <link rel="stylesheet" href="navbar.css"/>
+
+</head>
+
+<body>
+  <div id="navbarMount"></div>
     <main>
         <section class="hero content-section">
             <div class="color-sentinel" data-color="dark"></div>
@@ -78,7 +45,7 @@
                             <i class="fas fa-bullhorn"></i>
                         </div>
                         <h3 id="b">เริ่มต้นกิจกรรมของคุณ<br>แล้วเชิญเพื่อนมาร่วมสร้างสรรค์</h3>
-                        <a href="Activity.html" class="card-btn">Create Activity</a>
+                        <a href="Activity.html?popup=create" class="card-btn">Create Activity</a>
                     </div>
                 </div>
             </div>
@@ -232,10 +199,9 @@
         </section>
 
         <div class="modal-container" id="authModal">
-    <div class="modal-content-new" id="modalContent">
-        </div>
-    </div>
-</div>
+                <div id="modalContent"></div>
+            </div>
+        
 <section class="about-section content-section white-section" id="about">
   <div class="container">
     <!-- เรื่องราว -->
@@ -323,5 +289,27 @@
     </footer>
 
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  // เดสก์ท็อป
+  const userInfo = document.getElementById('userInfo');
+  if (userInfo) {
+    userInfo.style.cursor = 'pointer';
+    userInfo.addEventListener('click', () => {
+      window.location.href = 'myprofile.html';
+    });
+  }
+
+  // มือถือ
+  const mobileUserInfo = document.getElementById('mobileUserInfo');
+  if (mobileUserInfo) {
+    mobileUserInfo.style.cursor = 'pointer';
+    mobileUserInfo.addEventListener('click', () => {
+      window.location.href = 'myprofile.html';
+    });
+  }
+});
+
+    </script>
 </body>
 </html>

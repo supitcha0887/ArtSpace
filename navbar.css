@@ -1,43 +1,33 @@
-
 /* Navigation Styles */
 
 /* Header และ Nav พื้นฐาน */
 header {
-    background: transparent;
+    background: #4a1a8c;
     transition: 0.3s ease-in-out;
-    padding: 20px 0;
+    padding: 0;
     position: fixed;
     z-index: 1000;
     width: 100%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* สีของ nav เมื่ออยู่บนพื้นหลังโปร่งใส */
+/* สีของ nav - ใช้สีขาวเสมอบน navbar สีม่วง */
 header .nav-menu a,
 header .logo,
 header .login-btn {
     color: white;
 }
 
-/* สีของ nav เมื่ออยู่บนพื้นหลังสีขาว */
-header.on-white {
-    background: white;
-}
-
-header.on-white .nav-menu a,
-header.on-white .logo,
-header.on-white .login-btn {
-    color: #000000;
-}
-
-/* สีของ nav เมื่อเป็น sticky */
+/* สีของ nav เมื่อ sticky - ยังคงเป็นสีม่วง */
 header.sticky {
-    background: white !important;
+    background: #4a1a8c !important;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.2);
 }
 
 header.sticky .nav-menu a,
 header.sticky .logo,
 header.sticky .login-btn {
-    color: #000 !important;
+    color: white !important;
 }
 
 /* Container สำหรับ nav */
@@ -48,21 +38,22 @@ header.sticky .login-btn {
 }
 
 /* Nav Layout */
-/* Background ของ navbar ให้เต็มจอ */
 .navbar {
     width: 100%;
-    background: url('img/backgroup2_edit.png') top/cover no-repeat;
-    padding: 60px 0;  /* ระยะบนล่าง */
+    background: #4a1a8c;
+    padding: 20px 0;
 }
 
-/* Container สำหรับเนื้อหา กว้างประมาณ 70% ของหน้าจอ และกึ่งกลาง */
+/* Container สำหรับเนื้อหา */
 .navbar-content {
-    width: 70%;      /* ปรับตามต้องการ */
-    margin: 0 auto;  /* กึ่งกลาง */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 
 
 /* กลุ่มเมนูและปุ่มด้านขวา */
@@ -78,8 +69,13 @@ header.sticky .login-btn {
     align-items: center;
     font-size: 24px;
     font-weight: bold;
-    color: rgb(255, 255, 255);
+    color: white;
     text-decoration: none;
+}
+
+.logo:hover {
+    opacity: 0.9;
+    color: white;
 }
 
 .logo i {
@@ -95,16 +91,23 @@ header.sticky .login-btn {
     display: flex;
     list-style: none;
     gap: 40px;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-menu a {
     color: white;
     text-decoration: none;
     transition: opacity 0.3s;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 .nav-menu a:hover {
     opacity: 0.8;
+    background-color: rgba(255,255,255,0.1);
+    padding: 8px 16px;
+    border-radius: 10px;
 }
 
 /* ปุ่ม Authentication */
@@ -121,6 +124,11 @@ header.sticky .login-btn {
     color: white;
     text-decoration: none;
     transition: background 0.3s;
+    font-weight: 500;
+}
+
+.login-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 /* ปุ่มแจ้งเตือน */
@@ -129,17 +137,24 @@ header.sticky .login-btn {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.notification-btn:hover {
+    transform: scale(1.05);
 }
 
 /* แผงแจ้งเตือน */
 .notification-panel {
     display: none;
     position: fixed;
-    top: 60px;
+    top: 70px;
     right: 20px;
     width: 300px;
     background: white;
@@ -198,11 +213,25 @@ header.sticky .login-btn {
     gap: 8px;
     padding: 4px 14px 4px 6px;
     border-radius: 999px;
-    background: linear-gradient(90deg, #7b2ff7, #f107a3);
+    background:transparent;
     color: white;
     font-weight: 600;
     font-family: 'Kanit', sans-serif;
     white-space: nowrap;
+    cursor: pointer;
+}
+.user-chip{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 12px;
+  background:linear-gradient(90deg,#6a00ff,#ff2db3);
+  color:#fff;
+  border-radius:9999px;
+}
+
+.user-info:hover {
+    opacity: 0.9;
 }
 
 .user-info img.user-avatar {
@@ -218,22 +247,29 @@ header.sticky .login-btn {
     line-height: 1;
 }
 
-.user-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
+/* รูปโปรไฟล์ */
+.user-avatar{
+  width:24px; height:24px; border-radius:50%;
+  border:2px solid #fff; object-fit:cover;
 }
 
 /* ปุ่มแฮมเบอร์เกอร์ (Mobile) */
 .hamburger-btn {
     display: none;
-    background: transparent;
+    background: rgba(255,255,255,0.1);
     border: none;
     color: white;
     font-size: 24px;
     cursor: pointer;
     z-index: 1001;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    backdrop-filter: blur(2px);
+}
+
+.hamburger-btn:hover {
+    background: rgba(255,255,255,0.2);
 }
 
 /* Mobile Navigation */
@@ -244,26 +280,96 @@ header.sticky .login-btn {
     top: 0;
     right: 0;
     width: 250px;
-    height: 100%;
-    background-color: rgba(74, 26, 140, 0.9);
-    padding: 80px 20px;
+    height: 100vh;
+    background: #4a1a8c;
+    padding: 80px 20px 20px;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-in-out;
+    transform: translateX(0);
+    z-index: 1050;
 }
 
-.nav-menu.mobile-active li {
-    margin-bottom: 20px;
+/* Mobile user info styles */
+.mobile-user{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:4px 0;
 }
 
-.nav-menu.mobile-active a {
-    font-size: 18px;
+.mobile-user .user-chip{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 12px;
+  background:linear-gradient(90deg,#6a00ff,#ff2db3);
+  color:#fff;
+  border-radius:9999px;
+}
+
+
+.mobile-user img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.6);
+}
+
+.mobile-user span {
+    color: #fff;
+    font-weight: 700;
+}
+
+.mobile-logout {
+    display: none;
+    margin-top: 8px;
+}
+
+.mobile-logout .logout-btn {
+    width: 100%;
+    text-align: center;
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.mobile-logout .logout-btn:hover {
+    background: rgba(255,255,255,0.26);
+}
+
+.mobile-auth {
     display: block;
-    padding: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 10px;
 }
 
-.nav-menu.mobile-active a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+.mobile-auth .login-btn {
+    display: block;
+    background: rgba(255,255,255,0.15);
+    padding: 12px 10px;
+    border-radius: 10px;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logout-btn{
+  border:0;
+  padding:6px 12px;
+  background:#fff;
+  border-radius:9999px;
+  font-weight:600;
+  cursor:pointer;
+  /* เส้นแบ่งชัด ๆ */
+  box-shadow:0 0 0 2px #fff inset;   /* ขอบขาวด้านใน */
+}
+
+
+.logout-btn:hover {
+    background: #e7e7e7;
 }
 
 /* Responsive Design */
@@ -273,11 +379,21 @@ header.sticky .login-btn {
     }
 
     .hamburger-btn {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .auth-buttons {
-        display: flex;
+    .mobile-user {
+        display: none;
+    }
+
+    .mobile-logout {
+        display: none;
+    }
+
+    .mobile-auth {
+        display: block;
     }
 
     .nav-menu {
@@ -285,19 +401,39 @@ header.sticky .login-btn {
         position: fixed;
         top: 0;
         right: 0;
-        height: 100%;
-        width: 250px;
-        background: #4b0082;
+        height: 100vh;
+        width: 260px;
         flex-direction: column;
-        padding: 60px 20px;
+        padding: 80px 20px 20px;
+        background: #4a1a8c;
         transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        z-index: 1000;
+        transition: transform 0.25s ease;
+        z-index: 1050;
     }
 
     .nav-menu.mobile-active {
         display: flex;
         transform: translateX(0);
+    }
+
+    .nav-menu.mobile-active li {
+        margin-bottom: 20px;
+    }
+
+    .nav-menu.mobile-active a {
+        font-size: 18px;
+        display: block;
+        padding: 10px;
+        color: #fff;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .nav-menu.mobile-active a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .auth-buttons {
+        display: none;
     }
 }
 
@@ -320,5 +456,11 @@ header.sticky .login-btn {
 
     .auth-buttons {
         display: flex;
+    }
+
+    .mobile-user,
+    .mobile-logout,
+    .mobile-auth {
+        display: none;
     }
 }

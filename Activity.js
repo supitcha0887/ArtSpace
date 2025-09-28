@@ -10,12 +10,6 @@ const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const params = new URLSearchParams(location.search);
 
-/* navbar */
-const hamburger = $('#hamburger');
-const navLinks = $('#navLinks');
-if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
-}
 
 /* Find Activities → focus search */
 const goFind = $('#goFind');

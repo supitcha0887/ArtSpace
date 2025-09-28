@@ -1,5 +1,5 @@
 /* =========================
-   app.js (final: signup -> switch to Login, no auto-login)
+   app.js (fixed: auto-load navbar + modal login + global auth UI)
    ========================= */
 
 const BASE_URL = "http://45.141.27.231:5000";
@@ -82,7 +82,7 @@ function updateAuthUI() {
     // Mobile
     if (isMobile) {
       if (mobileUserInfo) mobileUserInfo.style.display = "none";
-      if (mobileLogout) mobileLogout.style.display = "none"; // เปิดเมื่อ login แล้วเท่านั้น
+      if (mobileLogout) mobileLogout.style.display = "none";
       if (mobileAuthItem) mobileAuthItem.style.display = "block";
     } else {
       if (mobileUserInfo) mobileUserInfo.style.display = "none";
@@ -130,7 +130,7 @@ function setupAuthModal() {
             formWrapper?.classList.remove("scrollable");
             if (rightPanel)  rightPanel.scrollTop  = 0;
             if (formWrapper) formWrapper.scrollTop = 0;
-            
+
             // สลับแท็บ
             if (loginTab && signinTab && loginForm && signinForm) {
               loginTab.addEventListener("click", (e) => {
@@ -139,8 +139,8 @@ function setupAuthModal() {
                 signinTab.classList.remove("active");
                 loginForm.classList.add("active");
                 signinForm.classList.remove("active");
-                
-                rightPanel?.classList.remove("scrollable");            
+
+                rightPanel?.classList.remove("scrollable");
                 formWrapper?.classList.remove("scrollable");
                 if (rightPanel)  rightPanel.scrollTop  = 0;
                 if (formWrapper) formWrapper.scrollTop = 0;
@@ -151,7 +151,7 @@ function setupAuthModal() {
                 loginTab.classList.remove("active");
                 signinForm.classList.add("active");
                 loginForm.classList.remove("active");
-                
+
                 rightPanel?.classList.add("scrollable");
                 formWrapper?.classList.add("scrollable");
               });
@@ -189,7 +189,7 @@ function setupAuthModal() {
               });
             }
 
-            /* ===== Sign in submit (สมัครสมาชิก) — แก้ให้ไม่ auto-login ===== */
+            /* ===== Sign in submit (สมัครสมาชิก) — ไม่ auto-login ===== */
             const signinBtnSubmit = signinForm?.querySelector(".yellow-btn");
             const profileImageInput = document.getElementById("profileImage");
             const profilePreview = document.getElementById("profilePreview");
@@ -245,43 +245,35 @@ function setupAuthModal() {
                   };
                   allUsers.push(newUser);
                   localStorage.setItem("users", JSON.stringify(allUsers));
-
-                  // ✅ พฤติกรรมใหม่: ไม่ล็อกอินให้เอง
                   alert("🎉 สมัครสมาชิกสำเร็จ! กรุณาล็อกอินเพื่อเริ่มใช้งาน");
 
-                  // สลับกลับไปแท็บ Log in + เติม username ให้พร้อม
+                  // กลับแท็บ Log in และรีเซ็ตฟอร์มล็อกอิน
                   const loginTab   = document.getElementById("loginTab");
                   const signinTab  = document.getElementById("signinTab");
                   const loginForm  = document.getElementById("loginForm");
                   const signinForm = document.getElementById("signinForm");
-                  
+
                   loginTab?.classList.add("active");
                   signinTab?.classList.remove("active");
                   loginForm?.classList.add("active");
                   signinForm?.classList.remove("active");
-                  
-                  
 
+                  const rightPanel = document.querySelector(".modal-right-section");
+                  const formWrapper = document.querySelector(".form-wrapper");
                   rightPanel?.classList.remove("scrollable");
-formWrapper?.classList.remove("scrollable");
-requestAnimationFrame(() => {
-  if (rightPanel)  rightPanel.scrollTop  = 0;
-  if (formWrapper) formWrapper.scrollTop = 0;
-});
+                  formWrapper?.classList.remove("scrollable");
+                  requestAnimationFrame(() => {
+                    if (rightPanel)  rightPanel.scrollTop  = 0;
+                    if (formWrapper) formWrapper.scrollTop = 0;
+                  });
 
                   loginForm?.reset();
                   const loginUsername = document.getElementById("username");
                   const loginPassword = document.getElementById("password");
                   if (loginUsername) loginUsername.value = "";
                   if (loginPassword) loginPassword.value = "";
-                  
-
-                  // ถ้าต้องการ “ปิด modal เลย” แทนการสลับแท็บ ให้ใช้สองบรรทัดนี้:
-                  // authModal.classList.remove("show");
-                  // modalContent.innerHTML = "";
                 }
 
-                // อ่านไฟล์โปรไฟล์ (ถ้ามี) ก่อนบันทึก
                 const file = profileImageInput?.files?.[0];
                 if (file) {
                   const reader = new FileReader();
@@ -297,12 +289,12 @@ requestAnimationFrame(() => {
     });
   }
 
-  // ปิด modal เมื่อคลิกนอกกล่อง
+  
   if (authModal) {
     authModal.addEventListener("click", (e) => {
       if (e.target.id === "authModal") {
         authModal.classList.remove("show");
-        modalContent.innerHTML = "";
+        if (modalContent) modalContent.innerHTML = "";
       }
     });
   }
@@ -315,7 +307,6 @@ function setupLogout() {
     currentUser = null;
     updateAuthUI();
 
-    // ปิด drawer มือถือถ้าเปิดอยู่
     const navMenu = document.getElementById("navMenu");
     if (navMenu && navMenu.classList.contains("mobile-active")) {
       navMenu.classList.remove("mobile-active");
@@ -323,15 +314,12 @@ function setupLogout() {
     }
   }
 
-  // เดสก์ท็อป
   const desktopLogout = document.getElementById("desktopLogout");
   if (desktopLogout) desktopLogout.addEventListener("click", doLogout);
 
-  // มือถือ (ในเมนู)
   document.addEventListener("click", (e) => {
     const t = e.target;
     if (t && t.classList && t.classList.contains("logout-btn")) {
-      // ครอบคลุมทั้งปุ่มใน drawer และเดสก์ท็อป (กันพลาด)
       if (t.id !== "desktopLogout") e.preventDefault();
       doLogout();
     }
@@ -401,7 +389,7 @@ function setupNotificationPanel() {
   });
 }
 
-/* ---------- Header sticky ---------- */
+/* ---------- Header sticky (ถ้าหน้านั้นมี .hero) ---------- */
 function setupStickyHeader() {
   const header = document.querySelector("header");
   const hero = document.querySelector(".hero");
@@ -415,7 +403,7 @@ function setupStickyHeader() {
   onScroll();
 }
 
-/* ---------- Activities Carousel ---------- */
+/* ---------- Activities Carousel (ถ้ามี) ---------- */
 function setupActivitiesCarousel() {
   const leftBtn = document.querySelector(".arrow.left");
   const rightBtn = document.querySelector(".arrow.right");
@@ -445,8 +433,23 @@ function setupAnchorOffset() {
   });
 }
 
+/* ---------- โหลด navbar แล้วค่อย bind ทุกอย่าง ---------- */
+async function loadNavbarIfNeeded() {
+  // ถ้าหน้ามี #navbarMount ให้โหลด navbar.html เข้าไป
+  const mount = document.getElementById("navbarMount");
+  if (mount) {
+    try {
+      const html = await fetch("navbar.html").then((r) => r.text());
+      mount.innerHTML = html;
+    } catch (err) {
+      console.error("โหลด navbar.html ไม่สำเร็จ", err);
+    }
+  }
+}
+
 /* ---------- เริ่มทำงาน ---------- */
-document.addEventListener("DOMContentLoaded", () => {
+async function initApp() {
+  await loadNavbarIfNeeded(); // ให้ navbar อยู่ใน DOM ก่อน
   setupAuthModal();
   setupMobileMenu();
   setupNotificationPanel();
@@ -456,4 +459,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupLogout();
   updateAuthUI();
   window.addEventListener("resize", () => updateAuthUI());
-});
+}
+
+document.addEventListener("DOMContentLoaded", initApp);

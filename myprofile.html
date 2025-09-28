@@ -11,15 +11,8 @@
     
 </head>
 <body>
-    <div id="navbar-placeholder"></div>
-        <script>
-        fetch("navbar.html")
-            .then(res => res.text())
-            .then(html => {
-            document.getElementById("navbar-placeholder").innerHTML = html;
-            });
-        </script>
-
+    <div id="navbarMount"></div>
+    <div class="main-container">
     <div class="main-container">
         <div class="profile-card">
             <div class="card-header">

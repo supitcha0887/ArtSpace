@@ -49,187 +49,26 @@ body.modal-open {
     overflow: hidden;
 }
 
-/* NAVBAR */
-.nav {
-    position: static;
-    width: 100%;
-    height: 70px;
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    background: #6070ff00;
-    border-bottom: 2px solid #eee;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border: 0
-}
 
-.brand {
-    display: flex;
-    align-items: top;
-    gap: 10px
-}
 
-.brand-logo {
-    width: auto;
-    height: 60px;
-    max-width: 180px;
-}
-
-.nav-links {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    padding-right: 50px;
-    gap: 50px;
-    color: #ffffff;
-    font-weight: 700;
-}
-
-.nav-links a {
-    padding: 8px 14px;
-    border-radius: 999px;
-    white-space: nowrap;
-}
-
-.nav-links a.is-active {
-    background: #6b6bf9;
-    color: #ffffff
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: 10px;
-    padding-right: 50px;
-}
-
-.nav-right {
-    position: absolute;
-    display: flex;
-    right: 5px;
-}
-
-.bell {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-}
-
-.account-pill {
-    --h: clamp(28px, 5vw, 42px);
-    --gap: clamp(6px, 1vw, 10px);
-    --padX: clamp(10px, 1.6vw, 16px);
-    --font: clamp(12px, 1.6vw, 16px);
-
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    height: calc(var(--h) + 2px);
-    padding: 0 var(--padX) 0 calc(var(--h) + var(--gap));
-    border-radius: 9999px;
-    background: linear-gradient(100deg, #6a59ea, #ff6db6);
-    color: #fff;
-    font-weight: 700;
-    font-size: var(--font);
-    text-decoration: none;
-}
-
-.account-pill__avatar {
-    position: absolute;
-    left: -6px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: var(--h);
-    height: var(--h);
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 0 0 4px #6a59ea, 0 0 0 4px #6a59ea;
-}
-
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 4px;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    padding-top: 15px;
-    align-items: center;
-}
-
-.hamburger span {
-    width: 24px;
-    height: 2px;
-    border: 1;
-    background: #111
-}
-
-/* Responsive Navigation */
-@media (max-width: 1024px) {
-    .nav-links {
-        gap: 30px;
-        padding-right: 20px;
-    }
-    
-    .nav-actions {
-        padding-right: 20px;
+/* ปรับละเอียดเพิ่มที่จอเล็กมาก/ใหญ่พิเศษ */
+@media (max-width:360px) {
+    .account-pill {
+        --h: 26px;
+        --gap: 6px;
+        --padX: 8px;
+        --font: 12px;
     }
 }
 
-@media (max-width: 900px) {
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
-        right: 10px;
-        background: #fff;
-        border: 1px solid #eee;
-        border-radius: 12px;
-        padding: 10px;
-        flex-direction: column;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+@media (min-width:1400px) {
+    .account-pill {
+        --h: 48px;
+        --gap: 12px;
+        --padX: 18px;
+        --font: 18px;
     }
 
-    .nav-links.show {
-        display: flex;
-    }
-
-    .nav-links a {
-        color: #333;
-        width: 100%;
-        text-align: center;
-    }
-
-    .hamburger {
-        display: flex
-    }
-    
-    .nav-actions {
-        padding-right: 10px;
-    }
-}
-
-@media (max-width: 600px) {
-    .nav {
-        padding: 10px 15px;
-    }
-    
-    .brand-logo {
-        height: 50px;
-        max-width: 150px;
-    }
-    
-    .nav-actions {
-        gap: 8px;
-        padding-right: 5px;
-    }
-    
-    .bell {
-        width: 35px;
-        height: 35px;
-    }
 }
 
 /* HERO plain */
