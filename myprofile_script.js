@@ -300,10 +300,9 @@ document.addEventListener('keydown', function(e) {
 //เพิ่มในส่วนที่ดึงข้อมูล API
 document.addEventListener("DOMContentLoaded", async () => {
   const token = localStorage.getItem("token");
-
   try {
     // ดึงข้อมูล user
-    const resUser = await fetch("http://45.141.27.231:5000/api/user/me", {
+    const resUser = await fetch("http://45.141.27.231:5000/api/auth/me", {
       headers: { Authorization: `Bearer ${token}` }
     });
     const user = await resUser.json();
