@@ -105,7 +105,34 @@ body {
   margin-bottom: 15px;    
   margin-bottom: 40px; 
 }
+.card-categories {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 3;
+}
 
+.category-tag {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    margin-left: 5px;
+}
+
+.category-tag.visual-arts {
+    background: #5029db;
+}
+
+.category-tag.music {
+    background: #E91E63;
+}
+
+.category-tag.workshop {
+    background: #FF9800;
+}
 .profile-image {
     width: 180px;
     height: 180px;
@@ -622,7 +649,19 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-    padding: 12px 0;
+    padding: 15px 20px;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    text-decoration: none;
+    color: #374151;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.posted-item:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .posted-icon {
@@ -641,11 +680,10 @@ body {
 }
 
 .posted-text {
-    color: #374151;
     font-size: 16px;
     font-weight: 500;
+    color: inherit;
 }
-
 .edit-section-btn {
     background: #FCD34D;
     color: #000;
@@ -710,7 +748,7 @@ body {
 
 .joined-card {
     width: 180px;
-    height: 220px;
+    height: 280px; /* เพิ่มความสูงให้รองรับปุ่ม */
     background: white;
     border-radius: 20px;
     padding: 0;
@@ -720,6 +758,8 @@ body {
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
 }
 
 .card-status {
@@ -739,11 +779,15 @@ body {
     height: 140px;
     object-fit: cover;
     border-radius: 0;
-    margin-bottom: 0;
+    flex-shrink: 0;
 }
 
 .card-content {
     padding: 15px 12px 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-title {
@@ -1015,4 +1059,21 @@ body {
 
 #avatar-preview:hover .file-upload-overlay {
     display: flex;
+}
+
+.view-btn {
+    background: #8A2BE2;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.view-btn:hover {
+    background: #6A1B9A;
 }
