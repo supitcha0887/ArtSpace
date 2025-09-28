@@ -12,14 +12,7 @@ body {
     color: white;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 60px;
-    background: url('img/backgroup2_edit.png') top/ cover;
-    background-size: 100% auto;
-}
+
 
 .logo {
     display: flex;

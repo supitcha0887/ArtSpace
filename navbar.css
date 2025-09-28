@@ -48,14 +48,22 @@ header.sticky .login-btn {
 }
 
 /* Nav Layout */
-nav {
+/* Background ของ navbar ให้เต็มจอ */
+.navbar {
+    width: 100%;
+    background: url('img/backgroup2_edit.png') top/cover no-repeat;
+    padding: 60px 0;  /* ระยะบนล่าง */
+}
+
+/* Container สำหรับเนื้อหา กว้างประมาณ 70% ของหน้าจอ และกึ่งกลาง */
+.navbar-content {
+    width: 70%;      /* ปรับตามต้องการ */
+    margin: 0 auto;  /* กึ่งกลาง */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
 }
+
 
 /* กลุ่มเมนูและปุ่มด้านขวา */
 .nav-right-group {
