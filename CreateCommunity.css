@@ -1,24 +1,14 @@
-/* Modal background */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(3px);
+  display: flex;               /* เดิมบางไฟล์ใช้ block */
+  align-items: center;
+  justify-content: center;
+  padding: 24px;               /* กันชิดขอบจอ */
 }
 
-/* Modal box */
 .modal-content {
-  background: #fff;
-  margin: 4% auto;
-  padding: 30px 25px;
-  border-radius: 16px;
-  max-width: 600px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-  animation: fadeIn 0.3s ease;
-  position: relative;
+  margin: 0;                   /* ไม่ต้องใช้ margin:auto แล้ว */
+  width: min(720px, 95vw);     /* ปรับได้ตามใจ: 720–840px */
+  max-width: none;             /* ยกเลิก 600px เดิม */
 }
 
 /* Title */

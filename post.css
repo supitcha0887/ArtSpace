@@ -1,3 +1,8 @@
+body{
+  margin: 0;
+  font-family: 'Prompt', sans-serif;
+  background-color: #f9f9f9;
+}
 .community-page .logo {
       font-weight: bold !important;
       font-family: "Prompt", sans-serif;
@@ -43,3 +48,4 @@
     .back-link:hover {
       text-decoration: underline;
     }
+    .post-cover[src=""], .post-cover:not([src]) { display: none; }

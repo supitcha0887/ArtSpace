@@ -1,48 +1,33 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Community Post - ART SPACE</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Post</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="post.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="post.css" />
+  <style>
+    .wrap { max-width: 880px; margin: 40px auto; padding: 0 16px; }
+    .card { background:#fff; border-radius:18px; padding:24px; box-shadow:0 12px 30px rgba(0,0,0,.08); }
+    #title { font-size: 28px; margin: 0 0 12px; }
+    #content { white-space: pre-wrap; line-height: 1.7; color:#333; }
+    .meta { color:#666; margin-top: 16px; }
+    .post-cover { width:100%; height:auto; border-radius:12px; display:block; margin: 10px 0 18px; }
+  </style>
 </head>
-<body class="community-page">
-  <!-- header -->
-  <header>
-    <div class="container">
-      <nav>
-        <a href="home.html" class="logo">
-          <i class="fas fa-palette"></i> ART<br>SPACE
-        </a>
-        <div class="nav-right-group">
-          <ul class="nav-menu" id="navMenu">
-            <li><a href="home.html#activities">Activities</a></li>
-            <li><a href="community.html">Community</a></li>
-            <li><a href="home.html#about">About</a></li>
-          </ul>
-          <div class="auth-buttons">
-            <a href="#" class="login-btn">Log in / Sign in</a>
-            <button class="notification-btn"><i class="fas fa-bell"></i></button>
-          </div>
-        </div>
-      </nav>
+<body>
+  <div id="navbarMount"></div>
+  <div class="wrap">
+    <div class="card">
+      <h1 id="title">กำลังโหลด...</h1>
+      <img id="cover" class="post-cover" alt="post cover" />
+      <div id="content"></div>
+      <div class="meta">โพสต์โดย: <strong id="author"></strong></div>
     </div>
-  </header>
-
-  <!-- post content -->
-  <section class="community-section">
-    <div class="container">
-      <div class="post-detail">
-        <h1 id="title" class="post-title"></h1>
-        <img id="cover" class="post-cover" src="" alt="post cover">
-        <p id="content" class="post-content"></p>
-        <p class="post-author"><strong>โพสต์โดย:</strong> <span id="author"></span></p>
-      </div>
-    </div>
-  </section>
-
+  </div>
+  <script src="app.js" defer></script>
   <script src="post.js"></script>
 </body>
 </html>
