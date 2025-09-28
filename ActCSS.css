@@ -570,7 +570,7 @@ option:not(option:last-of-type) {
     box-shadow: 0 10px 28px rgba(0, 0, 0, .12)
 }
 
-.upload_default{
+.upload_default {
     display: none;
 }
 
@@ -774,21 +774,6 @@ img.rating {
     box-shadow: 0 16px 32px rgba(0, 0, 0, .25)
 }
 
-.modal-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between
-}
-
-.icon-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    border: 2px solid var(--purple);
-    background: #fff;
-    cursor: pointer
-}
-
 .modal-box.create-box {
     width: min(1100px, 96vw);
     max-height: 92vh;
@@ -808,14 +793,7 @@ img.rating {
     justify-content: center; */
 }
 
-.create-illu {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0
-}
+
 
 .side-logo {
     position: absolute;
@@ -830,58 +808,16 @@ img.rating {
     width: 200px;
     /* height: 200px */
 }
-
-.create-form {
-    padding: 20px 22px;
-    overflow: auto
-}
-
-.create-form .modal-head {
-    position: sticky;
-    top: 0;
-    background: #fff;
-    z-index: 1;
-    padding-top: 14px;
-    margin-top: -14px
-}
-
 .grid2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px
 }
-
-.field {
-    display: grid;
-    gap: 6px;
-    margin-top: 10px
-}
-
-.field input,
-.field textarea {
-    border: 2px solid var(--gray-200);
-    border-radius: 12px;
-    height: 42px;
-    padding: 0 10px;
-    font-family: inherit
-}
-
-.field textarea {
-    height: auto;
-    padding: 8px 10px
-}
-
-.field input:focus,
-.field textarea:focus {
-    outline: 3px solid var(--purple-200)
-}
-
 .chip-row {
     display: flex;
     flex-wrap: wrap;
     gap: 8px
 }
-
 .chip {
     display: inline-flex;
     align-items: center;
@@ -925,68 +861,20 @@ img.rating {
     box-shadow: 0 0 0 3px rgba(106, 27, 154, .25)
 }
 
-.modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-    margin-top: 14px
-}
-
 /* lock page behind modal */
-body.modal-open { overflow: hidden; }
+body.modal-open {
+    overflow: hidden;
+}
 
 /* do NOT let the overlay or modal container scroll */
-.modal { overflow: hidden; }                 /* remove any .modal { overflow:auto } you added */
-.modal-box.create-box { max-height: 92vh; overflow: hidden; }
+.modal {
+    overflow: hidden;
+}
+
+/* remove any .modal { overflow:auto } you added */
+.modal-box.create-box {
+    max-height: 92vh;
+    overflow: hidden;
+}
 
 /* single scroll area inside the modal */
-.create-form {
-  overflow: auto;
-  /* optional hard cap if needed on some browsers */
-  max-height: calc(92vh - 0px);
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-}
-
-
-@media (max-width:900px) {
-    .modal-box.create-box {
-        width: 96vw;
-        max-height: 96vh;
-        grid-template-columns: 1fr
-    }
-
-    .create-side {
-        height: 180px
-    }
-
-    .create-form {
-        padding: 16px
-    }
-
-    /* lock page behind modal */
-    body.modal-open {
-        overflow: hidden;
-    }
-
-    /* do NOT let the overlay or modal container scroll */
-    .modal {
-        overflow: hidden;
-    }
-
-    /* remove any .modal { overflow:auto } you added */
-    .modal-box.create-box {
-        max-height: 92vh;
-        overflow: hidden;
-    }
-
-    /* single scroll area inside the modal */
-    .create-form {
-        overflow: auto;
-        /* optional hard cap if needed on some browsers */
-        max-height: calc(92vh - 0px);
-        -webkit-overflow-scrolling: touch;
-        overscroll-behavior: contain;
-    }
-
-}

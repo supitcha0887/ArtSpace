@@ -4,19 +4,28 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ART SPACE — Activities</title>
+    <title>ART SPACE — Activity</title>
 
-    <!-- Chakra Petch -->
-    <!-- ตรวจสอบว่ามีใน <head> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
 
     <link rel="stylesheet" href="ActCSS.css">
+    <link rel="stylesheet" href="navbar.css">
 </head>
 
 <body>
-    <!-- NAVBAR: links + hamburger ชิดขวา, fixed -->
+    <!-- NAVBAR -->
+    <!--<div id="navbar-placeholder"></div>
+        <script>
+        fetch("navbar.html")
+            .then(res => res.text())
+            .then(html => {
+            document.getElementById("navbar-placeholder").innerHTML = html;
+            });
+        </script>-->
+    
     <header class="nav">
         <a class="brand" href="home.html">
             <img src="/img/logo.png" alt="" class="brand-logo">
@@ -24,17 +33,17 @@
         <div class="nav-right">
             <nav class="nav-links" id="navLinks">
                 <a href="#" class="is-active">Activities</a>
-                <a href="#">Community</a>
-                <a href="#">About</a>
+                <a href="community.html">Community</a>
+                <a href="home.html#about">About</a>
             </nav>
             <div class="nav-actions">
                 <a class="account-pill" href="myprofile.html">
                     <img class="account-pill__avatar" src="/img/img1.png" alt="">
                     <span>User account</span>
                 </a>
-                <!-- <a class="Notification" href="notify.html"> -->
-                    <img class="bell" src="/img/notic.png">
-                <!-- </a> -->
+                 <a class="Notification" href="notify.html"> 
+                <img class="bell" src="/img/notic.png">
+                 </a> 
             </div>
 
             <button class="hamburger" id="hamburger" aria-label="เมนู">
@@ -52,17 +61,28 @@
                     <img src="/img/act.png" class="btn-ico" alt="">
                     <button class="btn-find-crate">
                         <img src="/img/search.png" class="icon-search">
-                        Find Activities
+                        Find Activity
                     </button>
                 </a>
                 <div class="or">OR</div>
-                <a class="cta btn-yellow ghost icon-left" id="openCreate2">
+                <div class="cta btn-yellow ghost icon-left">
                     <img src="/img/act1.png" class="btn-ico" alt="">
-                    <button class="btn-find-crate">
+                    <button class="btn-find-crate" id="openCreateBtn">
                         <img src="/img/add.png" class="icon-create">
                         Create Activity
                     </button>
-                </a>
+                    <!-- ส่วนpopup CreateActivity -->
+                    <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+                            document.getElementById("openCreateBtn").addEventListener("click", () => {
+                                openPopup("CreateActivity.html", {
+                                    className: "popup-create"
+                                });
+                            });
+                        });
+                    </script>
+                    <!-- ส่วนpopup CreateActivity -->
+                </div>
             </div>
         </div>
 
@@ -118,8 +138,10 @@
         </div>
     </main>
 
+
     <!-- CREATE MODAL: full-page feel -->
-    <div id="createModal" class="modal hidden" aria-hidden="true">
+
+    <!--<div id="createModal" class="modal hidden" aria-hidden="true">
         <div class="modal-box create-box">
             <aside class="create-side">
                 <img src="/img/create_act.png" alt="" class="create-illu">
@@ -184,29 +206,9 @@
             </div>
         </div>
         <div class="modal-backdrop"></div>
-    </div>
+    </div> -->
 
-    <!-- JOIN MODAL -->
-    <div id="joinModal" class="modal hidden" aria-hidden="true">
-        <div class="modal-box">
-            <div class="modal-head">
-                <div class="title">Join Activity</div><button id="joinClose" class="icon-btn">×</button>
-            </div>
-            <form id="joinForm" method="POST" action="/join">
-                <input type="hidden" name="activity_id" id="joinActivityId">
-                <label class="field"><span>ชื่อ-นามสกุล</span><input id="joinName" name="name" required><small
-                        class="err" id="errName">ต้องเป็นตัวอักษรไทย/อังกฤษ 2–50 ตัว</small></label>
-                <label class="field"><span>อีเมล</span><input id="joinEmail" name="email" required><small class="err"
-                        id="errEmail">รูปแบบอีเมลไม่ถูกต้อง</small></label>
-                <div class="modal-actions">
-                    <button type="button" class="btn btn-ghost" id="joinCancel">ยกเลิก</button>
-                    <button type="submit" class="btn btn-dark" id="joinSubmit" disabled>ยืนยันการเข้าร่วม</button>
-                </div>
-            </form>
-        </div>
-        <div class="modal-backdrop"></div>
-    </div>
-
+    <script defer src="CreateActivity-popup.js"></script>
     <script defer src="data.js"></script>
     <script defer src="Activity.js"></script>
 </body>

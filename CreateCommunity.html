@@ -46,3 +46,52 @@
   </div>
 </div>
 
+<link rel="stylesheet" href="CreateCommunity.css">
+</header>
+<div id="postModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closePostModal">&times;</span>
+    <h2 class="modal-title" style="color: #000;">✏️ สร้างโพสต์ใหม่</h2>
+
+    <form class="post-form">
+      <!-- Topic -->
+      <div class="form-group">
+        <label for="topic">หัวข้อ</label>
+        <input type="text" id="topic" name="topic" placeholder="กรอกหัวข้อของคุณ..">
+      </div>
+
+      <!-- Category -->
+      <div class="form-group">
+        <label for="category">หมวดหมู่</label>
+        <select id="category" name="category">
+          <option value="">-- เลือกหมวดหมู่ --</option>
+          <option value="painting">🎨 Visual Arts</option>
+          <option value="photo">📸 Photography</option>
+          <option value="writing">📖 Writing</option>
+          <option value="music">🎵 Music</option>
+        </select>
+      </div>
+
+      <!-- Upload Image -->
+      <div class="image-upload" onclick="document.getElementById('uploadInput').click()">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <p>คลิกเพื่ออัปโหลดรูปภาพ</p>
+        <input type="file" id="uploadInput" accept="image/*" hidden>
+      </div>
+
+      <!-- Detail -->
+      <div class="form-group">
+        <label for="detail">รายละเอียด</label>
+        <textarea id="detail" name="detail" rows="5" placeholder="เขียนสิ่งที่น่าสนใจ..."></textarea>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn-post">🚀 POST</button>
+        <button type="button" class="btn-cancel" id="cancelPost">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+

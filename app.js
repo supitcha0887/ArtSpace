@@ -1,6 +1,9 @@
-// -----------------------------
-// เก็บบัญชีตัวอย่าง (fix) + สถานะล็อกอิน
-// -----------------------------
+/* =========================
+   app.js (final: signup -> switch to Login, no auto-login)
+   ========================= */
+
+const BASE_URL = "http://45.141.27.231:5000";
+
 const users = [
   {
     username: "admin",
@@ -17,197 +20,284 @@ const users = [
 
 let currentUser = null;
 
-// -----------------------------
-// ฟังก์ชันเปิด Modal Login/Signin
-// -----------------------------
+/* ---------- อัปเดต UI ตามสถานะล็อกอิน ---------- */
+function updateAuthUI() {
+  currentUser = currentUser || JSON.parse(localStorage.getItem("loggedInUser"));
+
+  // เดสก์ท็อป
+  const userInfo = document.getElementById("userInfo");
+  const userAvatar = document.getElementById("userAvatar");
+  const userName = document.getElementById("userName");
+  const desktopLogout = document.getElementById("desktopLogout");
+
+  // ปุ่ม Log in ทุกตำแหน่ง
+  const loginBtns = document.querySelectorAll(".login-btn");
+
+  // มือถือ (drawer)
+  const mobileUserInfo = document.getElementById("mobileUserInfo");
+  const mobileUserAvatar = document.getElementById("mobileUserAvatar");
+  const mobileUserName = document.getElementById("mobileUserName");
+  const mobileLogout = document.querySelector(".mobile-logout");
+  const mobileAuthItem = document.querySelector(".mobile-auth");
+
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+  if (currentUser) {
+    // Desktop
+    if (userInfo && userAvatar && userName) {
+      userAvatar.src = currentUser.profileImage || "img/default-avatar.png";
+      userName.textContent =
+        currentUser.nickname ||
+        `${currentUser.firstName || ""} ${currentUser.lastName || ""}`.trim() ||
+        currentUser.username;
+      userInfo.style.display = "inline-flex";
+    }
+    if (desktopLogout) desktopLogout.style.display = "inline-flex";
+
+    // Mobile only
+    if (isMobile) {
+      if (mobileUserInfo && mobileUserAvatar && mobileUserName) {
+        mobileUserAvatar.src = currentUser.profileImage || "img/default-avatar.png";
+        mobileUserName.textContent =
+          currentUser.nickname ||
+          `${currentUser.firstName || ""} ${currentUser.lastName || ""}`.trim() ||
+          currentUser.username;
+        mobileUserInfo.style.display = "block";
+      }
+      if (mobileLogout) mobileLogout.style.display = "block";
+      if (mobileAuthItem) mobileAuthItem.style.display = "none";
+    } else {
+      if (mobileUserInfo) mobileUserInfo.style.display = "none";
+      if (mobileLogout) mobileLogout.style.display = "none";
+      if (mobileAuthItem) mobileAuthItem.style.display = "none";
+    }
+
+    // hide all login buttons
+    loginBtns.forEach((b) => (b.style.display = "none"));
+  } else {
+    // Desktop
+    if (userInfo) userInfo.style.display = "none";
+    if (desktopLogout) desktopLogout.style.display = "none";
+
+    // Mobile
+    if (isMobile) {
+      if (mobileUserInfo) mobileUserInfo.style.display = "none";
+      if (mobileLogout) mobileLogout.style.display = "none"; // เปิดเมื่อ login แล้วเท่านั้น
+      if (mobileAuthItem) mobileAuthItem.style.display = "block";
+    } else {
+      if (mobileUserInfo) mobileUserInfo.style.display = "none";
+      if (mobileLogout) mobileLogout.style.display = "none";
+      if (mobileAuthItem) mobileAuthItem.style.display = "none";
+    }
+
+    loginBtns.forEach((b) => (b.style.display = ""));
+  }
+}
+
+/* ---------- Modal Login/Signin (รองรับหลายปุ่ม) ---------- */
 function setupAuthModal() {
   const authModal = document.getElementById("authModal");
   const modalContent = document.getElementById("modalContent");
-  const loginBtn = document.querySelector(".login-btn");
+  const loginBtns = document.querySelectorAll(".login-btn");
 
-  if (loginBtn) {
-    loginBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      fetch("login.html")
-        .then((response) => response.text())
-        .then((html) => {
-          modalContent.innerHTML = html;
-          authModal.classList.add("show");
+  if (loginBtns.length) {
+    loginBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
 
-          const loginTab = document.getElementById("loginTab");
-          const signinTab = document.getElementById("signinTab");
-          const loginForm = document.getElementById("loginForm");
-          const signinForm = document.getElementById("signinForm");
-          const closeModalBtn = document.getElementById("closeModalBtn");
-          const authModalContainer = document.getElementById("authModal");
+        // ปิด drawer มือถือถ้าเปิดอยู่
+        const navMenu = document.getElementById("navMenu");
+        if (navMenu && navMenu.classList.contains("mobile-active")) {
+          navMenu.classList.remove("mobile-active");
+          navMenu.style.transform = "translateX(100%)";
+        }
 
-          // -----------------------------
-          // สลับแท็บ Login / Signin
-          // -----------------------------
-          if (loginTab && signinTab && loginForm && signinForm) {
-            loginTab.addEventListener("click", (e) => {
-              e.preventDefault();
-              loginTab.classList.add("active");
-              signinTab.classList.remove("active");
-              loginForm.classList.add("active");
-              signinForm.classList.remove("active");
-            });
+        fetch("login.html")
+          .then((r) => r.text())
+          .then((html) => {
+            modalContent.innerHTML = html;
+            authModal.classList.add("show");
 
-            signinTab.addEventListener("click", (e) => {
-              e.preventDefault();
-              signinTab.classList.add("active");
-              loginTab.classList.remove("active");
-              signinForm.classList.add("active");
-              loginForm.classList.remove("active");
-            });
-          }
+            const loginTab = document.getElementById("loginTab");
+            const signinTab = document.getElementById("signinTab");
+            const loginForm = document.getElementById("loginForm");
+            const signinForm = document.getElementById("signinForm");
+            const closeModalBtn = document.getElementById("closeModalBtn");
+            const rightPanel = document.querySelector(".modal-right-section"); 
+            const formWrapper = document.querySelector(".form-wrapper");
 
-          // -----------------------------
-          // ปิด Modal
-          // -----------------------------
-          if (closeModalBtn && authModalContainer) {
-            closeModalBtn.addEventListener("click", () => {
-              authModalContainer.classList.remove("show");
-              document.getElementById("modalContent").innerHTML = "";
-            });
-          }
+            rightPanel?.classList.remove("scrollable");
+            formWrapper?.classList.remove("scrollable");
+            if (rightPanel)  rightPanel.scrollTop  = 0;
+            if (formWrapper) formWrapper.scrollTop = 0;
+            
+            // สลับแท็บ
+            if (loginTab && signinTab && loginForm && signinForm) {
+              loginTab.addEventListener("click", (e) => {
+                e.preventDefault();
+                loginTab.classList.add("active");
+                signinTab.classList.remove("active");
+                loginForm.classList.add("active");
+                signinForm.classList.remove("active");
+                
+                rightPanel?.classList.remove("scrollable");            
+                formWrapper?.classList.remove("scrollable");
+                if (rightPanel)  rightPanel.scrollTop  = 0;
+                if (formWrapper) formWrapper.scrollTop = 0;
+              });
+              signinTab.addEventListener("click", (e) => {
+                e.preventDefault();
+                signinTab.classList.add("active");
+                loginTab.classList.remove("active");
+                signinForm.classList.add("active");
+                loginForm.classList.remove("active");
+                
+                rightPanel?.classList.add("scrollable");
+                formWrapper?.classList.add("scrollable");
+              });
+            }
 
-          // -----------------------------
-          // จัดการฟอร์ม Login
-          // -----------------------------
-          const loginBtnSubmit = loginForm.querySelector(".modal-btn.yellow-btn");
-          if (loginBtnSubmit) {
-            loginBtnSubmit.addEventListener("click", (e) => {
-              e.preventDefault();
-              const username = document.getElementById("username").value.trim();
-              const password = document.getElementById("password").value.trim();
+            if (closeModalBtn) {
+              closeModalBtn.addEventListener("click", () => {
+                authModal.classList.remove("show");
+                modalContent.innerHTML = "";
+              });
+            }
 
-              const localUsers = JSON.parse(localStorage.getItem("users")) || [];
-              const user =
-                users.find(
-                  (u) => u.username === username && u.password === password
-                ) ||
-                localUsers.find(
-                  (u) => u.username === username && u.password === password
-                );
+            /* ===== Login submit ===== */
+            const loginBtnSubmit = loginForm?.querySelector(".modal-btn.yellow-btn");
+            if (loginBtnSubmit) {
+              loginBtnSubmit.addEventListener("click", (e) => {
+                e.preventDefault();
+                const username = document.getElementById("username").value.trim();
+                const password = document.getElementById("password").value.trim();
 
-              if (user) {
-                currentUser = user;
-                localStorage.setItem("loggedInUser", JSON.stringify(user));
+                const localUsers = JSON.parse(localStorage.getItem("users")) || [];
+                const user =
+                  users.find((u) => u.username === username && u.password === password) ||
+                  localUsers.find((u) => u.username === username && u.password === password);
 
-                const userInfo = document.getElementById("userInfo");
-                const userAvatar = document.getElementById("userAvatar");
-                const userName = document.getElementById("userName");
+                if (user) {
+                  currentUser = user;
+                  localStorage.setItem("loggedInUser", JSON.stringify(user));
+                  updateAuthUI();
+                  authModal.classList.remove("show");
+                  modalContent.innerHTML = "";
+                } else {
+                  alert("❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
+                }
+              });
+            }
 
-                if (userInfo && userAvatar && userName && loginBtn) {
-                  userAvatar.src = user.profileImage || "img/default-avatar.png";
-                  userName.textContent =
-                    user.nickname ||
-                    `${user.firstName || ""} ${user.lastName || ""}`.trim() ||
-                    user.username;
-                  userInfo.style.display = "inline-flex";
-                  loginBtn.style.display = "none";
+            /* ===== Sign in submit (สมัครสมาชิก) — แก้ให้ไม่ auto-login ===== */
+            const signinBtnSubmit = signinForm?.querySelector(".yellow-btn");
+            const profileImageInput = document.getElementById("profileImage");
+            const profilePreview = document.getElementById("profilePreview");
+
+            if (profileImageInput) {
+              profileImageInput.addEventListener("change", () => {
+                if (profileImageInput.files && profileImageInput.files[0]) {
+                  const reader = new FileReader();
+                  reader.onload = (ev) => {
+                    profilePreview.src = ev.target.result;
+                    profilePreview.style.display = "block";
+                  };
+                  reader.readAsDataURL(profileImageInput.files[0]);
+                } else {
+                  profilePreview.style.display = "none";
+                }
+              });
+            }
+
+            if (signinBtnSubmit) {
+              signinBtnSubmit.addEventListener("click", (e) => {
+                e.preventDefault();
+
+                const firstName = document.getElementById("firstName").value.trim();
+                const lastName = document.getElementById("lastName").value.trim();
+                const username = document.getElementById("signinUsername").value.trim();
+                const password = document.getElementById("signinPassword").value.trim();
+                const nickname = document.getElementById("nickname").value.trim();
+                const email = document.getElementById("signinEmail").value.trim();
+                const dateOfBirth = document.getElementById("dateOfBirth").value.trim();
+                const gender = document.getElementById("gender").value;
+
+                if (!username || !password || !email) {
+                  alert("❌ กรุณากรอก Username, Password และ Email");
+                  return;
                 }
 
-                authModal.classList.remove("show");
-                modalContent.innerHTML = "";
-              } else {
-                alert("❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
-              }
-            });
-          }
+                let allUsers = JSON.parse(localStorage.getItem("users")) || [];
+                if (
+                  users.some((u) => u.username === username) ||
+                  allUsers.some((u) => u.username === username)
+                ) {
+                  alert("⚠️ ชื่อนี้ถูกใช้แล้ว กรุณาเลือกชื่ออื่น");
+                  return;
+                }
 
-          // -----------------------------
-          // จัดการฟอร์ม Signin (สมัครสมาชิกใหม่)
-          // -----------------------------
-          const signinBtnSubmit = signinForm.querySelector(".yellow-btn");
-          
-          // ✅ Preview profile image หลังเลือก
-          const profileImageInput = document.getElementById("profileImage");
-          const profilePreview = document.getElementById("profilePreview");
-          
-          if (profileImageInput) {
-            profileImageInput.addEventListener("change", () => {
-              if (profileImageInput.files && profileImageInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (event) {
-                  profilePreview.src = event.target.result;
-                  profilePreview.style.display = "block"; // show preview
-                };
-                reader.readAsDataURL(profileImageInput.files[0]);
-            } else {
-                profilePreview.style.display = "none"; // hide if no file
-              }
-            });   
-          }
-          
-          if (signinBtnSubmit) {
-            signinBtnSubmit.addEventListener("click", (e) => {
-              e.preventDefault();
+                let profileImage = (profilePreview && profilePreview.src) || "img/default-avatar.png";
 
-              const firstName = document.getElementById("firstName").value.trim();
-              const lastName = document.getElementById("lastName").value.trim();
-              const username = document.getElementById("signinUsername").value.trim();
-              const password = document.getElementById("signinPassword").value.trim();
-              const nickname = document.getElementById("nickname").value.trim();
-              const email = document.getElementById("signinEmail").value.trim();
-              const dateOfBirth = document.getElementById("dateOfBirth").value.trim();
-              const gender = document.getElementById("gender").value;
-              const profileImageInput = document.getElementById("profileImage");
+                function saveUser() {
+                  const newUser = {
+                    firstName, lastName, username, password, nickname,
+                    email, dateOfBirth, gender, profileImage,
+                  };
+                  allUsers.push(newUser);
+                  localStorage.setItem("users", JSON.stringify(allUsers));
 
-              if (!username || !password || !email) {
-                alert("❌ กรุณากรอก Username, Password และ Email");
-                return;
-              }
+                  // ✅ พฤติกรรมใหม่: ไม่ล็อกอินให้เอง
+                  alert("🎉 สมัครสมาชิกสำเร็จ! กรุณาล็อกอินเพื่อเริ่มใช้งาน");
 
-              let allUsers = JSON.parse(localStorage.getItem("users")) || [];
+                  // สลับกลับไปแท็บ Log in + เติม username ให้พร้อม
+                  const loginTab   = document.getElementById("loginTab");
+                  const signinTab  = document.getElementById("signinTab");
+                  const loginForm  = document.getElementById("loginForm");
+                  const signinForm = document.getElementById("signinForm");
+                  
+                  loginTab?.classList.add("active");
+                  signinTab?.classList.remove("active");
+                  loginForm?.classList.add("active");
+                  signinForm?.classList.remove("active");
+                  
+                  
 
-              if (
-                users.some((u) => u.username === username) ||
-                allUsers.some((u) => u.username === username)
-              ) {
-                alert("⚠️ ชื่อนี้ถูกใช้แล้ว กรุณาเลือกชื่ออื่น");
-                return;
-              }
+                  rightPanel?.classList.remove("scrollable");
+formWrapper?.classList.remove("scrollable");
+requestAnimationFrame(() => {
+  if (rightPanel)  rightPanel.scrollTop  = 0;
+  if (formWrapper) formWrapper.scrollTop = 0;
+});
 
-              let profileImage =  profilePreview.src||"img/default-avatar.png";
-              if (profileImageInput.files && profileImageInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (event) {
-                  profileImage = event.target.result;
+                  loginForm?.reset();
+                  const loginUsername = document.getElementById("username");
+                  const loginPassword = document.getElementById("password");
+                  if (loginUsername) loginUsername.value = "";
+                  if (loginPassword) loginPassword.value = "";
+                  
+
+                  // ถ้าต้องการ “ปิด modal เลย” แทนการสลับแท็บ ให้ใช้สองบรรทัดนี้:
+                  // authModal.classList.remove("show");
+                  // modalContent.innerHTML = "";
+                }
+
+                // อ่านไฟล์โปรไฟล์ (ถ้ามี) ก่อนบันทึก
+                const file = profileImageInput?.files?.[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onload = (ev) => { profileImage = ev.target.result; saveUser(); };
+                  reader.readAsDataURL(file);
+                } else {
                   saveUser();
-                };
-                reader.readAsDataURL(profileImageInput.files[0]);
-              } else {
-                saveUser();
-              }
-
-              function saveUser() {
-                const newUser = {
-                  firstName,
-                  lastName,
-                  username,
-                  password,
-                  nickname,
-                  email,
-                  dateOfBirth,
-                  gender,
-                  profileImage,
-                };
-
-                allUsers.push(newUser);
-                localStorage.setItem("users", JSON.stringify(allUsers));
-
-                alert("🎉 สมัครสมาชิกสำเร็จ! ลองล็อกอินได้เลย");
-                authModal.classList.remove("show");
-                modalContent.innerHTML = "";
-              }
-            });
-          }
-        });
+                }
+              });
+            }
+          });
+      });
     });
   }
 
+  // ปิด modal เมื่อคลิกนอกกล่อง
   if (authModal) {
     authModal.addEventListener("click", (e) => {
       if (e.target.id === "authModal") {
@@ -218,111 +308,152 @@ function setupAuthModal() {
   }
 }
 
-// -----------------------------
-// ฟังก์ชันเมนูมือถือ
-// -----------------------------
+/* ---------- Logout ทุกตำแหน่ง ---------- */
+function setupLogout() {
+  function doLogout() {
+    localStorage.removeItem("loggedInUser");
+    currentUser = null;
+    updateAuthUI();
+
+    // ปิด drawer มือถือถ้าเปิดอยู่
+    const navMenu = document.getElementById("navMenu");
+    if (navMenu && navMenu.classList.contains("mobile-active")) {
+      navMenu.classList.remove("mobile-active");
+      navMenu.style.transform = "translateX(100%)";
+    }
+  }
+
+  // เดสก์ท็อป
+  const desktopLogout = document.getElementById("desktopLogout");
+  if (desktopLogout) desktopLogout.addEventListener("click", doLogout);
+
+  // มือถือ (ในเมนู)
+  document.addEventListener("click", (e) => {
+    const t = e.target;
+    if (t && t.classList && t.classList.contains("logout-btn")) {
+      // ครอบคลุมทั้งปุ่มใน drawer และเดสก์ท็อป (กันพลาด)
+      if (t.id !== "desktopLogout") e.preventDefault();
+      doLogout();
+    }
+  });
+}
+
+/* ---------- เมนูมือถือ (drawer) ---------- */
 function setupMobileMenu() {
   const hamburgerBtn = document.getElementById("hamburgerBtn");
   const navMenu = document.getElementById("navMenu");
+  if (!hamburgerBtn || !navMenu) return;
 
-  if (hamburgerBtn && navMenu) {
-    hamburgerBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      navMenu.classList.toggle("mobile-active");
-      navMenu.style.transform = navMenu.classList.contains("mobile-active")
-        ? "translateX(0)"
-        : "translateX(100%)";
-    });
+  hamburgerBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    navMenu.classList.toggle("mobile-active");
+    navMenu.style.transform = navMenu.classList.contains("mobile-active")
+      ? "translateX(0)"
+      : "translateX(100%)";
+  });
 
-    document.addEventListener("click", (e) => {
-      if (!hamburgerBtn.contains(e.target) && !navMenu.contains(e.target)) {
-        navMenu.classList.remove("mobile-active");
-        navMenu.style.transform = "translateX(100%)";
-      }
-    });
-
-    const navLinks = navMenu.querySelectorAll("a");
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        navMenu.classList.remove("mobile-active");
-        navMenu.style.transform = "translateX(100%)";
-      });
-    });
-  }
-}
-
-// -----------------------------
-// Event หลัก
-// -----------------------------
-document.addEventListener("DOMContentLoaded", () => {
-  setupAuthModal();
-  setupMobileMenu();
-
-  const header = document.querySelector("header");
-  const hero = document.querySelector(".hero");
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > hero.offsetHeight - 50) {
-      header.classList.add("sticky");
-    } else {
-      header.classList.remove("sticky");
+  document.addEventListener("click", (e) => {
+    if (!hamburgerBtn.contains(e.target) && !navMenu.contains(e.target)) {
+      navMenu.classList.remove("mobile-active");
+      navMenu.style.transform = "translateX(100%)";
     }
   });
 
-  // -----------------------------
-  // Notification Panel (โหลดจาก notify.html)
-  // -----------------------------
+  navMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("mobile-active");
+      navMenu.style.transform = "translateX(100%)";
+    });
+  });
+}
+
+/* ---------- Notification Panel ---------- */
+function setupNotificationPanel() {
   const notifyBtn = document.querySelector(".notification-btn");
+  if (!notifyBtn) return;
 
-  if (notifyBtn) {
-    notifyBtn.addEventListener("click", async (e) => {
-      e.stopPropagation();
+  notifyBtn.addEventListener("click", async (e) => {
+    e.stopPropagation();
 
-      // ✅ ตรวจสอบว่ามีผู้ใช้ล็อกอินก่อน
-      if (!currentUser) {
-        alert("⚠️ กรุณาเข้าสู่ระบบก่อนดูการแจ้งเตือน");
+    const logged = currentUser || JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!logged) { alert("⚠️ กรุณาเข้าสู่ระบบก่อนดูการแจ้งเตือน"); return; }
+
+    let panel = document.getElementById("notificationPanel");
+    if (!panel) {
+      try {
+        const response = await fetch("notify.html");
+        const html = await response.text();
+        document.body.insertAdjacentHTML("beforeend", html);
+        panel = document.getElementById("notificationPanel");
+      } catch (err) {
+        console.error("โหลด notify.html ไม่สำเร็จ", err);
         return;
       }
+    }
 
-      let panel = document.getElementById("notificationPanel");
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
 
-      if (!panel) {
-        try {
-          const response = await fetch("notify.html");
-          const html = await response.text();
-          document.body.insertAdjacentHTML("beforeend", html);
-          panel = document.getElementById("notificationPanel");
-        } catch (err) {
-          console.error("โหลด notify.html ไม่สำเร็จ", err);
-          return;
-        }
+    document.addEventListener("click", (ev) => {
+      if (!panel.contains(ev.target) && !notifyBtn.contains(ev.target)) {
+        panel.style.display = "none";
       }
-
-      panel.style.display = panel.style.display === "block" ? "none" : "block";
-
-      document.addEventListener("click", (ev) => {
-        if (!panel.contains(ev.target) && !notifyBtn.contains(ev.target)) {
-          panel.style.display = "none";
-        }
-      });
     });
-  }
+  });
+}
 
-  // -----------------------------
-  // Activities Carousel (ลูกศรซ้ายขวา)
-  // -----------------------------
+/* ---------- Header sticky ---------- */
+function setupStickyHeader() {
+  const header = document.querySelector("header");
+  const hero = document.querySelector(".hero");
+  if (!header || !hero) return;
+
+  const onScroll = () => {
+    if (window.scrollY > hero.offsetHeight - 50) header.classList.add("sticky");
+    else header.classList.remove("sticky");
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+}
+
+/* ---------- Activities Carousel ---------- */
+function setupActivitiesCarousel() {
   const leftBtn = document.querySelector(".arrow.left");
   const rightBtn = document.querySelector(".arrow.right");
   const wrapper = document.querySelector(".activity-cards-wrapper");
+  if (!wrapper) return;
 
-  if (leftBtn && rightBtn && wrapper) {
-    leftBtn.addEventListener("click", () => {
-      wrapper.scrollBy({ left: -300, behavior: "smooth" });
-    });
+  const step = 320;
+  leftBtn?.addEventListener("click", () => wrapper.scrollBy({ left: -step, behavior: "smooth" }));
+  rightBtn?.addEventListener("click", () => wrapper.scrollBy({ left: step, behavior: "smooth" }));
+}
 
-    rightBtn.addEventListener("click", () => {
-      wrapper.scrollBy({ left: 300, behavior: "smooth" }); 
+/* ---------- Anchor offset (กัน header บัง) ---------- */
+function setupAnchorOffset() {
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const id = a.getAttribute("href");
+      if (!id || id === "#") return;
+      const target = document.querySelector(id);
+      if (!target) return;
+
+      e.preventDefault();
+      const header = document.querySelector("header");
+      const offset = (header?.offsetHeight || 80) + 10;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: "smooth" });
     });
-  }
-  
+  });
+}
+
+/* ---------- เริ่มทำงาน ---------- */
+document.addEventListener("DOMContentLoaded", () => {
+  setupAuthModal();
+  setupMobileMenu();
+  setupNotificationPanel();
+  setupStickyHeader();
+  setupActivitiesCarousel();
+  setupAnchorOffset();
+  setupLogout();
+  updateAuthUI();
+  window.addEventListener("resize", () => updateAuthUI());
 });

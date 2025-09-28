@@ -1,0 +1,116 @@
+
+.create-header {
+    background: #360048;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.create-illu {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* หรือ object-fit: contain ถ้าอยากให้ไม่โดนตัด */
+    display: block;
+}
+
+.side-logo-overlay {
+    position: absolute;
+    top: 16px;
+    right: 200px;
+    transform: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 6px 12px;
+    border-radius: 12px;
+}
+
+.side-logo-overlay img {
+    height: 24px;
+}
+
+/* แบบฟอร์มฝั่งขวา */
+.create-form {
+    padding: 24px;
+    overflow: auto;
+    max-height: calc(92vh - 0px);
+}
+
+/* ปุ่มปิด */
+.modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.title.big {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 2px solid var(--purple);
+    background: #fff;
+    cursor: pointer
+}
+
+.field {
+    display: grid;
+    gap: 6px;
+    margin-top: 10px
+}
+
+.field input,
+.field textarea {
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    height: 42px;
+    padding: 0 10px;
+    font-family: inherit
+}
+
+.field textarea {
+    height: auto;
+    padding: 8px 10px
+}
+
+.field input:focus,
+.field textarea:focus {
+    outline: 3px solid var(--purple-200)
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 14px
+}
+.modal-box.create-box {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    width: min(1200px, 96vw);
+    max-width: none;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    max-height: 92vh;
+}
