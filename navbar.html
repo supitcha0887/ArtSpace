@@ -1,0 +1,73 @@
+<!-- navbar.html -->
+<nav class="navbar">
+  <div class="navbar-content">
+
+    <!-- โลโก้ซ้าย -->
+    <a href="home.html" class="logo">
+      <i class="fas fa-palette"></i>
+      <span>ART<br>SPACE</span>
+    </a>
+
+    <!-- กลุ่มด้านขวา: user-info | login | bell | ☰ -->
+    <div class="nav-right-group">
+
+      <!-- เมนูหลัก (ใช้เป็นลิ้นชักด้านขวาในทุกขนาดจอ) -->
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="Activity.html" data-home-target="#activities">Activities</a></li>
+        <li><a href="community.html"      data-home-target="#community">Community</a></li>
+        <li><a href="home.html#about"     data-home-target="#about">About</a></li>
+
+        <!-- (ลิ้นชัก) แสดงเมื่อ login แล้ว -->
+        <li>
+          <div id="mobileUserInfo" class="mobile-user" style="display:none;">
+            <div class="user-chip">
+              <img id="mobileUserAvatar" src="" alt="avatar">
+              <span id="mobileUserName"></span>
+            </div>
+            <div class="mobile-logout">
+              <button class="logout-btn" type="button">Log out</button>
+            </div>
+          </div>
+        </li>
+
+        <!-- (ลิ้นชัก) ปุ่มเข้าใช้งาน — ล่างสุดเสมอ (ตอนยังไม่ล็อกอิน) -->
+        <li class="mobile-auth" style="display:none;">
+          <a class="login-btn" href="#">Log in / Sign in</a>
+        </li>
+      </ul>
+
+      <!-- เดสก์ท็อป: user-info + ปุ่ม login -->
+      <div class="auth-buttons">
+        <a href="myprofile.html" class="profile-link" title="Go to my profile" style="text-decoration: none;">
+        <div id="userInfo" class="user-info" style="display:none;">
+          <div class="user-chip">
+            <img id="userAvatar" class="user-avatar" src="" alt="user avatar">
+            <span id="userName"></span>
+          </div>
+          </a>
+          <button id="desktopLogout" class="logout-btn" type="button">Log out</button>
+        </div>
+
+        <a href="#" class="login-btn">Log in / Sign in</a>
+
+        <button class="notification-btn" type="button" title="Notifications">
+          <i class="fas fa-bell"></i>
+        </button>
+
+        <!-- ☰ ขวา และโชว์ทุกขนาดจอ -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Modal สำหรับ log in / sign in (app.js จะโหลด login.html ใส่มาเอง) -->
+<div class="modal-container" id="authModal">
+  <div class="modal-content-new">
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+

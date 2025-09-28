@@ -3,35 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-header{
-    background: transparent;
-    transition:  0.3s ease-in-out;      
-}   
 
-header .nav-menu a,
-header .logo,
-header .login-btn {
-    color: white;
-}
+/* ลบ header styles ออกเพราะใช้จาก navbar.css แทน */
 
-header.on-white {
-    background: white;
-}
-header.on-white .nav-menu a,
-header.on-white .logo,
-header.on-white .login-btn {
-    color: #000000;
-}
-
-header.sticky {
-  background: white !important;
-}
-
-header.sticky .nav-menu a,
-header.sticky .logo,
-header.sticky .login-btn {
-  color: #000 !important;
-}
 .color-sentinel {
     position: absolute;
     top: 0;
@@ -60,7 +34,7 @@ body {
     background-repeat: no-repeat;
     opacity: 0;
     transition: opacity 1s ease-in-out;
-    }
+}
 
 .section-background.active {
     opacity: 1;
@@ -72,7 +46,6 @@ body {
 #bg4 { background-image: url('img/4.jpg'); }
 #bg6 { background-image: url('img/6.jpg'); }
     
-
 .content-section {
     min-height: 100vh;
     display: flex;
@@ -93,8 +66,8 @@ body {
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;  /* ชิดบน */
-    padding-top: 150px;         /* ระยะห่างจากขอบบน */
+    justify-content: flex-start;
+    padding-top: 150px;
     min-height: 100vh;
 }
 
@@ -127,8 +100,6 @@ body {
     box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
 }
 
-
-
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
@@ -138,140 +109,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-header {
-    padding: 20px 0;
-    position: fixed;
-    z-index: 1000;
-    width: 100%;
-}
-nav {
-    display: flex; /* กำหนดให้ nav เป็น Flexbox */
-    justify-content: space-between; /* แยกซ้าย-ขวาออกจากกัน */
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.nav-right-group {
-    display: flex; /* กำหนดให้กลุ่มเมนูและปุ่มเป็น Flexbox */
-    align-items: center;
-    gap: 40px; /* เพิ่มระยะห่างระหว่างเมนูกับปุ่ม */
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-}
-
-.logo i {
-    margin-right: 10px;
-    background: white;
-    color: #4a1a8c;
-    padding: 8px;
-    border-radius: 8px;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 40px;
-}
-
-.nav-menu a {
-    color: white;
-    text-decoration: none;
-    transition: opacity 0.3s;
-}
-
-.nav-menu a:hover {
-    opacity: 0.8;
-}
-
-.auth-buttons {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.login-btn {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 10px 20px;
-    border-radius: 25px;
-    color: white;
-    text-decoration: none;
-    transition: background 0.3s;
-}
-
-.notification-btn {
-    background: #ff6b9d;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-.notification-panel {
-  display: none; /* ซ่อนตอนแรก */
-  position: fixed;
-  top: 60px; /* อยู่ใต้ปุ่ม */
-  right: 20px;
-  width: 300px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  padding: 16px;
-  font-family: 'Kanit', sans-serif;
-  z-index: 999;
-}
-
-.notification-panel h3 {
-  font-size: 18px;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 6px;
-}
-
-.notification-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  color: #000;
-}
-
-.notification-item i {
-  font-size: 18px;
-}
-
-.notification-item p {
-  font-size: 13px;
-  margin: 2px 0 0;
-}
-
-/* สีพื้นหลังตามประเภท */
-.notification-item.purple { background: #e6d6f8; }
-.notification-item.green { background: #c8f7d2; }
-.notification-item.red   { background: #f7c8c8; }
-.notification-item.blue  { background: #c8f1f7; }
-.notification-item.yellow{ background: #fdf3c8; }
-
-/* hover effect */
-.notification-item:hover {
-  opacity: 0.9;
 }
 
 .action-cards-container {
@@ -284,16 +121,15 @@ nav {
 }
 
 .action-cards.content-section {
-    padding-top: 10px;   /* ลดระยะห่างด้านบน */
+    padding-top: 10px;
 }
 
 .action-cards,
 .activities-section {
-    margin: 0; /* ลบช่องว่างออก */
+    margin: 0;
     background-image: url('img/2.jpg');
     background-size: cover;
     background-position: center;
-
 }
 
 .action-card {
@@ -342,43 +178,43 @@ nav {
 .card-btn:hover {
     transform: scale(1.05);
 }
+
 .activities-carousel {
-  position: relative;
-  display: flex;
-  align-items: center;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .activity-cards-wrapper {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
 }
 
 .activity-card {
-  flex: 0 0 auto;
-  margin: 0 10px;
-  width: 300px; /* ปรับขนาดตามที่ต้องการ */
+    flex: 0 0 auto;
+    margin: 0 10px;
+    width: 300px;
 }
 
 .arrow {
-  background: #ffd700;
-  border: none;
-  border-radius: 50%;
-  padding: 20px;           /* ขยายปุ่มให้ใหญ่ขึ้น */
-  font-size: 32px;         /* ขยายขนาดไอคอนลูกศร */
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background: #ffd700;
+    border: none;
+    border-radius: 50%;
+    padding: 20px;
+    font-size: 32px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .arrow.left { left: -60px; }
 .arrow.right { right: -60px; }
-
 
 .activities-section {
     background-image: url('img/3.jpg');
@@ -390,10 +226,8 @@ nav {
 
 .activities-header {
     text-align: center;
-    margin-top: 50px;   /* ขยับลงมา */
+    margin-top: 50px;
     margin-bottom: 40px;
-       
-    
 }
 
 .activities-header h2 {
@@ -500,12 +334,12 @@ nav {
 .activity-info span {
     background: #f3f4f6;  
     padding: 12px;
-    border-radius: 8px;       /* มุมโค้ง */
-    text-align: center;       /* จัดฟอนต์กึ่งกลาง */
+    border-radius: 8px;
+    text-align: center;
     font-size: 14px;
     color: #333;
-    display: block;   /* ให้ span เป็น block */       
-    width: 100%;       /* กว้างเต็มที่ */
+    display: block;       
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -598,7 +432,7 @@ nav {
     gap: 50px;
     margin: 60px 0;
     flex-wrap: wrap;
-    margin: 120px 0 60px 0; /* ขยับลงมาอีก */
+    margin: 120px 0 60px 0;
 }
 
 .category-item {
@@ -630,11 +464,11 @@ nav {
 .tips-section,
 .community-section {
     min-height: auto;
-    padding: 40px 0;   /* ลดลงจาก 100px */
+    padding: 40px 0;
 }
 
 .tips-section {
-    padding-top: 300px;   /* ขยับลงจากด้านบน */
+    padding-top: 300px;
     margin: 0;
     background-image: url('img/4.jpg');
     background-size: cover;
@@ -644,13 +478,13 @@ nav {
 .tips-header {
     text-align: center;
     margin-bottom: 60px;
-        }
+}
 
 .tips-header h2 {
     font-size: 36px;
     margin-bottom: 20px;
     color: #333;
-        }
+}
 
 .tips-cards-container {
     display: flex;
@@ -658,7 +492,7 @@ nav {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-        }
+}
 
 .tips-card {
     background-color: #fff;
@@ -673,23 +507,22 @@ nav {
     align-items: stretch;
     text-align: left;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;   /* กรอบ */
+    border: 1px solid #e5e7eb;
     backdrop-filter: blur(10px);
     overflow: hidden;
     margin: 20px auto;
     min-height: 220px;   
 }
 
-        /* ฝั่งซ้าย */
 .tips-card .left {
-    background: #38115e;         /* พื้นหลังม่วง */
+    background: #38115e;
     color: #fff;
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 220px;                /* ความกว้างคงที่ */
+    width: 220px;
     text-align: center;
     flex: 0 0 220px;
     height: auto;
@@ -698,7 +531,7 @@ nav {
 .tips-card .left i {
     font-size: 60px;
     margin-bottom: 15px;
-    color: #ffd700;              /* สีเหลืองของหลอดไฟ */
+    color: #ffd700;
 }
 
 .tips-card .left h3 {
@@ -706,7 +539,6 @@ nav {
     font-weight: bold;
 }
 
-/* ฝั่งขวา */
 .tips-card .right {
     flex: 1;
     padding: 25px 30px;
@@ -738,7 +570,6 @@ nav {
     font-size: 14px;
 }
 
-/* ปุ่ม */
 .tips-card .right .view-all-btn {
     background: #ffd700;
     color: #333;
@@ -823,7 +654,13 @@ nav {
     background-image: url('img/6.jpg');
     background-size: cover;
     background-position: center;
-    padding: 100px 0 600px 0;  /* บน 100px, ล่าง 150px */
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 20px;
 }
 
 .community-header h2 {
@@ -849,15 +686,18 @@ nav {
     margin: 0 auto;
     position: relative;
 }
+
 .about-section {
     padding: 80px 20px;
     text-align: center;
 }
+
 .about-section h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: #333;
 }
+
 .about-section p {
     font-size: 1.1rem;
     color: #555;
@@ -865,12 +705,14 @@ nav {
     margin: 0 auto 40px auto;
     line-height: 1.8;
 }
+
 .feature-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
 }
+
 .feature-card {
     background: #fafafa;
     border-radius: 12px;
@@ -879,28 +721,34 @@ nav {
     max-width: 300px;
     transition: transform .3s, box-shadow .3s;
 }
+
 .feature-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
+
 .feature-card i {
     font-size: 2.5rem;
     color: #8b5cf6;
     margin-bottom: 15px;
 }
+
 .feature-card h3 {
     margin-bottom: 10px;
     color: #222;
 }
+
 .about-header {
     text-align: center;
     margin-bottom: 40px;
 }
+
 .about-header h2 {
     font-size: 2.5rem;
     margin-bottom: 15px;
     color: #333;
 }
+
 .about-header p {
     font-size: 1.1rem;
     color: #555;
@@ -909,13 +757,13 @@ nav {
     margin: 0 auto;
 }
 
-/* Mission & Vision */
 .mv-section {
     display: flex;
     gap: 20px;
     justify-content: center;
     margin-bottom: 40px;
 }
+
 .mv-card {
     flex: 1;
     background: #fafafa;
@@ -925,10 +773,12 @@ nav {
     max-width: 350px;
     transition: transform .3s, box-shadow .3s;
 }
+
 .mv-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
+
 .mv-card i {
     font-size: 2rem;
     color: #8b5cf6;
@@ -942,13 +792,13 @@ nav {
     color: #333;
 }
 
-/* Team */
 .team-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
     justify-content: center;
 }
+
 .team-card {
     background: #fff;
     border-radius: 12px;
@@ -958,10 +808,12 @@ nav {
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     transition: transform .3s, box-shadow .3s;
 }
+
 .team-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
+
 .team-card img {
     width: 100px;
     height: 100px;
@@ -969,24 +821,27 @@ nav {
     margin-bottom: 15px;
     object-fit: cover;
 }
+
 .team-card h3 {
     margin-bottom: 5px;
     color: #222;
 }
+
 .team-card p {
     font-size: 0.95rem;
     color: #666;
 }
 
-/* CTA */
 .cta-about {
     text-align: center;
     margin-top: 60px;
 }
+
 .cta-about h3 {
     margin-bottom: 20px;
     font-size: 1.6rem;
 }
+
 .modal-container {
     position: fixed;
     top: 0;
@@ -1001,7 +856,6 @@ nav {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-
 }
 
 .modal-container.show {
@@ -1021,7 +875,6 @@ nav {
     transform: scale(0.9);
     transition: transform 0.3s ease-in-out;
     position: relative;
-    
 }
 
 .modal-container.show .modal-content-new {
@@ -1045,6 +898,14 @@ nav {
     min-width: 300px;
 }
 
+.modal-right-section{
+    overflow-y: hidden;
+}
+
+.modal-right-section.scrollable{
+    overflow-y: auto;
+}
+
 .modal-content-new .modal-right-section {
     padding: 40px;
     width: 60%;
@@ -1064,7 +925,6 @@ nav {
     margin-bottom: 20px;
     text-align: center;
     text-decoration: none;
-    
     display: flex;
     align-items: center;
     z-index: 1;
@@ -1135,6 +995,10 @@ nav {
     display: flex;
     overflow: visible;
     position: relative;
+    overflow-y: hidden;
+}
+
+.modal-content-new .form-wrapper.scrollable{
     overflow-y: auto;
 }
 
@@ -1152,7 +1016,6 @@ nav {
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 20px; 
-
 }
 
 .modal-content-new .form-section.active {
@@ -1213,10 +1076,10 @@ nav {
     color: #4a1a8c;
     font-weight: bold;
     margin-bottom: 20px;
-    padding: 15px;           /* เพิ่มบรรทัดนี้ */
-    border: 2px dashed #ddd; /* เพิ่มบรรทัดนี้ */
-    border-radius: 10px;     /* เพิ่มบรรทัดนี้ */
-    transition: border-color 0.3s; /* เพิ่มบรรทัดนี้ */
+    padding: 15px;
+    border: 2px dashed #ddd;
+    border-radius: 10px;
+    transition: border-color 0.3s;
 }
 
 .modal-content-new .upload-profile:hover {
@@ -1358,7 +1221,6 @@ nav {
     background: #e0e0e0;
 }
 
-/* Back button for the modal (optional) */
 .modal-back-btn {
     position: absolute;
     bottom: 20px;
@@ -1379,16 +1241,16 @@ nav {
 }
 
 .button-group {
-    display: flex;                 /* เรียงปุ่มแนวนอน */
-    justify-content: space-between;/* เว้นระยะเท่ากัน */
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 15px;                     /* ระยะห่างระหว่างปุ่ม */
+    gap: 15px;
     margin-top: 20px;
     flex-direction: row-reverse;
 }
 
 .button-group .cancel-btn {
-    flex: 0 0 120px;        /* กำหนดความกว้างคงที่ (เล็กกว่า) */
+    flex: 0 0 120px;
     background: #f0f0f0;
     color: #666;
     font-size: 16px;
@@ -1402,7 +1264,7 @@ nav {
 }
 
 .button-group .yellow-btn {
-    flex: 1;                /* ให้ปุ่ม Create Account กว้างกว่า */
+    flex: 1;
     background: #ffd700;
     color: #333;
     font-size: 18px;
@@ -1419,92 +1281,25 @@ nav {
 .modal-back-btn:hover {
     transform: scale(1.1);
 }
-.hamburger-btn {
-    display: none; /* เริ่มต้นให้ซ่อนไว้ */
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1001; /* ให้อยู่ด้านบนสุด */
-}
-.user-info {
-  display: inline-flex;            /* ให้กรอบยืดตามขนาดเนื้อหา */
-  align-items: center;
-  gap: 8px;
-  padding: 4px 14px 4px 6px;       /* padding ซ้าย/ขวาให้ดูบาลานซ์ */
-  border-radius: 999px;            /* ทำให้เป็น capsule */
-  background: linear-gradient(90deg, #7b2ff7, #f107a3); /* ไล่สีม่วงไปชมพู */
-  color: white;
-  font-weight: 600;
-  font-family: 'Kanit', sans-serif;
-  white-space: nowrap;             /* กันชื่อพับบรรทัด */
+
+.preview-container {
+    margin-top: 10px;
+    text-align: center;
 }
 
-.user-info img.user-avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid white;         /* เส้นขอบรูป */
+.preview-container img {
+    border: 2px solid #ddd;
+    padding: 2px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-.user-info span {
-  font-size: 14px;
-  line-height: 1;
-}
+/* ลบ CSS ส่วนนี้เพราะใช้จาก navbar.css แทน */
+/* .logout-btn, .user-info, .user-avatar - อยู่ใน navbar.css แล้ว */
 
-
-.user-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-/* สไตล์สำหรับเมนูบนมือถือ */
-.nav-menu.mobile-active {
-    display: flex; /* แสดงเมนู */
-    flex-direction: column; /* จัดเมนูเป็นแนวตั้ง */
-    position: fixed; /* วางเมนูให้อยู่ทับเนื้อหาอื่น */
-    top: 0;
-    right: 0;
-    width: 250px;
-    height: 100%;
-    background-color: rgba(74, 26, 140, 0.9); /* สีพื้นหลังโปร่งแสง */
-    padding: 80px 20px;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
-
-}
-
-.nav-menu.mobile-active li {
-    margin-bottom: 20px;
-}
-
-.nav-menu.mobile-active a {
-    font-size: 18px;
-    display: block;
-    padding: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.nav-menu.mobile-active a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-    @media (max-width: 768px) {
-            .modal-content-new .modal-left-section {
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .modal-content-new .modal-left-section {
         display: none;
-    }
-    .nav-right-group {
-        display: none; /* ซ่อนเมนูนำทางปกติ */
-    }
-
-    .hamburger-btn {
-        display: block; /* แสดงปุ่มแฮมเบอร์เกอร์ */
-    }
-
-    .auth-buttons {
-        display: flex;
     }
 
     .hero h1 {
@@ -1513,114 +1308,266 @@ nav {
         font-weight: 700;
         color: #d4ff00;
     }
+
     .modal-content-new .modal-right-section {
         width: 100%;
         padding: 30px;
     }
+
     .modal-content-new .modal-tabs {
         max-width: 90%;
         margin: 0 auto 20px;
     }
+
     .modal-content-new .modal-back-btn {
         bottom: 15px;
         right: 15px;
     }
-    
-    .nav-menu {
-        display: none;
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100%;
-        width: 250px;
-        background: #4b0082; /* สีพื้นหลังเมนู */
+
+    .action-cards-container {
         flex-direction: column;
-        padding: 60px 20px;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        z-index: 1000;
-            }
-
-            .nav-menu.mobile-active {
-            display: flex;
-            transform: translateX(0); /* เลื่อนออกมา */
-            }
-
-            
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .action-cards-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .activity-cards-wrapper {
-                flex-direction: column;
-            }
-
-            .activity-card {
-                min-width: auto;
-            }
-
-            .category-icons-container {
-                flex-wrap: wrap;
-                gap: 30px;
-            }
-
-            .tips-cards-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tips-card {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .tips-icon {
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-            
-        }
-        /* Desktop > 768px */
-@media (min-width: 769px) {
-    .nav-menu {
-        display: flex !important;
-        flex-direction: row;
-        position: static;
-        transform: none !important;
-        background: none;
-        height: auto;
-        width: auto;
-        padding: 0;
+        align-items: center;
     }
 
-    .hamburger-btn {
-        display: none !important;
+    .activity-cards-wrapper {
+        flex-direction: column;
     }
 
-    .auth-buttons {
-        display: flex;
+    .activity-card {
+        min-width: auto;
+    }
+
+    .category-icons-container {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .tips-cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tips-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tips-icon {
+        margin-right: 0;
+        margin-bottom: 20px;
     }
 }
 
-        @media (orientation: landscape) and (max-height: 600px) {
-            .hero {
-                padding: 40px 0;
-            }
+@media (orientation: landscape) and (max-height: 600px) {
+    .hero {
+        padding: 40px 0;
+    }
 
-            .hero h1 {
-                font-size: 36px;
-            }
+    .hero h1 {
+        font-size: 36px;
+    }
 
-            .action-cards-container,
-            .activities-section,
-            .tips-section,
-            .community-section {
-                margin: 60px 0;
-            }
-        }
+    .action-cards-container,
+    .activities-section,
+    .tips-section,
+    .community-section {
+        margin: 60px 0;
+    }
+}
+
+.hero-about {
+    background: linear-gradient(to right, rgba(139,92,246,0.8), rgba(236,72,153,0.8)),
+              url("img/6.jpg") center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero-about h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #ffd700;
+}
+
+.team-section {
+    padding: 60px 20px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.team-section h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+footer {
+    background: #111;
+    color: #ccc;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer .social-icons a {
+    color: #ccc;
+    margin: 0 10px;
+    font-size: 1.2rem;
+    transition: color .3s;
+}
+
+footer .social-icons a:hover {
+    color: #ffd700;
+}
+
+/* Community page styles */
+.community-page header nav {
+    background-color: #fff !important;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 20px;
+}
+
+.community-page header nav a {
+    color: #000 !important;
+    font-weight: 500;
+}
+
+.community-page header nav a:hover {
+    color: #007bff !important;
+}
+
+.community-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 30px;
+    justify-content: space-between;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.search-box .search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.search-btn {
+    background: #6c63ff;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.category-select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.filter-options {
+    display: flex;
+    gap: 10px;
+}
+
+.new-post-btn {
+    background: #ff6584;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.new-post-btn:hover {
+    background: #ff3366;
+}
+
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.post-item {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e0e0e0;
+    color: #222;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.post-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.post-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 12px;
+}
+
+.post-author {
+    font-size: 14px;
+    color: #666;
+    display: block;
+    margin-top: 5px;
+}
+
+.post-item::before {
+    content: "📝";
+    margin-right: 12px;
+    font-size: 20px;
+}
+
+.post-item:hover {
+    border-color: #2196f3;
+    background: #f0f8ff;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+mark {
+    background: #ffeb3b;
+    color: #000;
+    padding: 0 2px;
+    border-radius: 3px;
+}

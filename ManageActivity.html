@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Activities</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="ManageActivity-CSS.css">
+</head>
+
+<body>
+  <button class="back-button" onclick="goBack()">
+    ←
+  </button>
+
+  <div class="container">
+    <div class="main-card">
+      <h1 class="page-title">Manage Activities</h1>
+
+      <div class="form-group">
+        <label>ชื่อกิจกรรม :</label>
+        <input type="text" id="activityName" class="form-input" value="">
+      </div>
+
+      <div class="form-group">
+        <label>รายละเอียด :</label>
+        <textarea id="activityDescription" class="form-input textarea"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>วันที่เริ่มจัดกิจกรรม :</label>
+        <div class="date-time-group">
+          <input type="date" id="startDate" class="date-input">
+          <input type="time" id="startTime" class="time-input">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>วันที่สิ้นสุดจัดกิจกรรม :</label>
+        <div class="date-time-group">
+          <input type="date" id="endDate" class="date-input">
+          <input type="time" id="endTime" class="time-input">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>สถานที่ :</label>
+        <input type="text" id="location" class="form-input" value="">
+      </div>
+
+      <div class="form-group">
+        <label>จำนวนที่รับ :</label>
+        <div class="participant-limit-input">
+          <span>👥</span>
+          <input type="number" id="participantLimit" class="participant-limit-number" min="1"
+            onchange="validateParticipantLimit()" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>วันหมดอายุของประกาศ :</label>
+        <div class="date-time-group">
+          <input type="date" id="expiryDate" class="date-input">
+          <input type="time" id="expiryTime" class="time-input">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>กรุณาเลือกหมวด :</label>
+        <div class="category-buttons" id="categories">
+          <button class="category-btn visual-arts">🎨 Visual Arts</button>
+          <button class="category-btn photography">📷 Photography</button>
+          <button class="category-btn writing">📝 Writing</button>
+          <button class="category-btn music">🎵 Music</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>อัปโหลดรูปโปสเตอร์ :</label>
+        <div class="file-upload">
+          <!-- <input type="file" id="posterFile" accept="image/*" onchange="handleFileUpload(event)"> -->
+          <button type="file" class="file-btn" id="posterFile" accept="image/*" onclick="document.getElementById('posterFile').click()" >📁
+            อัปโหลดรูปโปสเตอร์</button>
+          <span id="fileName"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="participants-card">
+      <div class="participants-header">
+        <div class="sort-controls">
+          <button class="sort-btn" id="sortByRating">เรียงตามเรทติ้ง</button>
+          <button class="sort-btn" id="sortByDate">เรียงตามวันที่</button>
+          <button class="sort-btn" id="clearSort">เคลียร์ผลลัพธ์</button>
+          <button class="sort-btn" id="acceptRandomly"
+            style="background: #9f7aea; color: white; border-color: #9f7aea;">สุ่มอัตโนมัติ</button>
+        </div>
+        <div class="participant-count">
+          👥 <span id="acceptedCount">0</span>/<span id="totalLimit">5</span>
+        </div>
+      </div>
+
+      <div class="participants-grid" id="participantsGrid">
+        <!-- Participants will be loaded here by JavaScript -->
+      </div>
+
+      <div class="bottom-actions">
+        <div class="left-actions">
+          <button class="btn-accept-all">ยอมรับทั้งหมด</button>
+          <button class="btn-cancel-activity" onclick="showCancelModal()">Cancel Activity</button>
+        </div>
+        <div class="right-actions">
+          <button class="btn-cancel" onclick="cancelChanges()">Cancel</button>
+          <button class="btn-save" onclick="saveChanges()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cancel Activity Modal -->
+  <div id="cancelModal" class="modal">
+    <div class="modal-content">
+      <h2>ยืนยันการยกเลิกกิจกรรม</h2>
+      <p>คุณแน่ใจหรือไม่ที่จะยกเลิกกิจกรรมนี้? การดำเนินการนี้ไม่สามารถย้อนกลับได้</p>
+      <div class="modal-actions">
+        <button class="modal-btn cancel" onclick="closeCancelModal()">ไม่ยกเลิก</button>
+        <button class="modal-btn confirm" onclick="confirmCancelActivity()">ยืนยันการยกเลิก</button>
+      </div>
+    </div>
+  </div>
+  <script defer src="ManageActivity.js"></script>
+</body>

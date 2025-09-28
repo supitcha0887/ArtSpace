@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="th">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ART SPACE — Activity</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="ActCSS.css">
+    <link rel="stylesheet" href="navbar.css">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <!--<div id="navbar-placeholder"></div>
+        <script>
+        fetch("navbar.html")
+            .then(res => res.text())
+            .then(html => {
+            document.getElementById("navbar-placeholder").innerHTML = html;
+            });
+        </script>-->
+    
+    <div id="navbarMount"></div>
+    
+    <!-- HERO (plain) -->
+    <section class="hero plain">
+        <div class="hero-inner">
+            <h1 class="hero-title">“หาเพื่อนใหม่ที่รักศิลปะเหมือนคุณ แล้วสร้างความทรงจำไปด้วยกัน”</h1>
+            <div class="hero-cta row">
+                <a class="cta btn-yellow icon-left" id="goFind">
+                    <img src="/img/act.png" class="btn-ico" alt="">
+                    <button class="btn-find-crate">
+                        <img src="/img/search.png" class="icon-search">
+                        Find Activity
+                    </button>
+                </a>
+                <div class="or">OR</div>
+                <div class="cta btn-yellow ghost icon-left">
+                    <img src="/img/act1.png" class="btn-ico" alt="">
+                    <button class="btn-find-crate" id="openCreateBtn">
+                        <img src="/img/add.png" class="icon-create">
+                        Create Activity
+                    </button>
+                    <!-- ส่วนpopup CreateActivity -->
+                    <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+                            document.getElementById("openCreateBtn").addEventListener("click", () => {
+                                openPopup("CreateActivity.html", {
+                                    className: "popup-create"
+                                });
+                            });
+                        });
+                    </script>
+                    <!-- ส่วนpopup CreateActivity -->
+                </div>
+            </div>
+        </div>
+
+        <!-- SEARCH BAR -->
+        <div class="search-wrap" id="searchWrap">
+            <form class="search-bar" id="searchForm" method="GET" action="">
+                <div class="lens"><img src="/img/search1.png" alt=""></div>
+
+                <label for="q" class="sr-only"></label>
+                <input id="q" name="q" class="q" placeholder="ค้นหาตามชื่อกิจกรรม/ชื่อผู้จัดกิจกรรม" />
+
+                <div class="chips" id="chips"></div>
+
+                <div class="bar-right">
+                    <!-- Category: single choice + replace label -->
+                    <div class="dropdown">
+                        <select name="category" id="category" class="btn">
+                            <option value="" class="opt input">หมวดหมู่ทั้งหมด</option>
+                            <option value="Visual Arts" class="sw va btn">Visual Arts</option>
+                            <option value="Photography" class="sw ph btn">Photography</option>
+                            <option value="Writing" class="sw va btn">Writing</option>
+                            <option value="Music" class="sw mu btn">Music</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Sort: 2 ตัวเลือก + replace label -->
+                    <div class="dropdown">
+                        <button type="button" id="btnSort" class="btn btn-surface">
+                            <img src="/img/dropdow.png" class="caret" alt="">
+                            <span id="sortLabel">เรียงลำดับ</span>
+                        </button>
+                        <div class="menu shadow-soft" id="menuSort" role="menu">
+                            <div class="sort-grid two">
+                                <button type="button" data-sort="rating_desc" class="sort-btn">เรตติ้งผู้จัด</button>
+                                <button type="button" data-sort="date_asc" class="sort-btn">วันที่</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- RESULTS -->
+    <main class="wrap">
+        <section id="results" class="results"></section>
+        <div id="empty" class="empty" style="display:none">
+            <img class="empty-ill" src="/img/notfound.png" alt="">
+            <p>ขออภัยไม่มีกิจกรรมที่คุณค้นหาในตอนนี้</p>
+        </div>
+    </main>
+
+
+    <!-- CREATE MODAL: full-page feel -->
+
+    <!--<div id="createModal" class="modal hidden" aria-hidden="true">
+        <div class="modal-box create-box">
+            <aside class="create-side">
+                <img src="/img/create_act.png" alt="" class="create-illu">
+                <div class="side-logo"><img src="/img/logo.png" alt=""><span></span></div>
+            </aside>
+            <div class="create-form">
+                <div class="modal-head">
+                    <div class="title big">Create Activity</div>
+                    <button id="createClose" class="icon-btn" aria-label="ปิด">×</button>
+                </div>
+                <form id="createForm" action="/api/activities" method="POST">
+                    <label class="field"><span>ชื่อกิจกรรม :</span><input name="title" required></label>
+                    <label class="field"><span>รายละเอียด :</span><textarea name="desc" rows="3"
+                            required></textarea></label>
+
+                    <div class="grid2">
+                        <label class="field"><span>วันที่เริ่มจัดกิจกรรม :</span><input type="date" name="start_date"
+                                required></label>
+                        <label class="field"><span>เวลาเริ่ม :</span><input type="time" name="start_time"
+                                required></label>
+                    </div>
+                    <div class="grid2">
+                        <label class="field"><span>วันที่สิ้นสุดกิจกรรม :</span><input type="date" name="end_date"
+                                required></label>
+                        <label class="field"><span>เวลาสิ้นสุด :</span><input type="time" name="end_time"
+                                required></label>
+                    </div>
+
+                    <label class="field"><span>สถานที่ :</span><input name="place" required></label>
+                    <div class="grid2">
+                        <label class="field"><span>จำนวนที่รับ :</span><input type="number" min="1" name="capacity"
+                                required></label>
+                        <label class="field"><span>วันหมดอายุของประกาศ :</span><input type="date" name="expire"
+                                required></label>
+                    </div>
+
+                    <div class="field">
+                        <span>กรุณาเลือกหมวด :</span>
+                        <div class="chip-row">
+                            <label class="chip-check"><input type="radio" name="category" value="Visual Arts"><span
+                                    class="chip va">Visual Arts</span></label>
+                            <label class="chip-check"><input type="radio" name="category" value="Photography"><span
+                                    class="chip ph">Photography</span></label>
+                            <label class="chip-check"><input type="radio" name="category" value="Writing"><span
+                                    class="chip wr">Writing</span></label>
+                            <label class="chip-check"><input type="radio" name="category" value="Music"><span
+                                    class="chip mu">Music</span></label>
+                        </div>
+                    </div>
+
+                    <label class="field upload">
+                        <span>อัปโหลดรูปโปรไฟล์ :</span>
+                        <input type="file" name="thumb" accept="image/*" class="upload_default">
+                        <span class="btn btn-light">อัปโหลดรูปโปรไฟล์</span>
+                    </label>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-ghost" id="createCancel">Cancel</button>
+                        <button type="submit" class="btn btn-yellow">Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-backdrop"></div>
+    </div> -->
+    
+    <script src="app.js"></script>
+    <script defer src="CreateActivity-popup.js"></script>
+    <script defer src="data.js"></script>
+    <script defer src="Activity.js"></script>
+</body>
+
+</html>
