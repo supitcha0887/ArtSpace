@@ -120,7 +120,7 @@
 
     <!-- CREATE MODAL: full-page feel -->
 
-    <!--<div id="createModal" class="modal hidden" aria-hidden="true">
+    <!--==<div id="createModal" class="modal hidden" aria-hidden="true">
         <div class="modal-box create-box">
             <aside class="create-side">
                 <img src="/img/create_act.png" alt="" class="create-illu">
@@ -189,29 +189,15 @@
     
     
     <script src="app.js"></script>
+        <script>
+  // ทำให้ไฟล์ non-module ทุกไฟล์เรียกใช้ได้
+        window.$  = (s, el = document) => el.querySelector(s);
+        window.$$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+    </script>
+    <script type="module" src="Activity.js"></script>
     <script defer src="CreateActivity-popup.js"></script>
 
-    <script>
-        // เพิ่ม event listener สำหรับการปิด popup
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('Page loaded, popup functions available:', typeof openActivityPopup);
-
-            // ตรวจสอบว่า popup elements มีอยู่จริง
-            const overlay = document.getElementById('popupOverlay');
-            if (overlay) {
-                console.log('Popup overlay found');
-
-                // ปิด popup เมื่อคลิกนอกพื้นที่
-                overlay.addEventListener('click', function (e) {
-                    if (e.target === this) {
-                        closeActivityPopup();
-                    }
-                });
-            } else {
-                console.error('Popup overlay not found');
-            }
-        });
-    </script>
+    
 </body>
 
 </html>

@@ -172,12 +172,12 @@ function fmtDate(s) {
 
 function getCategoryIcon(category) {
     const iconMap = {
-        'Visual Arts': '/img/VisualArts.png',
-        'Photography': '/img/photo.png',
-        'Writing': '/img/writ.png',
-        'Music': '/img/music.png'
+        'Visual Arts': 'img/VisualArts.png',
+        'Photography': 'img/photo.png',
+        'Writing': 'img/writ.png',
+        'Music': 'img/music.png'
     };
-    return iconMap[category] || '/img/default-category.png';
+    return iconMap[category] || 'img/default-category.png';
 }
 
 function card(it) {
@@ -189,14 +189,14 @@ function card(it) {
       <div class="title-head">${it.title}</div>
       <img class="cover" src="${it.img}" alt="">
       <div class="info-stack">
-        <div class="info-row"><img src="/img/position.png" class="info-row-image" width="auto" height="20" alt=""><div class="info-chip">${it.location || it.place}</div></div>
-        <div class="info-row"><img src="/img/cendle.png" class="info-row-image" width="auto" height="20" alt=""><div class="info-chip">${fmtDate(it.startDate)}${it.endDate !== it.startDate ? ` - ${fmtDate(it.endDate)}` : ''}</div></div>
-        <div class="info-row"><img src="/img/time.png" class="info-row-image" width="auto" height="20" alt=""><div class="info-chip">${it.startTime} - ${it.endTime}</div></div>
+        <div class="info-row"><img src="img/position.png" class="info-row-image" width="auto" height="20" alt=""><div class="info-chip">${it.location || it.place}</div></div>
+        <div class="info-row"><img src="img/cendle.png" class="info-row-image" width="auto" height="20" alt=""><div class="info-chip">${fmtDate(it.startDate)}${it.endDate !== it.startDate ? ` - ${fmtDate(it.endDate)}` : ''}</div></div>
+        <div class="info-row"><img src="img/time.png" class="info-row-image" width="auto" height="20" alt=""><div class="info-chip">${it.startTime} - ${it.endTime}</div></div>
       </div>
-      <div class="count-badge"><img class="image-count-badge" src="/img/account.png" width="18" height="18" alt=""> ${it.joined}/${it.capacity}</div>
+      <div class="count-badge"><img class="image-count-badge" src="img/account.png" width="18" height="18" alt=""> ${it.joined}/${it.capacity}</div>
       <div class="org">
         <img src="${it.orgAvatar}" alt="">
-        <div>ไอดีผู้จัดกิจกรรม<br>${it.host} · ${it.rating.toFixed(1)} <img class="rating" src="/img/star.png"> </div>
+        <div>ไอดีผู้จัดกิจกรรม<br>${it.host} · ${it.rating.toFixed(1)} <img class="rating" src="img/star.png"> </div>
       </div>
       <div class="actions">
         <button class="btn btn-small btn-ghost moredetail" onclick="openActivityPopup(${it.id})" >More Detail</button>

@@ -234,18 +234,14 @@ function closePopup() {
     }
 }
 document.addEventListener("DOMContentLoaded", () => {
-    const createBtn = document.querySelector('.btn-find-crate[data-open="#CreateActivity"]');
+    const createBtn = document.querySelector('#openCreateBtn');
     if (createBtn) {
         createBtn.addEventListener("click", () => {
             openPopup("CreateActivity.html", {
                 className: "popup-create",
                 onLoad: (container) => {
-                    console.log("Popup Loaded");
-                    // bind event here if needed
                 }
             });
         });
     }
 });
-$('#createClose').addEventListener('click', closeCreate);
-$('#createCancel').addEventListener('click', closeCreate);
