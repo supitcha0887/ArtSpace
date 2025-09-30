@@ -1,5 +1,23 @@
 /* --- ปรับให้ popup มี responsive layout และลบพื้นหลังแดง --- */
 
+/* ใช้เฉพาะตอนโหลดแบบ popup */
+.popup-create .create-header {
+  background: transparent !important; /* ตัดพื้นหลังม่วงออก */
+}
+
+/* ซ่อนโลโก้ที่ลอยบนรูปในฝั่งซ้าย */
+.popup-create .side-logo,
+.popup-create .side-logo-overlay {
+  display: none !important;
+}
+
+/* ให้รูปเต็มคอลัมน์ซ้ายพอดี */
+.popup-create .create-illu {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 /* ลบสีแดงออกจากพื้นหลัง popup */
 .popup-wrapper {
     background-color: rgba(0, 0, 0, 0);
@@ -184,6 +202,12 @@
     font-family: inherit
 }
 
+.field span {
+  font-weight: 600;
+  color: #333;
+  display: block;
+}
+
 .field textarea {
     height: auto;
     padding: 8px 10px
@@ -220,6 +244,7 @@
     display: grid;
     grid-template-columns: 360px 1fr;
 }
+
 
 @media (max-width: 1024px) {
     .modal-box.create-box {

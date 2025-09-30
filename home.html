@@ -10,9 +10,14 @@
 
   <!-- สไตล์หลักหน้าโฮม -->
   <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="CreateActivity-CSS.css">
+  <link rel="stylesheet" href="ActCSS.css">
 
   <!-- สไตล์ navbar แบบ myprofile -->
   <link rel="stylesheet" href="navbar.css"/>
+
+  
+  
 
 </head>
 
@@ -23,7 +28,7 @@
             <div class="color-sentinel" data-color="dark"></div>
             <div class="container">
                 <h1 style="color:#ffd700">ชวนเพื่อน มาสร้างงานศิลปะไปด้วยกัน</h1>
-                <p>“ร่วมกิจกรรม วาดภาพ ถ่ายรูป เขียนหนังสือ และเล่นดนตรี กับเพื่อนที่รักศิลปะเหมือนคุณ”</p>
+                <p style="color: white;">“ร่วมกิจกรรม วาดภาพ ถ่ายรูป เขียนหนังสือ และเล่นดนตรี กับเพื่อนที่รักศิลปะเหมือนคุณ”</p>
                 <a href="Activity.html" class="start-btn">Start Now</a>
 
             </div>
@@ -37,15 +42,15 @@
                         <div class="card-icon">
                             <i class="fas fa-search"></i>
                         </div>
-                        <h3 id="a">ค้นหากิจกรรมศิลปะ<br>และเข้าร่วมกับเพื่อนใหม่</h3>
+                        <h3 id="a" style="color: white;">ค้นหากิจกรรมศิลปะ<br>และเข้าร่วมกับเพื่อนใหม่</h3>
                         <a href="Activity.html" class="card-btn">Join Activity</a>
                     </div>
                     <div class="action-card">
                         <div class="card-icon">
                             <i class="fas fa-bullhorn"></i>
                         </div>
-                        <h3 id="b">เริ่มต้นกิจกรรมของคุณ<br>แล้วเชิญเพื่อนมาร่วมสร้างสรรค์</h3>
-                        <a href="Activity.html?popup=create" class="card-btn">Create Activity</a>
+                        <h3 id="b" style="color: white;">เริ่มต้นกิจกรรมของคุณ<br>แล้วเชิญเพื่อนมาร่วมสร้างสรรค์</h3>
+                        <a href="#" id="openCreateBtn" class="card-btn">Create Activity</a>
                     </div>
                 </div>
             </div>
@@ -309,7 +314,7 @@
     });
   }
 });
-
     </script>
+    <script src="CreateActivity-popup.js" defer></script>
 </body>
 </html>

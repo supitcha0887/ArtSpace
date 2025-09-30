@@ -234,14 +234,11 @@ function closePopup() {
     }
 }
 document.addEventListener("DOMContentLoaded", () => {
-    const createBtn = document.querySelector('#openCreateBtn');
-    if (createBtn) {
-        createBtn.addEventListener("click", () => {
-            openPopup("CreateActivity.html", {
-                className: "popup-create",
-                onLoad: (container) => {
-                }
-            });
-        });
-    }
+  const createBtn = document.querySelector('#openCreateBtn'); // หรือปุ่มที่ใช้จริง
+  if (createBtn) {
+    createBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      openPopup("CreateActivity.html", { className: "popup-create" });
+    });
+  }
 });
