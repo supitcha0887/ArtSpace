@@ -71,6 +71,7 @@ body.modal-open {
 
 /* HERO plain */
 .hero.plain {
+    background: none !important;
     padding-top: 2%;
     min-height: 70vh;
     display: flex;

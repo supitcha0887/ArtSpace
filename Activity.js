@@ -180,35 +180,31 @@ function getCategoryIcon(category) {
     return iconMap[category] || 'img/default-category.png';
 }
 
-function card(it) {
-    const el = document.createElement('article');
-    el.className = 'card';
-    el.innerHTML = `
+// Activity.js
+export function card(it) {
+  const el = document.createElement('article');
+  el.className = 'card';
+  el.innerHTML = `
     <div class="card-body">
       <span class="pill-head"><img src="${getCategoryIcon(it.category)}" alt="" width="16" height="auto"> ${it.category}</span>
       <div class="title-head">${it.title}</div>
       <img class="cover" src="${it.img}" alt="">
       <div class="info-stack">
-        <div class="info-row"><img src="img/position.png" class="info-row-image" width="auto" height="20" alt=""><div class="info-chip">${it.location || it.place}</div></div>
-        <div class="info-row"><img src="img/cendle.png" class="info-row-image" width="auto" height="20" alt=""><div class="info-chip">${fmtDate(it.startDate)}${it.endDate !== it.startDate ? ` - ${fmtDate(it.endDate)}` : ''}</div></div>
-        <div class="info-row"><img src="img/time.png" class="info-row-image" width="auto" height="20" alt=""><div class="info-chip">${it.startTime} - ${it.endTime}</div></div>
+        <div class="info-row"><img src="img/position.png" class="info-row-image" height="20"> <div class="info-chip">${it.location || it.place}</div></div>
+        <div class="info-row"><img src="img/cendle.png" class="info-row-image" height="20"> <div class="info-chip">${fmtDate(it.startDate)}${it.endDate !== it.startDate ? ` - ${fmtDate(it.endDate)}` : ''}</div></div>
+        <div class="info-row"><img src="img/time.png" class="info-row-image" height="20"> <div class="info-chip">${it.startTime} - ${it.endTime}</div></div>
       </div>
-      <div class="count-badge"><img class="image-count-badge" src="img/account.png" width="18" height="18" alt=""> ${it.joined}/${it.capacity}</div>
+      <div class="count-badge"><img class="image-count-badge" src="img/account.png" height="18"> ${it.joined}/${it.capacity}</div>
       <div class="org">
         <img src="${it.orgAvatar}" alt="">
-        <div>ไอดีผู้จัดกิจกรรม<br>${it.host} · ${it.rating.toFixed(1)} <img class="rating" src="img/star.png"> </div>
+        <div>ไอดีผู้จัดกิจกรรม<br>${it.host} · ${it.rating.toFixed(1)} <img class="rating" src="img/star.png"></div>
       </div>
       <div class="actions">
-        <button class="btn btn-small btn-ghost moredetail" onclick="openActivityPopup(${it.id})" >More Detail</button>
+        <button class="btn btn-small btn-ghost moredetail" onclick="openActivityPopup(${it.id})">More Detail</button>
         <button class="btn btn-small btn-dark joinnow btn-join" data-id="${it.id}">Join Now</button>
       </div>
     </div>`;
-    
-    const joinBtn = el.querySelector('.btn-join');
-    if (joinBtn) {
-        joinBtn.addEventListener('click', () => openJoinModal(it.id));
-    }
-    return el;
+  return el;
 }
 
 function render() {
